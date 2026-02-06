@@ -33,10 +33,10 @@ This document explains how the documentation engine works internally — the req
 ┌─────────────────────────────────────────────────────────────────┐
 │                      LAYOUT SYSTEM                               │
 │                    layouts/BaseLayout.astro                      │
-│    ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐   │
-│    │   Navbar    │  │   Sidebar   │  │    Main Content     │   │
-│    │  component  │  │  component  │  │   (from markdown)   │   │
-│    └─────────────┘  └─────────────┘  └─────────────────────┘   │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────┐  ┌────────────┐  │
+│  │  Navbar  │  │ Sidebar  │  │ Main Content │  │    TOC     │  │
+│  │(header)  │  │  (left)  │  │   (center)   │  │  (right)   │  │
+│  └──────────┘  └──────────┘  └──────────────┘  └────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 ▼
@@ -58,22 +58,25 @@ This document explains how the documentation engine works internally — the req
 
 2. Astro Router Matches
    └── pages/docs/[...slug].astro
-       └── slug = ["getting-started", "install"]
+       └── slug = "getting-started/install" (string for rest params)
 
 3. Page Component Executes
-   └── import.meta.glob() loads ALL markdown files
-   └── Finds matching file: content/docs/getting-started/install.md
-   └── Extracts frontmatter (title, description)
+   ├── getStaticPaths() generates all valid routes at build time
+   ├── import.meta.glob() loads ALL markdown files
+   ├── Finds matching file: content/docs/getting-started/install.md
+   ├── Extracts frontmatter (title, description)
+   └── Extracts headings via getHeadings() for TOC
 
 4. Layout Wraps Content
    └── BaseLayout.astro receives the page
        ├── Navbar.astro (header with dark mode toggle)
-       ├── Sidebar.astro (dynamically built from markdown files)
-       └── <slot /> (receives markdown content as HTML)
+       ├── Sidebar.astro (left nav - dynamically built from markdown files)
+       ├── <slot /> (receives markdown content as HTML)
+       └── <slot name="toc" /> (receives TableOfContents component)
 
 5. Static HTML Generated
    └── Complete page sent to browser
-   └── Client-side JS hydrates (dark mode, mobile menu)
+   └── Client-side JS hydrates (dark mode, mobile menu, TOC scroll spy)
 ```
 
 ---
@@ -85,7 +88,7 @@ This document explains how the documentation engine works internally — the req
 | File | Purpose |
 |------|---------|
 | `astro.config.mjs` | Astro configuration — site URL, integrations (Tailwind) |
-| `tailwind.config.cjs` | Tailwind configuration — colors, fonts, typography plugin |
+| `tailwind.config.cjs` | Tailwind configuration — custom colors, fonts, typography plugin |
 | `postcss.config.cjs` | PostCSS plugins — processes Tailwind directives |
 | `package.json` | Dependencies and npm scripts |
 
@@ -108,15 +111,26 @@ pages/
 **`[...slug].astro`** — Dynamic Documentation Router
 - Catches ALL routes under `/docs/*`
 - The `[...slug]` syntax means "any path segments"
+- **Requires `getStaticPaths()`** for static site generation
 - Examples:
   - `/docs` → slug = undefined
-  - `/docs/guides` → slug = ["guides"]
-  - `/docs/getting-started/install` → slug = ["getting-started", "install"]
+  - `/docs/guides` → slug = "guides"
+  - `/docs/getting-started/install` → slug = "getting-started/install"
 
 ```javascript
+// getStaticPaths generates all valid routes at build time
+export function getStaticPaths() {
+  const modules = import.meta.glob('/src/content/docs/**/*.md', { eager: true });
+  return Object.keys(modules).map((filePath) => {
+    // Convert file path to slug
+    const slugPath = route.replace(/^\/docs\/?/, '');
+    return { params: { slug: slugPath || undefined } };
+  });
+}
+
 // How it resolves markdown files:
-const slug = Astro.params?.slug;  // ["getting-started", "install"]
-const route = '/docs/' + slug.join('/');  // "/docs/getting-started/install"
+const { slug } = Astro.params;  // "getting-started/install"
+const route = '/docs/' + slug;  // "/docs/getting-started/install"
 // Finds: content/docs/getting-started/install.md
 ```
 
@@ -127,31 +141,37 @@ const route = '/docs/' + slug.join('/');  // "/docs/getting-started/install"
 **`BaseLayout.astro`** — The Master Template
 
 ```
-┌────────────────────────────────────────────────────────────┐
-│                         <head>                              │
-│  - Meta tags, fonts, favicon                               │
-│  - Dark mode initialization script                          │
-└────────────────────────────────────────────────────────────┘
-┌────────────────────────────────────────────────────────────┐
-│                        Navbar                               │
-│  [Logo]                              [GitHub] [🌙] [☰]     │
-└────────────────────────────────────────────────────────────┘
-┌──────────────┬─────────────────────────────┬───────────────┐
-│              │                             │               │
-│   Sidebar    │       Main Content          │  TOC (2xl+)   │
-│   (lg+)      │       <slot />              │   Optional    │
-│              │                             │               │
-│  - Section 1 │  ┌─────────────────────┐   │               │
-│    - Page A  │  │  Article Header     │   │               │
-│    - Page B  │  │  ─────────────────  │   │               │
-│  - Section 2 │  │                     │   │               │
-│    - Page C  │  │  Markdown Content   │   │               │
-│              │  │                     │   │               │
-│              │  │  ─────────────────  │   │               │
-│              │  │  Prev/Next Nav      │   │               │
-│              │  └─────────────────────┘   │               │
-└──────────────┴─────────────────────────────┴───────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│                         <head>                                  │
+│  - Meta tags, fonts (Inter, JetBrains Mono), favicon           │
+│  - Dark mode initialization script (prevents flash)             │
+└────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│                        Navbar                                   │
+│  [Logo → /]                          [GitHub] [🌙/☀️] [☰]      │
+└────────────────────────────────────────────────────────────────┘
+┌──────────────┬──────────────────────────────┬──────────────────┐
+│              │                              │                  │
+│   Sidebar    │       Main Content           │  Table of        │
+│   (lg+)      │       <slot />               │  Contents        │
+│   w-64/72    │       max-w-3xl              │  (xl+)           │
+│              │                              │  w-56/64         │
+│  Blog (→/)   │  ┌────────────────────┐     │                  │
+│              │  │  Article Header    │     │  On this page    │
+│  ▼ Section 1 │  │  ────────────────  │     │  - Heading 1     │
+│    - Page A  │  │                    │     │    - Sub 1       │
+│    - Page B  │  │  Markdown Content  │     │    - Sub 2       │
+│  ▼ Section 2 │  │                    │     │  - Heading 2     │
+│    - Page C  │  │  ────────────────  │     │                  │
+│              │  │  Prev/Next Nav     │     │                  │
+│              │  └────────────────────┘     │                  │
+└──────────────┴──────────────────────────────┴──────────────────┘
 ```
+
+**Responsive Breakpoints:**
+- Mobile (< lg): No sidebars, hamburger menu for navigation
+- Large (lg - 1024px+): Left sidebar visible
+- Extra Large (xl - 1280px+): Both sidebars visible
 
 **Key Features:**
 - Imports global CSS (`styles/global.css`)
@@ -169,15 +189,16 @@ const route = '/docs/' + slug.join('/');  // "/docs/getting-started/install"
 ```
 Responsibilities:
 ├── Logo/Site title (links to /)
-├── GitHub link (external)
+├── GitHub link (external, hidden on small screens)
 ├── Dark mode toggle
 │   ├── Sun icon (visible in dark mode)
 │   └── Moon icon (visible in light mode)
 ├── Mobile menu button (visible < lg breakpoint)
 └── Mobile sidebar overlay
-    ├── Slide-in panel
+    ├── Slide-in panel with animation
     ├── Close button
-    └── Clones sidebar content
+    ├── Clones sidebar content
+    └── Backdrop blur effect
 ```
 
 **Client-Side JavaScript:**
@@ -197,9 +218,9 @@ Responsibilities:
 
 ---
 
-**`Sidebar.astro`** — Navigation Builder
+**`Sidebar.astro`** — Left Navigation Builder
 
-This is the most complex component. It dynamically generates navigation from your markdown files.
+This component dynamically generates navigation from your markdown files.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -212,30 +233,31 @@ This is the most complex component. It dynamically generates navigation from you
 │                                                              │
 │  2. EXTRACT METADATA                                         │
 │     For each file:                                           │
-│     ├── file path: /src/content/docs/guides/install.md     │
-│     ├── route: /docs/guides/install                         │
-│     ├── title: from frontmatter or filename                 │
-│     └── order: from frontmatter (default: 999)              │
+│     ├── file path: /src/content/docs/guides/install.md      │
+│     ├── route: /docs/guides/install                          │
+│     ├── title: from frontmatter or filename                  │
+│     └── order: from frontmatter (default: 999)               │
 │                                                              │
 │  3. BUILD TREE                                               │
 │     Flat list → Nested tree structure                        │
 │     {                                                        │
 │       children: {                                            │
 │         "getting-started": {                                 │
-│           __meta: { title, route },                         │
+│           __meta: { title, route },                          │
 │           children: {                                        │
-│             "install": { __meta: {...} },                   │
-│             "faq": { __meta: {...} }                        │
+│             "install": { __meta: {...} },                    │
+│             "faq": { __meta: {...} }                         │
 │           }                                                  │
 │         }                                                    │
 │       }                                                      │
 │     }                                                        │
 │                                                              │
 │  4. RENDER HTML                                              │
-│     Tree → <details> with <summary> and <ul>                │
-│     ├── Collapsible sections for folders                    │
-│     ├── Links for pages                                     │
-│     └── Active state highlighting                           │
+│     Tree → <details> with <summary> and <ul>                 │
+│     ├── Collapsible sections for folders                     │
+│     ├── Links for pages                                      │
+│     ├── Active state highlighting (indigo accent)            │
+│     └── Auto-expand sections with active children            │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -265,6 +287,58 @@ hasActiveChild(node)
 // Used to auto-expand parent sections
 ```
 
+**Header Link:**
+- "Blog" link at top points to home page (`/`)
+
+---
+
+**`TableOfContents.astro`** — Right Sidebar (Page Headings)
+
+Displays the current page's heading structure for quick navigation.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    TABLE OF CONTENTS                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Props:                                                      │
+│  └── headings: Array<{ depth, slug, text }>                 │
+│      (extracted from markdown via getHeadings())             │
+│                                                              │
+│  Filtering:                                                  │
+│  └── Shows h1, h2, and h3 headings (depth 1-3)              │
+│                                                              │
+│  Indentation:                                                │
+│  ├── h1: No indent, bold font                               │
+│  ├── h2: ml-3 (slight indent)                               │
+│  └── h3: ml-6 (more indent)                                 │
+│                                                              │
+│  Features:                                                   │
+│  ├── Clickable links with smooth scroll                     │
+│  ├── Active heading highlighting on scroll                  │
+│  └── IntersectionObserver for scroll spy                    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Client-Side JavaScript (Scroll Spy):**
+```javascript
+// Highlights the currently visible heading in the TOC
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // Add highlight to matching TOC link
+      // Remove highlight from others
+    }
+  });
+}, {
+  rootMargin: '-80px 0px -80% 0px',  // Trigger near top of viewport
+});
+
+// Observe all h1, h2, h3 in .docs-content
+headings.forEach((heading) => observer.observe(heading));
+```
+
 ---
 
 #### `src/styles/` — Styling
@@ -279,21 +353,24 @@ hasActiveChild(node)
 
 /* Layer 2: Base Overrides */
 @layer base {
-  - Smooth scrolling
+  - Smooth scrolling (scroll-behavior: smooth)
   - Focus ring styles (accessibility)
-  - Custom scrollbar styling
-  - Text selection colors
+  - Custom scrollbar styling (thin, rounded)
+  - Text selection colors (indigo)
 }
 
 /* Layer 3: Component Styles */
 @layer components {
-  .prose h1, h2, h3, h4 { ... }  // Heading styles
+  .prose h1, h2, h3, h4 { ... }  // Heading styles with borders
   .prose p { ... }                // Paragraph styles
-  .prose code { ... }             // Inline code
-  .prose pre { ... }              // Code blocks
-  .prose table { ... }            // Tables
-  .callout-info { ... }           // Info callout box
-  .callout-warning { ... }        // Warning callout box
+  .prose a { ... }                // Link styles (indigo accent)
+  .prose code { ... }             // Inline code (pink highlight)
+  .prose pre { ... }              // Code blocks (dark background)
+  .prose table { ... }            // Tables with borders
+  .callout-info { ... }           // Blue info box
+  .callout-warning { ... }        // Amber warning box
+  .callout-error { ... }          // Red error box
+  .callout-success { ... }        // Green success box
 }
 
 /* Layer 4: Utilities */
@@ -315,9 +392,12 @@ content/docs/
 │   ├── index.md        →  /docs/getting-started
 │   ├── install.md      →  /docs/getting-started/install
 │   └── faq.md          →  /docs/getting-started/faq
-└── guides/
-    ├── index.md        →  /docs/guides
-    └── advanced.md     →  /docs/guides/advanced
+├── guides/
+│   ├── index.md        →  /docs/guides
+│   └── advanced.md     →  /docs/guides/advanced
+└── ai/                  # Example: custom sections
+    ├── ai.md           →  /docs/ai/ai
+    └── agent.md        →  /docs/ai/agent
 ```
 
 **Frontmatter Schema:**
@@ -345,18 +425,18 @@ order: 1                   # Optional: sort order (lower = first)
                     │  (content/docs) │
                     └────────┬────────┘
                              │
-              ┌──────────────┼──────────────┐
-              │              │              │
-              ▼              ▼              ▼
-    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-    │   Sidebar   │  │ [...slug]   │  │  Astro      │
-    │  Component  │  │    Page     │  │  Build      │
-    └──────┬──────┘  └──────┬──────┘  └──────┬──────┘
-           │                │                │
-           │  Navigation    │  Content       │  Static
-           │  Tree          │  HTML          │  Assets
-           │                │                │
-           └────────────────┼────────────────┘
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+         ▼                   ▼                   ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│   Sidebar   │      │ [...slug]   │      │     TOC     │
+│  Component  │      │    Page     │      │  Component  │
+└──────┬──────┘      └──────┬──────┘      └──────┬──────┘
+       │                    │                    │
+       │ Navigation         │ Content +          │ Heading
+       │ Tree               │ getHeadings()      │ Links
+       │                    │                    │
+       └────────────────────┼────────────────────┘
                             │
                             ▼
                     ┌─────────────────┐
@@ -392,11 +472,17 @@ order: 1                   # Optional: sort order (lower = first)
     │   Script    │  → Toggles 'dark' class
     └─────────────┘    → Saves to localStorage
           │
-          ▼
-    ┌─────────────┐
-    │  CSS Rules  │  ← dark: variants activate
-    │  (Tailwind) │  → Colors/backgrounds change
-    └─────────────┘
+          ├─────────────────────┐
+          ▼                     ▼
+    ┌─────────────┐       ┌─────────────┐
+    │  CSS Rules  │       │  TOC Scroll │
+    │  (Tailwind) │       │    Spy      │
+    └─────────────┘       └─────────────┘
+          │                     │
+          │ dark: variants      │ Highlights active
+          │ activate            │ heading on scroll
+          ▼                     ▼
+    Colors change         TOC updates
 ```
 
 ---
@@ -409,14 +495,20 @@ All pages are pre-rendered at build time:
 - No server required at runtime
 - Fast page loads (just HTML/CSS/JS)
 - Can be hosted on any CDN
+- **Requires `getStaticPaths()`** for dynamic routes
 
-### 2. Catch-All Routes
+### 2. Catch-All Routes with getStaticPaths
 
-The `[...slug]` syntax captures any path:
-```
-/docs              → slug = undefined
-/docs/a            → slug = ["a"]
-/docs/a/b/c        → slug = ["a", "b", "c"]
+The `[...slug]` syntax captures any path, but requires generating all paths at build time:
+```javascript
+export function getStaticPaths() {
+  // Must return all valid { params: { slug } } combinations
+  return [
+    { params: { slug: undefined } },           // /docs
+    { params: { slug: "guides" } },            // /docs/guides
+    { params: { slug: "getting-started/faq" }} // /docs/getting-started/faq
+  ];
+}
 ```
 
 ### 3. import.meta.glob()
@@ -424,7 +516,13 @@ The `[...slug]` syntax captures any path:
 Astro's way to import multiple files at once:
 ```javascript
 const mods = import.meta.glob('/src/content/docs/**/*.md', { eager: true });
-// Returns: { "/src/content/docs/install.md": { default: Component, frontmatter: {...} } }
+// Returns: {
+//   "/src/content/docs/install.md": {
+//     default: Component,
+//     frontmatter: {...},
+//     getHeadings: () => [...]
+//   }
+// }
 ```
 
 ### 4. Component Slots
@@ -439,10 +537,10 @@ Astro's slot system allows content injection:
   <slot name="toc" />  <!-- Named slot -->
 </aside>
 
-<!-- Usage -->
+<!-- Usage in [...slug].astro -->
 <BaseLayout>
-  <p>This goes in default slot</p>
-  <nav slot="toc">This goes in named slot</nav>
+  <article>Content here</article>
+  <TableOfContents slot="toc" headings={headings} />
 </BaseLayout>
 ```
 
@@ -451,7 +549,19 @@ Astro's slot system allows content injection:
 Uses class-based dark mode (`darkMode: 'class'` in Tailwind):
 ```html
 <html class="dark">  <!-- Dark mode active -->
-  <body class="bg-white dark:bg-slate-900">
+  <body class="bg-white dark:bg-docs-bg-dark">
+```
+
+### 6. getHeadings() for TOC
+
+Markdown files expose a `getHeadings()` function:
+```javascript
+const headings = page.module.getHeadings?.() || [];
+// Returns: [
+//   { depth: 1, slug: "introduction", text: "Introduction" },
+//   { depth: 2, slug: "getting-started", text: "Getting Started" },
+//   { depth: 3, slug: "prerequisites", text: "Prerequisites" }
+// ]
 ```
 
 ---
@@ -496,17 +606,27 @@ order: 1
 |---------|---------|
 | Routing | `pages/docs/[...slug].astro` |
 | Layout | `layouts/BaseLayout.astro` |
-| Navigation | `components/Sidebar.astro` |
+| Left Navigation | `components/Sidebar.astro` |
+| Right TOC | `components/TableOfContents.astro` |
 | Header/Theme | `components/Navbar.astro` |
 | Styling | `styles/global.css` + `tailwind.config.cjs` |
 | Content | `content/docs/**/*.md` |
 | Config | `astro.config.mjs` |
 
+### Component Visibility by Breakpoint
+
+| Component | Mobile | lg (1024px+) | xl (1280px+) |
+|-----------|--------|--------------|--------------|
+| Navbar | ✓ | ✓ | ✓ |
+| Left Sidebar | Hidden (hamburger menu) | ✓ | ✓ |
+| Right TOC | Hidden | Hidden | ✓ |
+| Main Content | Full width | With left sidebar | With both sidebars |
+
 The architecture follows a clear separation:
-- **Pages** define routes
-- **Layouts** define structure
-- **Components** define reusable UI
-- **Content** defines documentation
-- **Styles** define appearance
+- **Pages** define routes (with `getStaticPaths` for dynamic routes)
+- **Layouts** define structure (3-column on large screens)
+- **Components** define reusable UI (Navbar, Sidebar, TOC)
+- **Content** defines documentation (Markdown files)
+- **Styles** define appearance (Tailwind + custom CSS)
 
 Everything comes together at build time to produce fast, static HTML pages.
