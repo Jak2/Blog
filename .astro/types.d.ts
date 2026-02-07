@@ -189,6 +189,20 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"android/assembling process.md": {
+	id: "android/assembling process.md";
+  slug: "android/assembling-process";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"cat/food.md": {
+	id: "cat/food.md";
+  slug: "cat/food";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "getting-started/faq.md": {
 	id: "getting-started/faq.md";
   slug: "getting-started/faq";
@@ -224,10 +238,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
-};
-"sdfs": {
-};
-"test": {
 };
 
 	};

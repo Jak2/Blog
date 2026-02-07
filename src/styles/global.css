@@ -2,14 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables */
+:root {
+  --navbar-height: 4rem; /* 64px - matches h-16 */
+}
+
 /* Base layer customizations */
 @layer base {
   html {
+    font-size: 102%;
     scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height);
   }
 
   body {
     @apply leading-relaxed;
+  }
+
+  /* Scroll margin for all elements with IDs (anchor targets) */
+  [id] {
+    scroll-margin-top: calc(var(--navbar-height) + 1rem);
   }
 
   /* Focus styles for accessibility */

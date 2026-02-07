@@ -5,7 +5,9 @@
       "Bash(dir:*)",
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(npx astro build:*)",
+      "Bash(npx tailwindcss:*)"
     ]
   }
 }
