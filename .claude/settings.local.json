@@ -7,7 +7,8 @@
       "Bash(npm run dev:*)",
       "Bash(timeout:*)",
       "Bash(npx astro build:*)",
-      "Bash(npx tailwindcss:*)"
+      "Bash(npx tailwindcss:*)",
+      "Bash(xxd:*)"
     ]
   }
 }

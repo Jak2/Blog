@@ -148,7 +148,7 @@ const route = '/docs/' + slug;  // "/docs/getting-started/install"
 └────────────────────────────────────────────────────────────────┘
 ┌────────────────────────────────────────────────────────────────┐
 │                        Navbar                                   │
-│  [Logo → /]                          [GitHub] [🌙/☀️] [☰]      │
+│  [Logo → /]     [🔍 Search docs... Ctrl K]  [GitHub] [🌙/☀️] [☰] │
 └────────────────────────────────────────────────────────────────┘
 ┌──────────────┬──────────────────────────────┬──────────────────┐
 │              │                              │                  │
@@ -179,6 +179,7 @@ const route = '/docs/' + slug;  // "/docs/getting-started/install"
 - Provides `<slot />` for page content
 - Provides `<slot name="toc" />` for table of contents
 - Dark mode script runs before page renders (prevents flash)
+- Sidebar font scaling: both sidebars have `font-size: 1.02em` for 2% larger text
 
 ---
 
@@ -189,6 +190,14 @@ const route = '/docs/' + slug;  // "/docs/getting-started/install"
 ```
 Responsibilities:
 ├── Logo/Site title (links to /)
+├── Client-side search bar (center of navbar)
+│   ├── Builds search index at build time via import.meta.glob()
+│   ├── Indexes: page titles, headings, content excerpts (200 chars)
+│   ├── Weighted scoring: title (10), headings (5), content (2)
+│   ├── Debounced input (150ms) with max 8 results
+│   ├── Match highlighting (yellow) in dropdown results
+│   ├── Keyboard shortcut: Ctrl+K / Cmd+K to focus, Escape to close
+│   └── Search data embedded as <script type="application/json">
 ├── GitHub link (external, hidden on small screens)
 ├── Dark mode toggle
 │   ├── Sun icon (visible in dark mode)
@@ -208,6 +217,13 @@ Responsibilities:
 - Falls back to system preference (prefers-color-scheme)
 - Toggles 'dark' class on <html>
 - Persists choice to localStorage
+
+// Client-Side Search
+- Parses build-time JSON search index from embedded <script> tag
+- Splits query into terms, scores each page by title/heading/content matches
+- Renders dropdown with highlighted matches, matched headings, and excerpts
+- Ctrl+K / Cmd+K keyboard shortcut to focus search input
+- Closes on Escape key or click outside
 
 // Mobile Menu
 - Opens overlay on hamburger click
@@ -351,9 +367,17 @@ headings.forEach((heading) => observer.observe(heading));
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables */
+:root {
+  --navbar-height: 4rem;  // Used for scroll-margin-top offset
+}
+
 /* Layer 2: Base Overrides */
 @layer base {
+  - Global font-size: 102% (2% increase on all rem-based sizes)
   - Smooth scrolling (scroll-behavior: smooth)
+  - scroll-padding-top: var(--navbar-height) (accounts for sticky header)
+  - scroll-margin-top on all [id] elements (headings land below fixed nav)
   - Focus ring styles (accessibility)
   - Custom scrollbar styling (thin, rounded)
   - Text selection colors (indigo)
@@ -472,17 +496,17 @@ order: 1                   # Optional: sort order (lower = first)
     │   Script    │  → Toggles 'dark' class
     └─────────────┘    → Saves to localStorage
           │
-          ├─────────────────────┐
-          ▼                     ▼
-    ┌─────────────┐       ┌─────────────┐
-    │  CSS Rules  │       │  TOC Scroll │
-    │  (Tailwind) │       │    Spy      │
-    └─────────────┘       └─────────────┘
-          │                     │
-          │ dark: variants      │ Highlights active
-          │ activate            │ heading on scroll
-          ▼                     ▼
-    Colors change         TOC updates
+          ├─────────────────────┼─────────────────────┐
+          ▼                     ▼                     ▼
+    ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+    │  CSS Rules  │       │  TOC Scroll │       │   Search    │
+    │  (Tailwind) │       │    Spy      │       │   Engine    │
+    └─────────────┘       └─────────────┘       └─────────────┘
+          │                     │                     │
+          │ dark: variants      │ Highlights active   │ Parses JSON index
+          │ activate            │ heading on scroll   │ Scores & ranks
+          ▼                     ▼                     ▼
+    Colors change         TOC updates           Results dropdown
 ```
 
 ---
@@ -608,7 +632,7 @@ order: 1
 | Layout | `layouts/BaseLayout.astro` |
 | Left Navigation | `components/Sidebar.astro` |
 | Right TOC | `components/TableOfContents.astro` |
-| Header/Theme | `components/Navbar.astro` |
+| Header/Theme/Search | `components/Navbar.astro` |
 | Styling | `styles/global.css` + `tailwind.config.cjs` |
 | Content | `content/docs/**/*.md` |
 | Config | `astro.config.mjs` |
