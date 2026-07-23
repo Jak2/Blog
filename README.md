@@ -22,6 +22,16 @@ A modern, filesystem-driven documentation site built with **Astro** and **Tailwi
 
 ## Quick Start
 
+> **Note:** This project's directory sits on an NTFS drive (`fuseblk`), which
+> doesn't support exec permission bits and breaks `npm install` for packages
+> with native binaries (esbuild, sharp) — `EACCES` errors. `node_modules` is
+> a symlink to an ext4-backed store as a workaround. **Do not run `npm i`
+> directly in this folder** — it will delete the symlink. Instead run:
+> ```bash
+> bash install-deps.sh
+> ```
+> See [NODE_MODULES_NTFS_FIX.md](NODE_MODULES_NTFS_FIX.md) for details.
+
 ```bash
 # Install dependencies
 npm install

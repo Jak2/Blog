@@ -224,6 +224,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"github/repos.md": {
+	id: "github/repos.md";
+  slug: "github/repos";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "guides/advanced.md": {
 	id: "guides/advanced.md";
   slug: "guides/advanced";
