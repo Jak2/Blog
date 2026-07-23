@@ -89,3 +89,30 @@ Open-source secrets management platform — think "self-hostable Vault/Doppler" 
 - **Use case:** Centralizing env vars/API keys across a team and syncing them into CI, Kubernetes, or `.env` files, with audit logs and access control.
 - **Stack:** Next.js frontend, NestJS backend, PostgreSQL.
 - **Good to know:** Offers both a managed cloud version and self-hosted (Docker Compose / Helm) deployment.
+
+---
+
+## OpenHuman
+
+**[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)**
+
+![Stars](https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat-square) ![License](https://img.shields.io/github/license/tinyhumansai/openhuman?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tinyhumansai/openhuman?style=flat-square)
+
+Open-source project for building humanlike AI agents/personas.
+
+- **Use case:** Prototyping AI agents that need persistent identity, personality, or humanlike behavior instead of stateless chatbot responses.
+- **Good to know:** Newer/smaller project — check the README for current scope, setup, and API surface before adopting.
+
+---
+
+## agentmemory
+
+**[rohitg00/agentmemory](https://github.com/rohitg00/agentmemory)**
+
+![Stars](https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square) ![License](https://img.shields.io/github/license/rohitg00/agentmemory?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/rohitg00/agentmemory?style=flat-square)
+
+Easy-to-use memory layer for AI agents, built on vector databases.
+
+- **Use case:** Giving an LLM agent persistent, searchable long-term memory (facts, conversation history, embeddings) without hand-rolling vector DB plumbing.
+- **Stack:** Python, vector DB backends (e.g. Chroma/Postgres-based).
+- **Good to know:** Aimed at agent frameworks that need drop-in memory rather than building retrieval from scratch.
