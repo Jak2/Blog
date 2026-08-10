@@ -3,105 +3,25 @@ title: Repos
 description: Curated open-source repositories worth knowing about
 order: 1
 ---
-
 # Repos
 
 A running list of open-source projects worth bookmarking — what they do, why they're useful, and when to reach for them.
 
 ---
 
-## Openship
+## Agency
 
-**[openshiporg/openship](https://github.com/openshiporg/openship)**
+**[tobias-walle/agency](https://github.com/tobias-walle/agency)**
 
-![Stars](https://img.shields.io/github/stars/openshiporg/openship?style=flat-square) ![License](https://img.shields.io/github/license/openshiporg/openship?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/openshiporg/openship?style=flat-square)
+![Stars](https://img.shields.io/github/stars/tobias-walle/agency?style=flat-square) ![License](https://img.shields.io/github/license/tobias-walle/agency?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tobias-walle/agency?style=flat-square)
 
-Open-source order routing and fulfillment platform. Connects storefronts (Shopify, WooCommerce, etc.) to your shipping/fulfillment channels and lets you define custom routing rules between them.
+A Rust, Lazygit-inspired terminal orchestrator that runs any CLI coding agent (Claude Code, Codex, Gemini CLI, OpenCode) in isolated git-worktree + tmux sessions.
 
-- **Use case:** Self-host your own order-routing layer instead of paying for a SaaS middleman (e.g. multi-channel sellers who need orders auto-routed to the right warehouse/3PL).
-- **Stack:** Next.js, Keystone.js, GraphQL, PostgreSQL.
-- **Good to know:** Designed to be self-hosted; expect to run your own DB and background workers.
+- **Use case:** Running and managing several parallel coding-agent sessions without manual worktree/tmux juggling
+- **Stack:** Rust, tmux, daemon + client over Unix socket, MIT
+- **Good to know:** Agent-agnostic — no built-in memory/scheduling like Kiro Crew, just session orchestration
 
----
-
-## ntfy
-
-**[binwiederhier/ntfy](https://github.com/binwiederhier/ntfy)**
-
-![Stars](https://img.shields.io/github/stars/binwiederhier/ntfy?style=flat-square) ![License](https://img.shields.io/github/license/binwiederhier/ntfy?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/binwiederhier/ntfy?style=flat-square)
-
-Simple pub-sub push notification service. Send notifications to your phone or desktop via a plain HTTP PUT/POST — no account, no SDK, no app-specific setup.
-
-- **Use case:** Fire-and-forget alerts from scripts, cron jobs, CI pipelines, or home servers (e.g. `curl -d "backup done" ntfy.sh/mytopic`).
-- **Stack:** Go (server), companion apps for Android/iOS/CLI.
-- **Good to know:** Free public instance at `ntfy.sh`, or self-host the server binary in minutes. Pairs with the ntfy-android app below for a fully self-hosted mobile setup.
-
----
-
-## ntfy-android
-
-**[binwiederhier/ntfy-android](https://github.com/binwiederhier/ntfy-android)**
-
-![Stars](https://img.shields.io/github/stars/binwiederhier/ntfy-android?style=flat-square) ![License](https://img.shields.io/github/license/binwiederhier/ntfy-android?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/binwiederhier/ntfy-android?style=flat-square)
-
-Official Android client for ntfy. Subscribes to topics on any ntfy server (public or self-hosted) and surfaces them as native push notifications.
-
-- **Use case:** Receiving ntfy alerts on your phone without relying on Firebase/Google push infra — supports a Firebase-free build.
-- **Stack:** Kotlin, Android.
-- **Good to know:** Available on Google Play, F-Droid, and GitHub releases.
-
----
-
-## turbovec
-
-**[RyanCodrai/turbovec](https://github.com/RyanCodrai/turbovec)**
-
-![Stars](https://img.shields.io/github/stars/RyanCodrai/turbovec?style=flat-square) ![License](https://img.shields.io/github/license/RyanCodrai/turbovec?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/RyanCodrai/turbovec?style=flat-square)
-
-Fast vectorized operations library.
-
-- **Use case:** Performance-sensitive numeric/array workloads where you'd otherwise hand-roll SIMD-style loops.
-- **Good to know:** Smaller, newer project — check open issues and recent commits before depending on it in production.
-
----
-
-## iFixAi
-
-**[ifixai-ai/iFixAi](https://github.com/ifixai-ai/iFixAi)**
-
-![Stars](https://img.shields.io/github/stars/ifixai-ai/iFixAi?style=flat-square) ![License](https://img.shields.io/github/license/ifixai-ai/iFixAi?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/ifixai-ai/iFixAi?style=flat-square)
-
-AI-assisted troubleshooting/repair tool.
-
-- **Use case:** Diagnosing and fixing issues with AI assistance instead of manual debugging.
-- **Good to know:** Newer/smaller project — read the README on the repo for current scope and setup before adopting.
-
----
-
-## Infisical
-
-**[infisical/infisical](https://github.com/infisical/infisical)**
-
-![Stars](https://img.shields.io/github/stars/infisical/infisical?style=flat-square) ![License](https://img.shields.io/github/license/infisical/infisical?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/infisical/infisical?style=flat-square)
-
-Open-source secrets management platform — think "self-hostable Vault/Doppler" with a polished UI, CLI, and SDKs.
-
-- **Use case:** Centralizing env vars/API keys across a team and syncing them into CI, Kubernetes, or `.env` files, with audit logs and access control.
-- **Stack:** Next.js frontend, NestJS backend, PostgreSQL.
-- **Good to know:** Offers both a managed cloud version and self-hosted (Docker Compose / Helm) deployment.
-
----
-
-## OpenHuman
-
-**[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)**
-
-![Stars](https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat-square) ![License](https://img.shields.io/github/license/tinyhumansai/openhuman?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tinyhumansai/openhuman?style=flat-square)
-
-Open-source project for building humanlike AI agents/personas.
-
-- **Use case:** Prototyping AI agents that need persistent identity, personality, or humanlike behavior instead of stateless chatbot responses.
-- **Good to know:** Newer/smaller project — check the README for current scope, setup, and API surface before adopting.
+[Full writeup →](/docs/ai/agency)
 
 ---
 
@@ -117,37 +37,55 @@ Easy-to-use memory layer for AI agents, built on vector databases.
 - **Stack:** Python, vector DB backends (e.g. Chroma/Postgres-based).
 - **Good to know:** Aimed at agent frameworks that need drop-in memory rather than building retrieval from scratch.
 
----
-
-## Handwrite
-
-**[yashlamba/handwrite](https://github.com/yashlamba/handwrite)**
-
-![Stars](https://img.shields.io/github/stars/yashlamba/handwrite?style=flat-square) ![License](https://img.shields.io/github/license/yashlamba/handwrite?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/yashlamba/handwrite?style=flat-square)
-
-Converts your own handwriting samples into a real, installable TTF font, using Potrace vectorization and Fontforge packaging — useful for authentic-looking documents or accessibility for dysgraphia.
-
-- **Use case:** Turning handwriting samples into a reusable digital font
-- **Stack:** Python, Fontforge, Potrace
-- **Good to know:** Direct alternative to Text-to-Handwriting, but produces a real font instead of images/PDFs
-
-[Full writeup →](/docs/tools/handwrite)
+[Full writeup →](/docs/ai/agentmemory)
 
 ---
 
-## Text-to-Handwriting
+## agents-cli
 
-**[saurabhdaware/text-to-handwriting](https://github.com/saurabhdaware/text-to-handwriting)**
+**[google/agents-cli](https://github.com/google/agents-cli)**
 
-![Stars](https://img.shields.io/github/stars/saurabhdaware/text-to-handwriting?style=flat-square) ![License](https://img.shields.io/github/license/saurabhdaware/text-to-handwriting?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/saurabhdaware/text-to-handwriting?style=flat-square)
+![Stars](https://img.shields.io/github/stars/google/agents-cli?style=flat-square) ![License](https://img.shields.io/github/license/google/agents-cli?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/google/agents-cli?style=flat-square)
 
-Renders typed text as handwriting-style images and exportable PDFs entirely client-side — a fast, no-install way to fake a handwritten document. Project is archived but still usable.
+Google's CLI and skills that turn any coding assistant into an expert at scaffolding, evaluating, and deploying ADK agents on Google Cloud's Gemini Enterprise Agent Platform.
 
-- **Use case:** Quick handwriting-style document generation from typed text
-- **Stack:** JavaScript, html2canvas, jsPDF
-- **Good to know:** Archived (no active maintenance); direct alternative to Handwrite, which builds a real reusable font instead
+- **Use case:** Building and shipping production agents on Google Cloud with a full eval/deploy pipeline
+- **Stack:** Python, uv/uvx, Apache-2.0, works alongside Claude Code/Codex/Antigravity
+- **Good to know:** Not a coding agent itself — a skill/tool layer for existing coding agents
 
-[Full writeup →](/docs/tools/text-to-handwriting)
+[Full writeup →](/docs/ai/agents-cli)
+
+---
+
+## AI Website Cloner Template
+
+**[JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)**
+
+![Stars](https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat-square) ![License](https://img.shields.io/github/license/JCodesMore/ai-website-cloner-template?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/JCodesMore/ai-website-cloner-template?style=flat-square)
+
+A GitHub template that has an AI coding agent recreate any website as a clean Next.js app via a five-phase clone pipeline (recon, foundation, component specs, parallel build, QA).
+
+- **Use case:** Migrating a legacy/platform-locked site into a modern Next.js codebase
+- **Stack:** Next.js 16, React 19, TypeScript, shadcn/ui, Tailwind v4, MIT
+- **Good to know:** Best results with Claude Code + Opus 5; supports 13 agent platforms including Kiro
+
+[Full writeup →](/docs/ai/ai-website-cloner-template)
+
+---
+
+## AI Youtube Shorts Generator (AutoShorts AI)
+
+**[SaarD00/AI-Youtube-Shorts-Generator](https://github.com/SaarD00/AI-Youtube-Shorts-Generator)**
+
+![Stars](https://img.shields.io/github/stars/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square) ![License](https://img.shields.io/github/license/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square)
+
+A Python pipeline that turns a single topic into a fully edited faceless YouTube Short/TikTok — Gemini scriptwriting, Pexels stock footage with mid-scene A/B splits, edge-tts voiceover, and FFmpeg assembly.
+
+- **Use case:** Batch-producing faceless short-form videos with no filming or manual editing
+- **Stack:** Python, Google Gemini, edge-tts, Pexels API, FFmpeg
+- **Good to know:** Single-video generator only — no scheduling or publishing built in
+
+[Full writeup →](/docs/ai/ai-youtube-shorts-generator)
 
 ---
 
@@ -167,19 +105,35 @@ Open-source, self-hostable workspace app combining docs, databases, and Kanban b
 
 ---
 
-## MySigMail
+## Awesome CLI Coding Agents
 
-**[antonreshetov/mysigmail](https://github.com/antonreshetov/mysigmail)**
+**[bradagi/awesome-cli-coding-agents](https://github.com/bradagi/awesome-cli-coding-agents)**
 
-![Stars](https://img.shields.io/github/stars/antonreshetov/mysigmail?style=flat-square) ![License](https://img.shields.io/github/license/antonreshetov/mysigmail?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/antonreshetov/mysigmail?style=flat-square)
+![Stars](https://img.shields.io/github/stars/bradagi/awesome-cli-coding-agents?style=flat-square) ![License](https://img.shields.io/github/license/bradagi/awesome-cli-coding-agents?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/bradagi/awesome-cli-coding-agents?style=flat-square)
 
-Open-source visual email signature builder producing cross-client-compatible signatures (Gmail, Outlook, Apple Mail), self-hostable via Bun or usable as the hosted SaaS at mysigmail.com.
+A curated, actively updated directory of 100+ terminal-native AI coding agents plus the harnesses/orchestrators that run them in parallel.
 
-- **Use case:** Building and managing email signatures without hand-writing HTML
-- **Stack:** Vue.js, TypeScript, Vite, Bun
-- **Good to know:** AGPL-3.0 with a commercial license option; live hosted version at mysigmail.com
+- **Use case:** Surveying or comparing the CLI coding agent landscape before adopting a tool
+- **Stack:** Markdown awesome-list (no code)
+- **Good to know:** Includes Claude Code, Aider, Cursor CLI, and dozens of orchestrators like Claude Squad and Crystal
 
-[Full writeup →](/docs/tools/mysigmail)
+[Full writeup →](/docs/ai/awesome-cli-coding-agents)
+
+---
+
+## Awesome Free LLM APIs
+
+**[open-free-llm-api/awesome-freellm-apis](https://github.com/open-free-llm-api/awesome-freellm-apis)**
+
+![Stars](https://img.shields.io/github/stars/open-free-llm-api/awesome-freellm-apis?style=flat-square) ![License](https://img.shields.io/github/license/open-free-llm-api/awesome-freellm-apis?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/open-free-llm-api/awesome-freellm-apis?style=flat-square)
+
+Curated, daily-refreshed directory of 400+ free LLM API models across 30+ providers, with rate limits, credit-card requirements, and one-click config snippets for tools like Claude Code, Cursor, and Codex.
+
+- **Use case:** Finding and configuring a genuinely free LLM API key in under a minute
+- **Stack:** Static/curated data + companion site (freellm.net), no install required
+- **Good to know:** It's a reference list, not software — pair with a gateway like OmniRoute if you want automatic switching
+
+[Full writeup →](/docs/ai/awesome-freellm-apis)
 
 ---
 
@@ -215,6 +169,101 @@ A single-header, zero-dependency C library for microsecond 2D UI layout with a d
 
 ---
 
+## Colibrì
+
+**[JustVugg/colibri](https://github.com/JustVugg/colibri)**
+
+![Stars](https://img.shields.io/github/stars/JustVugg/colibri?style=flat-square) ![License](https://img.shields.io/github/license/JustVugg/colibri?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/JustVugg/colibri?style=flat-square)
+
+Pure C, zero-dependency inference engine that runs frontier MoE models (744B–2.8T parameters) on consumer hardware by treating disk, RAM, and VRAM as one memory-tiered hierarchy, streaming experts from storage instead of requiring full VRAM residency.
+
+- **Use case:** Run/study frontier-scale open-weight MoE models locally without a GPU cluster
+- **Stack:** Pure C, CPU/CUDA/Metal, Python launcher/tooling
+- **Good to know:** Apache-2.0 licensed; throughput is disk-bound — needs large fast local storage
+
+[Full writeup →](/docs/ai/colibri)
+
+---
+
+## Databasement
+
+**[David-Crty/databasement](https://github.com/David-Crty/databasement)**
+
+![Stars](https://img.shields.io/github/stars/David-Crty/databasement?style=flat-square) ![License](https://img.shields.io/github/license/David-Crty/databasement?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/David-Crty/databasement?style=flat-square)
+
+Self-hosted database backup manager with a web UI covering MySQL, PostgreSQL, MongoDB, SQL Server, SQLite, Redis and more, with scheduling, retention policies, cross-server restore, and remote agents for firewalled networks.
+
+- **Use case:** Centralized backup/restore across mixed database engines, self-hosted
+- **Stack:** PHP, single Docker container (web server + queue worker + scheduler)
+- **Good to know:** MIT licensed; ships a REST API and MCP server for AI-agent-driven backup ops
+
+[Full writeup →](/docs/tools/databasement)
+
+---
+
+## Handwrite
+
+**[yashlamba/handwrite](https://github.com/yashlamba/handwrite)**
+
+![Stars](https://img.shields.io/github/stars/yashlamba/handwrite?style=flat-square) ![License](https://img.shields.io/github/license/yashlamba/handwrite?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/yashlamba/handwrite?style=flat-square)
+
+Converts your own handwriting samples into a real, installable TTF font, using Potrace vectorization and Fontforge packaging — useful for authentic-looking documents or accessibility for dysgraphia.
+
+- **Use case:** Turning handwriting samples into a reusable digital font
+- **Stack:** Python, Fontforge, Potrace
+- **Good to know:** Direct alternative to Text-to-Handwriting, but produces a real font instead of images/PDFs
+
+[Full writeup →](/docs/tools/handwrite)
+
+---
+
+## HyperFrames
+
+**[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)**
+
+![Stars](https://img.shields.io/github/stars/heygen-com/hyperframes?style=flat-square) ![License](https://img.shields.io/github/license/heygen-com/hyperframes?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/heygen-com/hyperframes?style=flat-square)
+
+Open-source, Apache 2.0-licensed framework from HeyGen for turning plain HTML/CSS into deterministic MP4 videos via headless Chrome and FFmpeg, with a 19-skill agent pack for AI coding tools.
+
+- **Use case:** AI-agent-driven video production (product launches, PR changelogs, data viz) with no React/build step
+- **Stack:** Node.js 22+, headless Chrome, FFmpeg, GSAP/Lottie/Three.js adapters, AWS Lambda for distributed rendering
+- **Good to know:** Inspired by and directly competes with Remotion; repo uses Git LFS for ~240MB of test fixtures
+
+[Full writeup →](/docs/ai/hyperframes)
+
+---
+
+## iFixAi
+
+**[ifixai-ai/iFixAi](https://github.com/ifixai-ai/iFixAi)**
+
+![Stars](https://img.shields.io/github/stars/ifixai-ai/iFixAi?style=flat-square) ![License](https://img.shields.io/github/license/ifixai-ai/iFixAi?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/ifixai-ai/iFixAi?style=flat-square)
+
+AI-assisted troubleshooting/repair tool.
+
+- **Use case:** Diagnosing and fixing issues with AI assistance instead of manual debugging.
+- **Good to know:** Newer/smaller project — read the README on the repo for current scope and setup before adopting.
+
+[Full writeup →](/docs/ai/ifixai)
+
+---
+
+## Infisical
+
+**[infisical/infisical](https://github.com/infisical/infisical)**
+
+![Stars](https://img.shields.io/github/stars/infisical/infisical?style=flat-square) ![License](https://img.shields.io/github/license/infisical/infisical?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/infisical/infisical?style=flat-square)
+
+Open-source secrets management platform — think "self-hostable Vault/Doppler" with a polished UI, CLI, and SDKs.
+
+- **Use case:** Centralizing env vars/API keys across a team and syncing them into CI, Kubernetes, or `.env` files, with audit logs and access control.
+- **Stack:** Next.js frontend, NestJS backend, PostgreSQL.
+- **Good to know:** Offers both a managed cloud version and self-hosted (Docker Compose / Helm) deployment.
+
+[Full writeup →](/docs/tools/infisical)
+
+---
+
 ## Kiro
 
 **[kirodotdev/Kiro](https://github.com/kirodotdev/Kiro)**
@@ -247,198 +296,6 @@ A persistent, self-learning agent workspace (Gateway) that runs `kiro-cli` unatt
 
 ---
 
-## Awesome CLI Coding Agents
-
-**[bradagi/awesome-cli-coding-agents](https://github.com/bradagi/awesome-cli-coding-agents)**
-
-![Stars](https://img.shields.io/github/stars/bradagi/awesome-cli-coding-agents?style=flat-square) ![License](https://img.shields.io/github/license/bradagi/awesome-cli-coding-agents?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/bradagi/awesome-cli-coding-agents?style=flat-square)
-
-A curated, actively updated directory of 100+ terminal-native AI coding agents plus the harnesses/orchestrators that run them in parallel.
-
-- **Use case:** Surveying or comparing the CLI coding agent landscape before adopting a tool
-- **Stack:** Markdown awesome-list (no code)
-- **Good to know:** Includes Claude Code, Aider, Cursor CLI, and dozens of orchestrators like Claude Squad and Crystal
-
-[Full writeup →](/docs/ai/awesome-cli-coding-agents)
-
----
-
-## agents-cli
-
-**[google/agents-cli](https://github.com/google/agents-cli)**
-
-![Stars](https://img.shields.io/github/stars/google/agents-cli?style=flat-square) ![License](https://img.shields.io/github/license/google/agents-cli?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/google/agents-cli?style=flat-square)
-
-Google's CLI and skills that turn any coding assistant into an expert at scaffolding, evaluating, and deploying ADK agents on Google Cloud's Gemini Enterprise Agent Platform.
-
-- **Use case:** Building and shipping production agents on Google Cloud with a full eval/deploy pipeline
-- **Stack:** Python, uv/uvx, Apache-2.0, works alongside Claude Code/Codex/Antigravity
-- **Good to know:** Not a coding agent itself — a skill/tool layer for existing coding agents
-
-[Full writeup →](/docs/ai/agents-cli)
-
----
-
-## Agency
-
-**[tobias-walle/agency](https://github.com/tobias-walle/agency)**
-
-![Stars](https://img.shields.io/github/stars/tobias-walle/agency?style=flat-square) ![License](https://img.shields.io/github/license/tobias-walle/agency?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tobias-walle/agency?style=flat-square)
-
-A Rust, Lazygit-inspired terminal orchestrator that runs any CLI coding agent (Claude Code, Codex, Gemini CLI, OpenCode) in isolated git-worktree + tmux sessions.
-
-- **Use case:** Running and managing several parallel coding-agent sessions without manual worktree/tmux juggling
-- **Stack:** Rust, tmux, daemon + client over Unix socket, MIT
-- **Good to know:** Agent-agnostic — no built-in memory/scheduling like Kiro Crew, just session orchestration
-
-[Full writeup →](/docs/ai/agency)
-
----
-
-## AI Website Cloner Template
-
-**[JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)**
-
-![Stars](https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat-square) ![License](https://img.shields.io/github/license/JCodesMore/ai-website-cloner-template?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/JCodesMore/ai-website-cloner-template?style=flat-square)
-
-A GitHub template that has an AI coding agent recreate any website as a clean Next.js app via a five-phase clone pipeline (recon, foundation, component specs, parallel build, QA).
-
-- **Use case:** Migrating a legacy/platform-locked site into a modern Next.js codebase
-- **Stack:** Next.js 16, React 19, TypeScript, shadcn/ui, Tailwind v4, MIT
-- **Good to know:** Best results with Claude Code + Opus 5; supports 13 agent platforms including Kiro
-
-[Full writeup →](/docs/ai/ai-website-cloner-template)
-
----
-
-## Twenty
-
-**[twentyhq/twenty](https://github.com/twentyhq/twenty)**
-
-![Stars](https://img.shields.io/github/stars/twentyhq/twenty?style=flat-square) ![License](https://img.shields.io/github/license/twentyhq/twenty?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/twentyhq/twenty?style=flat-square)
-
-Open-source CRM with a Notion-like UI, built on TypeScript/NestJS/React/PostgreSQL, where objects, views, and workflows are defined as code and shipped like a normal app deploy rather than configured through admin screens.
-
-- **Use case:** Modern, self-hosted or cloud CRM for teams that want code-native customization
-- **Stack:** TypeScript, NestJS, React, PostgreSQL, Redis
-- **Good to know:** Direct competitor to SuiteCRM — modern stack and UX vs. mature/legacy feature depth
-
-[Full writeup →](/docs/crm/twenty)
-
----
-
-## SuiteCRM
-
-**[SuiteCRM/SuiteCRM](https://github.com/SuiteCRM/SuiteCRM)**
-
-![Stars](https://img.shields.io/github/stars/SuiteCRM/SuiteCRM?style=flat-square) ![License](https://img.shields.io/github/license/SuiteCRM/SuiteCRM?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/SuiteCRM/SuiteCRM?style=flat-square)
-
-Mature, enterprise-ready open-source CRM (a SugarCRM Community Edition fork) on a PHP/LAMP stack, with a decade of built-out modules, point-and-click customization, and a large extensions/partner ecosystem.
-
-- **Use case:** Feature-complete, self-hosted enterprise CRM with commercial support available
-- **Stack:** PHP, Apache/IIS, MySQL/MariaDB
-- **Good to know:** AGPL-3.0 licensed; direct competitor to Twenty — legacy depth vs. modern code-first UX
-
-[Full writeup →](/docs/crm/suitecrm)
-
----
-
-## Databasement
-
-**[David-Crty/databasement](https://github.com/David-Crty/databasement)**
-
-![Stars](https://img.shields.io/github/stars/David-Crty/databasement?style=flat-square) ![License](https://img.shields.io/github/license/David-Crty/databasement?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/David-Crty/databasement?style=flat-square)
-
-Self-hosted database backup manager with a web UI covering MySQL, PostgreSQL, MongoDB, SQL Server, SQLite, Redis and more, with scheduling, retention policies, cross-server restore, and remote agents for firewalled networks.
-
-- **Use case:** Centralized backup/restore across mixed database engines, self-hosted
-- **Stack:** PHP, single Docker container (web server + queue worker + scheduler)
-- **Good to know:** MIT licensed; ships a REST API and MCP server for AI-agent-driven backup ops
-
-[Full writeup →](/docs/tools/databasement)
-
----
-
-## Wigolo
-
-**[KnockOutEZ/wigolo](https://github.com/KnockOutEZ/wigolo)**
-
-![Stars](https://img.shields.io/github/stars/KnockOutEZ/wigolo?style=flat-square) ![License](https://img.shields.io/github/license/KnockOutEZ/wigolo?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/KnockOutEZ/wigolo?style=flat-square)
-
-Local-first web search, fetch, crawl, extract, and research MCP server for AI coding agents — no API keys, no cloud, $0 per query for core tools, with explainable scoring and byte-pinned source citations.
-
-- **Use case:** Give any MCP-compatible agent web search/research without a metered API bill
-- **Stack:** Node.js, MCP server + REST, on-device rerank/embedding models
-- **Good to know:** AGPL-3.0 licensed, public beta; complements browser-control tools like PinchTab
-
-[Full writeup →](/docs/ai/wigolo)
-
----
-
-## PinchTab
-
-**[pinchtab/pinchtab](https://github.com/pinchtab/pinchtab)**
-
-![Stars](https://img.shields.io/github/stars/pinchtab/pinchtab?style=flat-square) ![License](https://img.shields.io/github/license/pinchtab/pinchtab?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/pinchtab/pinchtab?style=flat-square)
-
-Small Go binary that gives AI agents direct, token-efficient HTTP control over Chrome — headless/headed navigation, saved profiles, structured extraction, and whole-site audits with visual diffing.
-
-- **Use case:** Token-efficient browser automation and site auditing for AI agents
-- **Stack:** Go, HTTP API + MCP server
-- **Good to know:** Apache-2.0 licensed; local-first security defaults (loopback bind, disabled sensitive endpoints)
-
-[Full writeup →](/docs/tools/pinchtab)
-
----
-
-## Colibrì
-
-**[JustVugg/colibri](https://github.com/JustVugg/colibri)**
-
-![Stars](https://img.shields.io/github/stars/JustVugg/colibri?style=flat-square) ![License](https://img.shields.io/github/license/JustVugg/colibri?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/JustVugg/colibri?style=flat-square)
-
-Pure C, zero-dependency inference engine that runs frontier MoE models (744B–2.8T parameters) on consumer hardware by treating disk, RAM, and VRAM as one memory-tiered hierarchy, streaming experts from storage instead of requiring full VRAM residency.
-
-- **Use case:** Run/study frontier-scale open-weight MoE models locally without a GPU cluster
-- **Stack:** Pure C, CPU/CUDA/Metal, Python launcher/tooling
-- **Good to know:** Apache-2.0 licensed; throughput is disk-bound — needs large fast local storage
-
-[Full writeup →](/docs/ai/colibri)
-
----
-
-## SurfSense
-
-**[MODSetter/SurfSense](https://github.com/MODSetter/SurfSense)**
-
-![Stars](https://img.shields.io/github/stars/MODSetter/SurfSense?style=flat-square) ![License](https://img.shields.io/github/license/MODSetter/SurfSense?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/MODSetter/SurfSense?style=flat-square)
-
-Open-source NotebookLM alternative that pairs a self-hosted knowledge base with live web-research connectors (Reddit, YouTube, TikTok, Google Maps, Google Search, and more) exposed as a REST API and MCP server for AI agents.
-
-- **Use case:** Self-hosted research/knowledge-base platform with live social and web data for agents
-- **Stack:** Python, Docker, MCP server, LiteLLM/OpenAI-spec model support
-- **Good to know:** Actively developed, not yet production-ready per its own README; license shows as unassigned on GitHub
-
-[Full writeup →](/docs/ai/surfsense)
-
----
-
-## OmniRoute
-
-**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)**
-
-![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=flat-square) ![License](https://img.shields.io/github/license/diegosouzapw/OmniRoute?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/diegosouzapw/OmniRoute?style=flat-square)
-
-Self-hosted, MIT-licensed AI gateway that puts one OpenAI-compatible endpoint in front of many LLM providers (including free tiers) with automatic fallback and built-in token compression, aimed at coding-agent CLIs.
-
-- **Use case:** Stretching free-tier LLM quotas and avoiding manual provider-switching for coding agents
-- **Stack:** Node.js/npm CLI, Docker, Electron, MCP/A2A support
-- **Good to know:** README is heavily marketing-driven — verify claimed provider/contributor/savings numbers independently
-
-[Full writeup →](/docs/ai/omniroute)
-
----
-
 ## LobeHub
 
 **[lobehub/lobehub](https://github.com/lobehub/lobehub)**
@@ -452,22 +309,6 @@ Open-source "Chief Agent Operator" platform (formerly Lobe Chat) for hiring, sch
 - **Good to know:** License shows as unassigned on GitHub; product direction is shifting quickly from chat UI to agent operations
 
 [Full writeup →](/docs/ai/lobehub)
-
----
-
-## Awesome Free LLM APIs
-
-**[open-free-llm-api/awesome-freellm-apis](https://github.com/open-free-llm-api/awesome-freellm-apis)**
-
-![Stars](https://img.shields.io/github/stars/open-free-llm-api/awesome-freellm-apis?style=flat-square) ![License](https://img.shields.io/github/license/open-free-llm-api/awesome-freellm-apis?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/open-free-llm-api/awesome-freellm-apis?style=flat-square)
-
-Curated, daily-refreshed directory of 400+ free LLM API models across 30+ providers, with rate limits, credit-card requirements, and one-click config snippets for tools like Claude Code, Cursor, and Codex.
-
-- **Use case:** Finding and configuring a genuinely free LLM API key in under a minute
-- **Stack:** Static/curated data + companion site (freellm.net), no install required
-- **Good to know:** It's a reference list, not software — pair with a gateway like OmniRoute if you want automatic switching
-
-[Full writeup →](/docs/ai/awesome-freellm-apis)
 
 ---
 
@@ -487,35 +328,209 @@ Open-source, GPLv3-licensed platform for building enterprise-grade RAG chatbots 
 
 ---
 
-## HyperFrames
+## MySigMail
 
-**[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)**
+**[antonreshetov/mysigmail](https://github.com/antonreshetov/mysigmail)**
 
-![Stars](https://img.shields.io/github/stars/heygen-com/hyperframes?style=flat-square) ![License](https://img.shields.io/github/license/heygen-com/hyperframes?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/heygen-com/hyperframes?style=flat-square)
+![Stars](https://img.shields.io/github/stars/antonreshetov/mysigmail?style=flat-square) ![License](https://img.shields.io/github/license/antonreshetov/mysigmail?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/antonreshetov/mysigmail?style=flat-square)
 
-Open-source, Apache 2.0-licensed framework from HeyGen for turning plain HTML/CSS into deterministic MP4 videos via headless Chrome and FFmpeg, with a 19-skill agent pack for AI coding tools.
+Open-source visual email signature builder producing cross-client-compatible signatures (Gmail, Outlook, Apple Mail), self-hostable via Bun or usable as the hosted SaaS at mysigmail.com.
 
-- **Use case:** AI-agent-driven video production (product launches, PR changelogs, data viz) with no React/build step
-- **Stack:** Node.js 22+, headless Chrome, FFmpeg, GSAP/Lottie/Three.js adapters, AWS Lambda for distributed rendering
-- **Good to know:** Inspired by and directly competes with Remotion; repo uses Git LFS for ~240MB of test fixtures
+- **Use case:** Building and managing email signatures without hand-writing HTML
+- **Stack:** Vue.js, TypeScript, Vite, Bun
+- **Good to know:** AGPL-3.0 with a commercial license option; live hosted version at mysigmail.com
 
-[Full writeup →](/docs/ai/hyperframes)
+[Full writeup →](/docs/tools/mysigmail)
 
 ---
 
-## AI Youtube Shorts Generator (AutoShorts AI)
+## ntfy
 
-**[SaarD00/AI-Youtube-Shorts-Generator](https://github.com/SaarD00/AI-Youtube-Shorts-Generator)**
+**[binwiederhier/ntfy](https://github.com/binwiederhier/ntfy)**
 
-![Stars](https://img.shields.io/github/stars/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square) ![License](https://img.shields.io/github/license/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/SaarD00/AI-Youtube-Shorts-Generator?style=flat-square)
+![Stars](https://img.shields.io/github/stars/binwiederhier/ntfy?style=flat-square) ![License](https://img.shields.io/github/license/binwiederhier/ntfy?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/binwiederhier/ntfy?style=flat-square)
 
-A Python pipeline that turns a single topic into a fully edited faceless YouTube Short/TikTok — Gemini scriptwriting, Pexels stock footage with mid-scene A/B splits, edge-tts voiceover, and FFmpeg assembly.
+Simple pub-sub push notification service. Send notifications to your phone or desktop via a plain HTTP PUT/POST — no account, no SDK, no app-specific setup.
 
-- **Use case:** Batch-producing faceless short-form videos with no filming or manual editing
-- **Stack:** Python, Google Gemini, edge-tts, Pexels API, FFmpeg
-- **Good to know:** Single-video generator only — no scheduling or publishing built in
+- **Use case:** Fire-and-forget alerts from scripts, cron jobs, CI pipelines, or home servers (e.g. `curl -d "backup done" ntfy.sh/mytopic`).
+- **Stack:** Go (server), companion apps for Android/iOS/CLI.
+- **Good to know:** Free public instance at `ntfy.sh`, or self-host the server binary in minutes. Pairs with the ntfy-android app below for a fully self-hosted mobile setup.
 
-[Full writeup →](/docs/ai/ai-youtube-shorts-generator)
+[Full writeup →](/docs/tools/ntfy)
+
+---
+
+## ntfy-android
+
+**[binwiederhier/ntfy-android](https://github.com/binwiederhier/ntfy-android)**
+
+![Stars](https://img.shields.io/github/stars/binwiederhier/ntfy-android?style=flat-square) ![License](https://img.shields.io/github/license/binwiederhier/ntfy-android?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/binwiederhier/ntfy-android?style=flat-square)
+
+Official Android client for ntfy. Subscribes to topics on any ntfy server (public or self-hosted) and surfaces them as native push notifications.
+
+- **Use case:** Receiving ntfy alerts on your phone without relying on Firebase/Google push infra — supports a Firebase-free build.
+- **Stack:** Kotlin, Android.
+- **Good to know:** Available on Google Play, F-Droid, and GitHub releases.
+
+[Full writeup →](/docs/tools/ntfy-android)
+
+---
+
+## OmniRoute
+
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)**
+
+![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=flat-square) ![License](https://img.shields.io/github/license/diegosouzapw/OmniRoute?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/diegosouzapw/OmniRoute?style=flat-square)
+
+Self-hosted, MIT-licensed AI gateway that puts one OpenAI-compatible endpoint in front of many LLM providers (including free tiers) with automatic fallback and built-in token compression, aimed at coding-agent CLIs.
+
+- **Use case:** Stretching free-tier LLM quotas and avoiding manual provider-switching for coding agents
+- **Stack:** Node.js/npm CLI, Docker, Electron, MCP/A2A support
+- **Good to know:** README is heavily marketing-driven — verify claimed provider/contributor/savings numbers independently
+
+[Full writeup →](/docs/ai/omniroute)
+
+---
+
+## OpenHuman
+
+**[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)**
+
+![Stars](https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat-square) ![License](https://img.shields.io/github/license/tinyhumansai/openhuman?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tinyhumansai/openhuman?style=flat-square)
+
+Open-source project for building humanlike AI agents/personas.
+
+- **Use case:** Prototyping AI agents that need persistent identity, personality, or humanlike behavior instead of stateless chatbot responses.
+- **Good to know:** Newer/smaller project — check the README for current scope, setup, and API surface before adopting.
+
+[Full writeup →](/docs/ai/openhuman)
+
+---
+
+## Openship
+
+**[openshiporg/openship](https://github.com/openshiporg/openship)**
+
+![Stars](https://img.shields.io/github/stars/openshiporg/openship?style=flat-square) ![License](https://img.shields.io/github/license/openshiporg/openship?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/openshiporg/openship?style=flat-square)
+
+Open-source order routing and fulfillment platform. Connects storefronts (Shopify, WooCommerce, etc.) to your shipping/fulfillment channels and lets you define custom routing rules between them.
+
+- **Use case:** Self-host your own order-routing layer instead of paying for a SaaS middleman (e.g. multi-channel sellers who need orders auto-routed to the right warehouse/3PL).
+- **Stack:** Next.js, Keystone.js, GraphQL, PostgreSQL.
+- **Good to know:** Designed to be self-hosted; expect to run your own DB and background workers.
+
+[Full writeup →](/docs/tools/openship)
+
+---
+
+## PinchTab
+
+**[pinchtab/pinchtab](https://github.com/pinchtab/pinchtab)**
+
+![Stars](https://img.shields.io/github/stars/pinchtab/pinchtab?style=flat-square) ![License](https://img.shields.io/github/license/pinchtab/pinchtab?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/pinchtab/pinchtab?style=flat-square)
+
+Small Go binary that gives AI agents direct, token-efficient HTTP control over Chrome — headless/headed navigation, saved profiles, structured extraction, and whole-site audits with visual diffing.
+
+- **Use case:** Token-efficient browser automation and site auditing for AI agents
+- **Stack:** Go, HTTP API + MCP server
+- **Good to know:** Apache-2.0 licensed; local-first security defaults (loopback bind, disabled sensitive endpoints)
+
+[Full writeup →](/docs/tools/pinchtab)
+
+---
+
+## SideScreen
+
+**[tranvuongquocdat/SideScreen](https://github.com/tranvuongquocdat/SideScreen)**
+
+![Stars](https://img.shields.io/github/stars/tranvuongquocdat/SideScreen?style=flat-square) ![License](https://img.shields.io/github/license/tranvuongquocdat/SideScreen?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tranvuongquocdat/SideScreen?style=flat-square)
+
+Turns an Android tablet into a low-latency extended display for macOS over USB-C or WiFi, with true window-dragging and touch support — filling the gap Apple's Sidecar leaves for Android devices.
+
+- **Use case:** Extending a Mac's workspace with a spare Android tablet, including headless-Mac setups
+- **Stack:** Swift (macOS), Kotlin (Android), H.265 hardware encoding, ADB
+- **Good to know:** Requires bypassing macOS Gatekeeper manually since the app isn't notarized
+
+[Full writeup →](/docs/tools/sidescreen)
+
+---
+
+## SuiteCRM
+
+**[SuiteCRM/SuiteCRM](https://github.com/SuiteCRM/SuiteCRM)**
+
+![Stars](https://img.shields.io/github/stars/SuiteCRM/SuiteCRM?style=flat-square) ![License](https://img.shields.io/github/license/SuiteCRM/SuiteCRM?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/SuiteCRM/SuiteCRM?style=flat-square)
+
+Mature, enterprise-ready open-source CRM (a SugarCRM Community Edition fork) on a PHP/LAMP stack, with a decade of built-out modules, point-and-click customization, and a large extensions/partner ecosystem.
+
+- **Use case:** Feature-complete, self-hosted enterprise CRM with commercial support available
+- **Stack:** PHP, Apache/IIS, MySQL/MariaDB
+- **Good to know:** AGPL-3.0 licensed; direct competitor to Twenty — legacy depth vs. modern code-first UX
+
+[Full writeup →](/docs/crm/suitecrm)
+
+---
+
+## SurfSense
+
+**[MODSetter/SurfSense](https://github.com/MODSetter/SurfSense)**
+
+![Stars](https://img.shields.io/github/stars/MODSetter/SurfSense?style=flat-square) ![License](https://img.shields.io/github/license/MODSetter/SurfSense?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/MODSetter/SurfSense?style=flat-square)
+
+Open-source NotebookLM alternative that pairs a self-hosted knowledge base with live web-research connectors (Reddit, YouTube, TikTok, Google Maps, Google Search, and more) exposed as a REST API and MCP server for AI agents.
+
+- **Use case:** Self-hosted research/knowledge-base platform with live social and web data for agents
+- **Stack:** Python, Docker, MCP server, LiteLLM/OpenAI-spec model support
+- **Good to know:** Actively developed, not yet production-ready per its own README; license shows as unassigned on GitHub
+
+[Full writeup →](/docs/ai/surfsense)
+
+---
+
+## Text-to-Handwriting
+
+**[saurabhdaware/text-to-handwriting](https://github.com/saurabhdaware/text-to-handwriting)**
+
+![Stars](https://img.shields.io/github/stars/saurabhdaware/text-to-handwriting?style=flat-square) ![License](https://img.shields.io/github/license/saurabhdaware/text-to-handwriting?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/saurabhdaware/text-to-handwriting?style=flat-square)
+
+Renders typed text as handwriting-style images and exportable PDFs entirely client-side — a fast, no-install way to fake a handwritten document. Project is archived but still usable.
+
+- **Use case:** Quick handwriting-style document generation from typed text
+- **Stack:** JavaScript, html2canvas, jsPDF
+- **Good to know:** Archived (no active maintenance); direct alternative to Handwrite, which builds a real reusable font instead
+
+[Full writeup →](/docs/tools/text-to-handwriting)
+
+---
+
+## turbovec
+
+**[RyanCodrai/turbovec](https://github.com/RyanCodrai/turbovec)**
+
+![Stars](https://img.shields.io/github/stars/RyanCodrai/turbovec?style=flat-square) ![License](https://img.shields.io/github/license/RyanCodrai/turbovec?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/RyanCodrai/turbovec?style=flat-square)
+
+Fast vectorized operations library.
+
+- **Use case:** Performance-sensitive numeric/array workloads where you'd otherwise hand-roll SIMD-style loops.
+- **Good to know:** Smaller, newer project — check open issues and recent commits before depending on it in production.
+
+[Full writeup →](/docs/tools/turbovec)
+
+---
+
+## Twenty
+
+**[twentyhq/twenty](https://github.com/twentyhq/twenty)**
+
+![Stars](https://img.shields.io/github/stars/twentyhq/twenty?style=flat-square) ![License](https://img.shields.io/github/license/twentyhq/twenty?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/twentyhq/twenty?style=flat-square)
+
+Open-source CRM with a Notion-like UI, built on TypeScript/NestJS/React/PostgreSQL, where objects, views, and workflows are defined as code and shipped like a normal app deploy rather than configured through admin screens.
+
+- **Use case:** Modern, self-hosted or cloud CRM for teams that want code-native customization
+- **Stack:** TypeScript, NestJS, React, PostgreSQL, Redis
+- **Good to know:** Direct competitor to SuiteCRM — modern stack and UX vs. mature/legacy feature depth
+
+[Full writeup →](/docs/crm/twenty)
 
 ---
 
@@ -532,6 +547,22 @@ A free, open-source faceless video creator: AI keyword extraction, multi-source 
 - **Good to know:** Depends on scraping Pinterest, which can break if Pinterest changes its site
 
 [Full writeup →](/docs/ai/vuza)
+
+---
+
+## Wigolo
+
+**[KnockOutEZ/wigolo](https://github.com/KnockOutEZ/wigolo)**
+
+![Stars](https://img.shields.io/github/stars/KnockOutEZ/wigolo?style=flat-square) ![License](https://img.shields.io/github/license/KnockOutEZ/wigolo?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/KnockOutEZ/wigolo?style=flat-square)
+
+Local-first web search, fetch, crawl, extract, and research MCP server for AI coding agents — no API keys, no cloud, $0 per query for core tools, with explainable scoring and byte-pinned source citations.
+
+- **Use case:** Give any MCP-compatible agent web search/research without a metered API bill
+- **Stack:** Node.js, MCP server + REST, on-device rerank/embedding models
+- **Good to know:** AGPL-3.0 licensed, public beta; complements browser-control tools like PinchTab
+
+[Full writeup →](/docs/ai/wigolo)
 
 ---
 
@@ -564,19 +595,3 @@ A Claude Code/MCP plugin that lets an AI agent search, watch, summarize, transcr
 - **Good to know:** Built on an unofficial YouTube client, so it can break if YouTube changes its internal API
 
 [Full writeup →](/docs/ai/youtube-for-ai-agents)
-
----
-
-## SideScreen
-
-**[tranvuongquocdat/SideScreen](https://github.com/tranvuongquocdat/SideScreen)**
-
-![Stars](https://img.shields.io/github/stars/tranvuongquocdat/SideScreen?style=flat-square) ![License](https://img.shields.io/github/license/tranvuongquocdat/SideScreen?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tranvuongquocdat/SideScreen?style=flat-square)
-
-Turns an Android tablet into a low-latency extended display for macOS over USB-C or WiFi, with true window-dragging and touch support — filling the gap Apple's Sidecar leaves for Android devices.
-
-- **Use case:** Extending a Mac's workspace with a spare Android tablet, including headless-Mac setups
-- **Stack:** Swift (macOS), Kotlin (Android), H.265 hardware encoding, ADB
-- **Good to know:** Requires bypassing macOS Gatekeeper manually since the app isn't notarized
-
-[Full writeup →](/docs/tools/sidescreen)

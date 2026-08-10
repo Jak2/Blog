@@ -79,6 +79,14 @@ problem space: CRM, LLM routing, video generation, etc).
   Twenty CRM should update SuiteCRM's page to mention Twenty, and vice versa.
 - Do this for every future repo added, not just when explicitly asked.
 
+## 3.6. Keep sorted files sorted
+
+`autosort.config.json` (project root) lists md files whose `##` sections get
+auto-sorted alphabetically/numerically. If you edited a file listed there
+(e.g. `src/content/docs/github/repos.md`), run `npm run sort` afterward
+instead of manually ordering entries. Add a file's path to that config's
+`files` array to opt it into autosorting.
+
 ## 4. Do not push to git
 
 Commit locally only if explicitly asked. The user pushes changes themselves.

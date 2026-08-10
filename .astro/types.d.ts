@@ -189,6 +189,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/agentmemory.md": {
+	id: "ai/agentmemory.md";
+  slug: "ai/agentmemory";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/agents-cli.md": {
 	id: "ai/agents-cli.md";
   slug: "ai/agents-cli";
@@ -294,6 +301,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/ifixai.md": {
+	id: "ai/ifixai.md";
+  slug: "ai/ifixai";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/invio.md": {
 	id: "ai/invio.md";
   slug: "ai/invio";
@@ -346,6 +360,13 @@ declare module 'astro:content' {
 "ai/openalice.md": {
 	id: "ai/openalice.md";
   slug: "ai/openalice";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/openhuman.md": {
+	id: "ai/openhuman.md";
+  slug: "ai/openhuman";
   body: string;
   collection: "docs";
   data: any
@@ -553,9 +574,37 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/infisical.md": {
+	id: "tools/infisical.md";
+  slug: "tools/infisical";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/mysigmail.md": {
 	id: "tools/mysigmail.md";
   slug: "tools/mysigmail";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/ntfy-android.md": {
+	id: "tools/ntfy-android.md";
+  slug: "tools/ntfy-android";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/ntfy.md": {
+	id: "tools/ntfy.md";
+  slug: "tools/ntfy";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/openship.md": {
+	id: "tools/openship.md";
+  slug: "tools/openship";
   body: string;
   collection: "docs";
   data: any
@@ -577,6 +626,13 @@ declare module 'astro:content' {
 "tools/text-to-handwriting.md": {
 	id: "tools/text-to-handwriting.md";
   slug: "tools/text-to-handwriting";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/turbovec.md": {
+	id: "tools/turbovec.md";
+  slug: "tools/turbovec";
   body: string;
   collection: "docs";
   data: any

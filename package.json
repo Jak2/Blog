@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "sort": "node scripts/autosort.js",
     "preview": "astro preview"
   },
   "dependencies": {
