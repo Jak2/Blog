@@ -175,6 +175,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"docs": {
+"ai/agency.md": {
+	id: "ai/agency.md";
+  slug: "ai/agency";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/agent.md": {
 	id: "ai/agent.md";
   slug: "ai/agent";
@@ -182,9 +189,205 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/agents-cli.md": {
+	id: "ai/agents-cli.md";
+  slug: "ai/agents-cli";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/ai-website-cloner-template.md": {
+	id: "ai/ai-website-cloner-template.md";
+  slug: "ai/ai-website-cloner-template";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/ai-youtube-shorts-generator.md": {
+	id: "ai/ai-youtube-shorts-generator.md";
+  slug: "ai/ai-youtube-shorts-generator";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/ai.md": {
 	id: "ai/ai.md";
   slug: "ai/ai";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/andrej-karpathy-skills.md": {
+	id: "ai/andrej-karpathy-skills.md";
+  slug: "ai/andrej-karpathy-skills";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/awesome-cli-coding-agents.md": {
+	id: "ai/awesome-cli-coding-agents.md";
+  slug: "ai/awesome-cli-coding-agents";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/awesome-freellm-apis.md": {
+	id: "ai/awesome-freellm-apis.md";
+  slug: "ai/awesome-freellm-apis";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/colibri.md": {
+	id: "ai/colibri.md";
+  slug: "ai/colibri";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/comfyui.md": {
+	id: "ai/comfyui.md";
+  slug: "ai/comfyui";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/google-opal.md": {
+	id: "ai/google-opal.md";
+  slug: "ai/google-opal";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/google-pameli.md": {
+	id: "ai/google-pameli.md";
+  slug: "ai/google-pameli";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/google-stitch.md": {
+	id: "ai/google-stitch.md";
+  slug: "ai/google-stitch";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/handy.md": {
+	id: "ai/handy.md";
+  slug: "ai/handy";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/heygem-ai.md": {
+	id: "ai/heygem-ai.md";
+  slug: "ai/heygem-ai";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/hyperframes.md": {
+	id: "ai/hyperframes.md";
+  slug: "ai/hyperframes";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/invio.md": {
+	id: "ai/invio.md";
+  slug: "ai/invio";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/kiro.md": {
+	id: "ai/kiro.md";
+  slug: "ai/kiro";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/kirocrew.md": {
+	id: "ai/kirocrew.md";
+  slug: "ai/kirocrew";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/lobehub.md": {
+	id: "ai/lobehub.md";
+  slug: "ai/lobehub";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/maxkb.md": {
+	id: "ai/maxkb.md";
+  slug: "ai/maxkb";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/omniroute.md": {
+	id: "ai/omniroute.md";
+  slug: "ai/omniroute";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/omnivoice.md": {
+	id: "ai/omnivoice.md";
+  slug: "ai/omnivoice";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/openalice.md": {
+	id: "ai/openalice.md";
+  slug: "ai/openalice";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/rag-vs-cag-vs-kag-vs-mag.md": {
+	id: "ai/rag-vs-cag-vs-kag-vs-mag.md";
+  slug: "ai/rag-vs-cag-vs-kag-vs-mag";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/surfsense.md": {
+	id: "ai/surfsense.md";
+  slug: "ai/surfsense";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/vuza.md": {
+	id: "ai/vuza.md";
+  slug: "ai/vuza";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/wigolo.md": {
+	id: "ai/wigolo.md";
+  slug: "ai/wigolo";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/youtube-automation-agent.md": {
+	id: "ai/youtube-automation-agent.md";
+  slug: "ai/youtube-automation-agent";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/youtube-for-ai-agents.md": {
+	id: "ai/youtube-for-ai-agents.md";
+  slug: "ai/youtube-for-ai-agents";
   body: string;
   collection: "docs";
   data: any
@@ -199,6 +402,20 @@ declare module 'astro:content' {
 "cat/food.md": {
 	id: "cat/food.md";
   slug: "cat/food";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"crm/suitecrm.md": {
+	id: "crm/suitecrm.md";
+  slug: "crm/suitecrm";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"crm/twenty.md": {
+	id: "crm/twenty.md";
+  slug: "crm/twenty";
   body: string;
   collection: "docs";
   data: any
@@ -231,6 +448,55 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"google/ask-advisor.md": {
+	id: "google/ask-advisor.md";
+  slug: "google/ask-advisor";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/flow.md": {
+	id: "google/flow.md";
+  slug: "google/flow";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/jules.md": {
+	id: "google/jules.md";
+  slug: "google/jules";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/merchant-ucp.md": {
+	id: "google/merchant-ucp.md";
+  slug: "google/merchant-ucp";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/mixboard.md": {
+	id: "google/mixboard.md";
+  slug: "google/mixboard";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/shopping-cart.md": {
+	id: "google/shopping-cart.md";
+  slug: "google/shopping-cart";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"google/whisk.md": {
+	id: "google/whisk.md";
+  slug: "google/whisk";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "guides/advanced.md": {
 	id: "guides/advanced.md";
   slug: "guides/advanced";
@@ -241,6 +507,76 @@ declare module 'astro:content' {
 "guides/index.md": {
 	id: "guides/index.md";
   slug: "guides";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/appflowy.md": {
+	id: "tools/appflowy.md";
+  slug: "tools/appflowy";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/chatwoot.md": {
+	id: "tools/chatwoot.md";
+  slug: "tools/chatwoot";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/clay.md": {
+	id: "tools/clay.md";
+  slug: "tools/clay";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/databasement.md": {
+	id: "tools/databasement.md";
+  slug: "tools/databasement";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/excalidraw.md": {
+	id: "tools/excalidraw.md";
+  slug: "tools/excalidraw";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/handwrite.md": {
+	id: "tools/handwrite.md";
+  slug: "tools/handwrite";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/mysigmail.md": {
+	id: "tools/mysigmail.md";
+  slug: "tools/mysigmail";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/pinchtab.md": {
+	id: "tools/pinchtab.md";
+  slug: "tools/pinchtab";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/sidescreen.md": {
+	id: "tools/sidescreen.md";
+  slug: "tools/sidescreen";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/text-to-handwriting.md": {
+	id: "tools/text-to-handwriting.md";
+  slug: "tools/text-to-handwriting";
   body: string;
   collection: "docs";
   data: any
