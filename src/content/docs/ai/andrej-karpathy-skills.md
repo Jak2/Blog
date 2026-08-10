@@ -38,7 +38,7 @@ curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/
 
 **Option C — Cursor:** the repo ships a committed `.cursor/rules/karpathy-guidelines.mdc` rule file; see `CURSOR.md` in the repo for setup.
 
-Note: the README's install commands point at `raw.githubusercontent.com/forrestchang/...` rather than `multica-ai/...` — this repo (under the `multica-ai` org) appears to be a fork/republish of forrestchang's original; the content is otherwise identical to what's documented here.
+Note: the README's install commands point at `raw.githubusercontent.com/forrestchang/...` rather than `multica-ai/...` — this repo (under the `multica-ai` org) appears to be a fork/republish of forrestchang's original; the content is otherwise identical to what's documented here. Another republish exists under [swarmclawai/andrej-karpathy-skills](https://github.com/swarmclawai/andrej-karpathy-skills), with an added CLI that adapts the same guidelines to 40+ agent tool formats — same content, more distribution options.
 
 ## Basic Usage
 

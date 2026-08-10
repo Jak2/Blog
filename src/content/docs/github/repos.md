@@ -25,6 +25,22 @@ A Rust, Lazygit-inspired terminal orchestrator that runs any CLI coding agent (C
 
 ---
 
+## Agent Browser
+
+**[vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser)**
+
+![Stars](https://img.shields.io/github/stars/vercel-labs/agent-browser?style=flat-square) ![License](https://img.shields.io/github/license/vercel-labs/agent-browser?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/vercel-labs/agent-browser?style=flat-square)
+
+Rust-native browser automation CLI built for AI agents — ref-based element selection, snapshot workflows, and an MCP server mode instead of raw DOM/screenshot scripting.
+
+- **Use case:** Letting an LLM agent drive a real browser (navigate, click, fill forms, scrape) via deterministic refs instead of brittle selectors
+- **Stack:** Rust daemon, npm/Homebrew/Cargo install, Apache-2.0, MCP server mode
+- **Good to know:** No Node.js required for the daemon itself; supports local Chrome plus cloud providers (Browserbase, Browserless, Kernel, AgentCore)
+
+[Full writeup →](/docs/ai/agent-browser)
+
+---
+
 ## agentmemory
 
 **[rohitg00/agentmemory](https://github.com/rohitg00/agentmemory)**
@@ -328,6 +344,22 @@ Open-source, GPLv3-licensed platform for building enterprise-grade RAG chatbots 
 
 ---
 
+## Moonshine
+
+**[moonshine-ai/moonshine](https://github.com/moonshine-ai/moonshine)**
+
+![Stars](https://img.shields.io/github/stars/moonshine-ai/moonshine?style=flat-square) ![License](https://img.shields.io/github/license/moonshine-ai/moonshine?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/moonshine-ai/moonshine?style=flat-square)
+
+On-device voice AI toolkit — low-latency speech-to-text, intent recognition, and text-to-speech, positioned as a faster/lighter alternative to Whisper.
+
+- **Use case:** Building real-time voice agents (STT, TTS, multi-turn voice interaction) that run fully on-device across iOS/Android/desktop/web
+- **Stack:** C++ core with Python/Swift/Java/JS bindings, MIT
+- **Good to know:** Competes directly with OpenAI Whisper — flexible input windows vs Whisper's fixed 30s chunks, ~74ms latency vs Whisper Large V3's 11s+, smaller model (245M vs 1.5B params) with competitive WER
+
+[Full writeup →](/docs/ai/moonshine)
+
+---
+
 ## MySigMail
 
 **[antonreshetov/mysigmail](https://github.com/antonreshetov/mysigmail)**
@@ -373,6 +405,22 @@ Official Android client for ntfy. Subscribes to topics on any ntfy server (publi
 - **Good to know:** Available on Google Play, F-Droid, and GitHub releases.
 
 [Full writeup →](/docs/tools/ntfy-android)
+
+---
+
+## OmniParser
+
+**[microsoft/OmniParser](https://github.com/microsoft/OmniParser)**
+
+![Stars](https://img.shields.io/github/stars/microsoft/OmniParser?style=flat-square) ![License](https://img.shields.io/github/license/microsoft/OmniParser?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/microsoft/OmniParser?style=flat-square)
+
+Parses UI screenshots into structured, labeled elements (icons/text/buttons with bounding boxes) so vision-based GUI agents can ground actions accurately instead of guessing pixel coordinates.
+
+- **Use case:** Giving a computer-use/GUI agent a reliable, structured view of a screenshot to click/type against
+- **Stack:** Python, YOLOv9-based detector (MIT) + caption models (MIT), CC-BY-4.0 overall, Gradio demo
+- **Good to know:** v2.0 adds better detection and works with OpenAI/DeepSeek/Qwen/Anthropic models on top; a parsing layer, not a full agent — pair it with an LLM to act on the output
+
+[Full writeup →](/docs/ai/omniparser)
 
 ---
 

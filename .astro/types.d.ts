@@ -182,6 +182,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/agent-browser.md": {
+	id: "ai/agent-browser.md";
+  slug: "ai/agent-browser";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/agent.md": {
 	id: "ai/agent.md";
   slug: "ai/agent";
@@ -339,6 +346,20 @@ declare module 'astro:content' {
 "ai/maxkb.md": {
 	id: "ai/maxkb.md";
   slug: "ai/maxkb";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/moonshine.md": {
+	id: "ai/moonshine.md";
+  slug: "ai/moonshine";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/omniparser.md": {
+	id: "ai/omniparser.md";
+  slug: "ai/omniparser";
   body: string;
   collection: "docs";
   data: any

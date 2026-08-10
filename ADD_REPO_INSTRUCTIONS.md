@@ -3,6 +3,15 @@
 Instructions for any AI agent (Claude, Cursor, Copilot, etc). When the user
 gives a GitHub repo link and asks to add it to the blog, do the following:
 
+## 0. Check for duplicates/forks first
+
+Before adding anything, grep `src/content/docs/github/repos.md` for the repo
+name and any known aliases. If it's a fork or republish of a project already
+listed (same content under a different org/user — check the README's install
+commands/attribution for the giveaway), do NOT create a new entry or page.
+Instead, fold a one-line mention of the new fork into the existing repo's
+page (e.g. in its Installation or Overview section) and skip steps 2-3.
+
 ## 1. Research the repo
 
 Fetch the repo's README/description, license, primary language, and enough
