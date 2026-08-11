@@ -252,6 +252,20 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/book-to-skill.md": {
+	id: "ai/book-to-skill.md";
+  slug: "ai/book-to-skill";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/cloudflare-computer.md": {
+	id: "ai/cloudflare-computer.md";
+  slug: "ai/cloudflare-computer";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/colibri.md": {
 	id: "ai/colibri.md";
   slug: "ai/colibri";
@@ -630,9 +644,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/paymenter.md": {
+	id: "tools/paymenter.md";
+  slug: "tools/paymenter";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/pinchtab.md": {
 	id: "tools/pinchtab.md";
   slug: "tools/pinchtab";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/sherlock.md": {
+	id: "tools/sherlock.md";
+  slug: "tools/sherlock";
   body: string;
   collection: "docs";
   data: any
@@ -654,6 +682,104 @@ declare module 'astro:content' {
 "tools/turbovec.md": {
 	id: "tools/turbovec.md";
   slug: "tools/turbovec";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/witr.md": {
+	id: "tools/witr.md";
+  slug: "tools/witr";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/anime-js.md": {
+	id: "webdev/anime-js.md";
+  slug: "webdev/anime-js";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/emilkowalski-skills.md": {
+	id: "webdev/emilkowalski-skills.md";
+  slug: "webdev/emilkowalski-skills";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/gsap.md": {
+	id: "webdev/gsap.md";
+  slug: "webdev/gsap";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/impeccable.md": {
+	id: "webdev/impeccable.md";
+  slug: "webdev/impeccable";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/lenis.md": {
+	id: "webdev/lenis.md";
+  slug: "webdev/lenis";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/mapcn.md": {
+	id: "webdev/mapcn.md";
+  slug: "webdev/mapcn";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/react-bits.md": {
+	id: "webdev/react-bits.md";
+  slug: "webdev/react-bits";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/shadcn-ui.md": {
+	id: "webdev/shadcn-ui.md";
+  slug: "webdev/shadcn-ui";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/shadergradient.md": {
+	id: "webdev/shadergradient.md";
+  slug: "webdev/shadergradient";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/taste-skill.md": {
+	id: "webdev/taste-skill.md";
+  slug: "webdev/taste-skill";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/transitions-dev.md": {
+	id: "webdev/transitions-dev.md";
+  slug: "webdev/transitions-dev";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/uiverse.md": {
+	id: "webdev/uiverse.md";
+  slug: "webdev/uiverse";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/vanta.md": {
+	id: "webdev/vanta.md";
+  slug: "webdev/vanta";
   body: string;
   collection: "docs";
   data: any

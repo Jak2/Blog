@@ -8,7 +8,12 @@
       "Bash(timeout:*)",
       "Bash(npx astro build:*)",
       "Bash(npx tailwindcss:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(npm run *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:uiverse.io)",
+      "Bash(gh api *)",
+      "WebSearch"
     ]
   }
 }

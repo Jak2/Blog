@@ -105,6 +105,22 @@ A Python pipeline that turns a single topic into a fully edited faceless YouTube
 
 ---
 
+## Anime.js
+
+**[juliangarnier/anime](https://github.com/juliangarnier/anime)**
+
+![Stars](https://img.shields.io/github/stars/juliangarnier/anime?style=flat-square) ![License](https://img.shields.io/github/license/juliangarnier/anime?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/juliangarnier/anime?style=flat-square)
+
+Lightweight JavaScript animation library for CSS, SVG, DOM attributes, and JS objects, with staggering and a rich easing set.
+
+- **Use case:** Solid animation capability without adopting a heavier platform like GSAP
+- **Stack:** JS, ESM/UMD/CJS/IIFE builds, MIT
+- **Good to know:** Lighter-weight alternative to [GSAP](#gsap); v4 is ES-module-first (breaking change from earlier versions)
+
+[Full writeup →](/docs/webdev/anime-js)
+
+---
+
 ## AppFlowy
 
 **[AppFlowy-IO/AppFlowy](https://github.com/AppFlowy-IO/AppFlowy)**
@@ -153,6 +169,22 @@ Curated, daily-refreshed directory of 400+ free LLM API models across 30+ provid
 
 ---
 
+## book-to-skill
+
+**[virgiliojr94/book-to-skill](https://github.com/virgiliojr94/book-to-skill)**
+
+![Stars](https://img.shields.io/github/stars/virgiliojr94/book-to-skill?style=flat-square) ![License](https://img.shields.io/github/license/virgiliojr94/book-to-skill?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/virgiliojr94/book-to-skill?style=flat-square)
+
+Converts technical books/docs (PDF, EPUB, DOCX, etc.) into a structured agent skill — mental models, per-chapter files, glossary, cheat sheets — loaded on demand instead of dumped whole into context.
+
+- **Use case:** Turning a reference book or internal doc set into a Claude Code/Copilot CLI/Amp skill an agent can query cheaply
+- **Stack:** Python, MIT, local processing (no upload), skill format for Claude Code/Copilot CLI/Amp
+- **Good to know:** Claims 24-51x fewer tokens than context-dumping the whole book to answer one question, via on-demand chapter loading
+
+[Full writeup →](/docs/ai/book-to-skill)
+
+---
+
 ## Chatwoot
 
 **[chatwoot/chatwoot](https://github.com/chatwoot/chatwoot)**
@@ -185,6 +217,22 @@ A single-header, zero-dependency C library for microsecond 2D UI layout with a d
 
 ---
 
+## Cloudflare Computer
+
+**[cloudflare/computer](https://github.com/cloudflare/computer)**
+
+![Stars](https://img.shields.io/github/stars/cloudflare/computer?style=flat-square) ![License](https://img.shields.io/github/license/cloudflare/computer?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/cloudflare/computer?style=flat-square)
+
+A SQLite-backed virtual filesystem living in a Durable Object, giving agents a unified API to run code across pluggable backends (FUSE-mounted container, bash-in-Workers isolate, JS isolate).
+
+- **Use case:** Letting an agent execute code/shell commands and manipulate files against an authoritative, durable filesystem state, on Cloudflare's edge
+- **Stack:** TypeScript, Cloudflare Workers/Durable Objects, SQLite, MIT
+- **Good to know:** Explicitly preview-only — "APIs are unstable and subject to change... NOT production use"
+
+[Full writeup →](/docs/ai/cloudflare-computer)
+
+---
+
 ## Colibrì
 
 **[JustVugg/colibri](https://github.com/JustVugg/colibri)**
@@ -214,6 +262,38 @@ Self-hosted database backup manager with a web UI covering MySQL, PostgreSQL, Mo
 - **Good to know:** MIT licensed; ships a REST API and MCP server for AI-agent-driven backup ops
 
 [Full writeup →](/docs/tools/databasement)
+
+---
+
+## emilkowalski/skills
+
+**[emilkowalski/skills](https://github.com/emilkowalski/skills)**
+
+![Stars](https://img.shields.io/github/stars/emilkowalski/skills?style=flat-square) ![License](https://img.shields.io/github/license/emilkowalski/skills?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/emilkowalski/skills?style=flat-square)
+
+Nine AI agent skills for animation and design craft from the author of Sonner/Vaul — proper easing curves, animation review/audit, Apple-style design principles, trusted-library picks.
+
+- **Use case:** Getting correct easing/duration choices and consistent motion craft out of an AI agent
+- **Stack:** Skill files, installed via `npx skills@latest add`, MIT
+- **Good to know:** Narrower/deeper than [taste-skill](#taste-skill) — animation-focused rather than general layout/typography
+
+[Full writeup →](/docs/webdev/emilkowalski-skills)
+
+---
+
+## GSAP
+
+**[greensock/GSAP](https://github.com/greensock/GSAP)**
+
+![Stars](https://img.shields.io/github/stars/greensock/GSAP?style=flat-square) ![License](https://img.shields.io/github/license/greensock/GSAP?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/greensock/GSAP?style=flat-square)
+
+Framework-agnostic JavaScript animation engine — CSS, SVG, canvas, WebGL, React, Vue — running on 12M+ sites, with plugins for scroll-driven animation and morphing.
+
+- **Use case:** Building precise, high-performance, sequenced animations that need to just work across browsers
+- **Stack:** Zero-dependency JavaScript, CDN/npm/UMD, GreenSock "no charge" standard license
+- **Good to know:** Pairs directly with [Lenis](#lenis) via ScrollTrigger; powers scroll/text effects behind many [React Bits](#react-bits) components
+
+[Full writeup →](/docs/webdev/gsap)
 
 ---
 
@@ -261,6 +341,22 @@ AI-assisted troubleshooting/repair tool.
 - **Good to know:** Newer/smaller project — read the README on the repo for current scope and setup before adopting.
 
 [Full writeup →](/docs/ai/ifixai)
+
+---
+
+## Impeccable
+
+**[pbakaus/impeccable](https://github.com/pbakaus/impeccable)**
+
+![Stars](https://img.shields.io/github/stars/pbakaus/impeccable?style=flat-square) ![License](https://img.shields.io/github/license/pbakaus/impeccable?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/pbakaus/impeccable?style=flat-square)
+
+Command-driven design guidance system for AI coding agents — 23 commands, 59 deterministic anti-pattern detectors, persistent `PRODUCT.md`/`DESIGN.md` project context.
+
+- **Use case:** Full design-review passes (audit, polish, critique) on agent-generated frontend work
+- **Stack:** Skill + CLI installer (`npx impeccable install`), builds on Anthropic's frontend-design skill, Apache-2.0
+- **Good to know:** Deeper/more structured than [taste-skill](#taste-skill)'s dial-based approach; multi-tool (Claude Code, Copilot, Cursor, Codex, Grok Build)
+
+[Full writeup →](/docs/webdev/impeccable)
 
 ---
 
@@ -312,6 +408,22 @@ A persistent, self-learning agent workspace (Gateway) that runs `kiro-cli` unatt
 
 ---
 
+## Lenis
+
+**[darkroomengineering/lenis](https://github.com/darkroomengineering/lenis)**
+
+![Stars](https://img.shields.io/github/stars/darkroomengineering/lenis?style=flat-square) ![License](https://img.shields.io/github/license/darkroomengineering/lenis?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/darkroomengineering/lenis?style=flat-square)
+
+Lightweight, dependency-free smooth-scroll library that wraps native browser scroll instead of hijacking it — a few KB, keeps sticky positioning/anchor links/accessibility intact.
+
+- **Use case:** Adding buttery smooth scrolling to a site without breaking native scroll behavior or accessibility
+- **Stack:** TypeScript, React/Vue/Framer adapters, MIT
+- **Good to know:** Syncs tightly with GSAP ScrollTrigger for scroll-driven animation; see [GSAP](#gsap) below
+
+[Full writeup →](/docs/webdev/lenis)
+
+---
+
 ## LobeHub
 
 **[lobehub/lobehub](https://github.com/lobehub/lobehub)**
@@ -325,6 +437,22 @@ Open-source "Chief Agent Operator" platform (formerly Lobe Chat) for hiring, sch
 - **Good to know:** License shows as unassigned on GitHub; product direction is shifting quickly from chat UI to agent operations
 
 [Full writeup →](/docs/ai/lobehub)
+
+---
+
+## mapcn
+
+**[AnmolSaini16/mapcn](https://github.com/AnmolSaini16/mapcn)**
+
+![Stars](https://img.shields.io/github/stars/AnmolSaini16/mapcn?style=flat-square) ![License](https://img.shields.io/github/license/AnmolSaini16/mapcn?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/AnmolSaini16/mapcn?style=flat-square)
+
+shadcn-style copy-paste map components built on MapLibre GL — themeable, accessible, and installed directly into your source tree via the shadcn CLI.
+
+- **Use case:** Adding a themed map to a shadcn/ui dashboard without a Mapbox API key
+- **Stack:** React, Tailwind, MapLibre GL, shadcn CLI distribution
+- **Good to know:** No opaque dependency — component source lands in your repo, fully editable
+
+[Full writeup →](/docs/webdev/mapcn)
 
 ---
 
@@ -471,6 +599,22 @@ Open-source order routing and fulfillment platform. Connects storefronts (Shopif
 
 ---
 
+## Paymenter
+
+**[Paymenter/Paymenter](https://github.com/Paymenter/Paymenter)**
+
+![Stars](https://img.shields.io/github/stars/Paymenter/Paymenter?style=flat-square) ![License](https://img.shields.io/github/license/Paymenter/Paymenter?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/Paymenter/Paymenter?style=flat-square)
+
+Open-source billing and webshop platform built for hosting companies — subscriptions, invoicing, payment gateway integration, no vendor lock-in.
+
+- **Use case:** Running billing/invoicing for a hosting business without paying for WHMCS/Blesta licenses
+- **Stack:** PHP 8.3+, Composer, Apache/Nginx, MariaDB, MIT
+- **Good to know:** Self-hosted alternative to commercial platforms like WHMCS and Blesta; live demo at demo.paymenter.org
+
+[Full writeup →](/docs/tools/paymenter)
+
+---
+
 ## PinchTab
 
 **[pinchtab/pinchtab](https://github.com/pinchtab/pinchtab)**
@@ -484,6 +628,70 @@ Small Go binary that gives AI agents direct, token-efficient HTTP control over C
 - **Good to know:** Apache-2.0 licensed; local-first security defaults (loopback bind, disabled sensitive endpoints)
 
 [Full writeup →](/docs/tools/pinchtab)
+
+---
+
+## React Bits
+
+**[DavidHDev/react-bits](https://github.com/DavidHDev/react-bits)**
+
+![Stars](https://img.shields.io/github/stars/DavidHDev/react-bits?style=flat-square) ![License](https://img.shields.io/github/license/DavidHDev/react-bits?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/DavidHDev/react-bits?style=flat-square)
+
+Large library of 165+ copy-paste-ready animated React components (text, backgrounds, UI elements) with JS/TS and CSS/Tailwind variants, installable via shadcn CLI.
+
+- **Use case:** Dropping striking, pre-built animated components into a React site without hand-rolling the animation code
+- **Stack:** React, TypeScript, shadcn/jsrepo CLI install, MIT + Commons Clause
+- **Good to know:** Official ports exist for Vue (vue-bits.dev) and Svelte (sveltebits.xyz); components can lean on GSAP/Framer Motion under the hood
+
+[Full writeup →](/docs/webdev/react-bits)
+
+---
+
+## shadcn/ui
+
+**[shadcn-ui/ui](https://github.com/shadcn-ui/ui)**
+
+![Stars](https://img.shields.io/github/stars/shadcn-ui/ui?style=flat-square) ![License](https://img.shields.io/github/license/shadcn-ui/ui?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/shadcn-ui/ui?style=flat-square)
+
+Copy-paste, accessible React components built on Radix UI and Tailwind CSS — you own the source, no opaque dependency.
+
+- **Use case:** Building a custom design system or admin UI on accessible primitives without fighting a library's theming API
+- **Stack:** React, Radix UI, Tailwind CSS, CLI-driven install, MIT
+- **Good to know:** Foundation model that [mapcn](#mapcn) and [React Bits](#react-bits) also build on; 121k+ stars
+
+[Full writeup →](/docs/webdev/shadcn-ui)
+
+---
+
+## Shader Gradient
+
+**[ruucm/shadergradient](https://github.com/ruucm/shadergradient)**
+
+![Stars](https://img.shields.io/github/stars/ruucm/shadergradient?style=flat-square) ![License](https://img.shields.io/github/license/ruucm/shadergradient?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/ruucm/shadergradient?style=flat-square)
+
+Customizable 3D animated gradient renderer for React (also Framer/Figma) built on GLSL shaders — mesh type, color, camera, and animation all controllable via props or a URL query string.
+
+- **Use case:** Adding a moving, GLSL-shader gradient background/hero visual to a React site without writing raw shader code
+- **Stack:** TypeScript, React Three Fiber, three.js, MIT, monorepo with separate UI-controls package
+- **Good to know:** Lean v2 core ships only the renderer; overlaps with [Vanta](#vanta) as a generative-background option, but gradient-focused rather than scene-effect-focused
+
+[Full writeup →](/docs/webdev/shadergradient)
+
+---
+
+## Sherlock
+
+**[sherlock-project/sherlock](https://github.com/sherlock-project/sherlock)**
+
+![Stars](https://img.shields.io/github/stars/sherlock-project/sherlock?style=flat-square) ![License](https://img.shields.io/github/license/sherlock-project/sherlock?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/sherlock-project/sherlock?style=flat-square)
+
+CLI OSINT tool that finds social media accounts by username across 400+ sites in one run.
+
+- **Use case:** Mapping a username's footprint across the web for OSINT/investigative work
+- **Stack:** Python, pipx/Docker/package-manager install, MIT
+- **Good to know:** Batch processing, proxy support, export to text/CSV/XLSX/JSON; 88.8k+ stars
+
+[Full writeup →](/docs/tools/sherlock)
 
 ---
 
@@ -535,6 +743,22 @@ Open-source NotebookLM alternative that pairs a self-hosted knowledge base with 
 
 ---
 
+## taste-skill
+
+**[leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill)**
+
+![Stars](https://img.shields.io/github/stars/leonxlnx/taste-skill?style=flat-square) ![License](https://img.shields.io/github/license/leonxlnx/taste-skill?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/leonxlnx/taste-skill?style=flat-square)
+
+Portable AI agent skills for giving generated UIs visual polish instead of generic "slop" — layout, typography, motion, spacing, with tunable design/motion/density dials.
+
+- **Use case:** Steering agent-generated UI away from generic AI defaults, with adjustable style variants (soft, minimalist, brutalist)
+- **Stack:** Skill files, installed via `npx skills add`, MIT, works with ChatGPT/Codex/Cursor/Claude Code
+- **Good to know:** Broader scope than [Impeccable](#impeccable) or [emilkowalski/skills](#emilkowalskiskills); 75k+ stars
+
+[Full writeup →](/docs/webdev/taste-skill)
+
+---
+
 ## Text-to-Handwriting
 
 **[saurabhdaware/text-to-handwriting](https://github.com/saurabhdaware/text-to-handwriting)**
@@ -548,6 +772,22 @@ Renders typed text as handwriting-style images and exportable PDFs entirely clie
 - **Good to know:** Archived (no active maintenance); direct alternative to Handwrite, which builds a real reusable font instead
 
 [Full writeup →](/docs/tools/text-to-handwriting)
+
+---
+
+## transitions.dev
+
+**[Jakubantalik/transitions.dev](https://github.com/Jakubantalik/transitions.dev)**
+
+![Stars](https://img.shields.io/github/stars/Jakubantalik/transitions.dev?style=flat-square) ![License](https://img.shields.io/github/license/Jakubantalik/transitions.dev?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/Jakubantalik/transitions.dev?style=flat-square)
+
+Lightweight helper library over the native CSS View Transitions API for smooth page/state transitions without heavy animation-library overhead.
+
+- **Use case:** Native-performance route/state transitions without adopting a full animation library
+- **Stack:** Thin wrapper over the browser's View Transitions API, framework-agnostic
+- **Good to know:** Complements [GSAP](#gsap) — much lighter, but far less capable for complex sequencing
+
+[Full writeup →](/docs/webdev/transitions-dev)
 
 ---
 
@@ -582,6 +822,36 @@ Open-source CRM with a Notion-like UI, built on TypeScript/NestJS/React/PostgreS
 
 ---
 
+## Uiverse
+
+**[uiverse.io](https://uiverse.io/)**
+
+Community-driven library of free, copy-paste CSS/Tailwind UI elements — buttons, loaders, checkboxes, cards — no install, no build step.
+
+- **Use case:** Sourcing polished micro-interactions without designing them from scratch
+- **Stack:** Plain CSS/Tailwind snippets, framework-agnostic
+- **Good to know:** Complements [shadcn/ui](#shadcnui) — individual style-focused elements rather than a structured component system
+
+[Full writeup →](/docs/webdev/uiverse)
+
+---
+
+## Vanta
+
+**[tengbao/vanta](https://github.com/tengbao/vanta)**
+
+![Stars](https://img.shields.io/github/stars/tengbao/vanta?style=flat-square) ![License](https://img.shields.io/github/license/tengbao/vanta?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tengbao/vanta?style=flat-square)
+
+Drop-in animated 3D/generative backgrounds for any webpage, rendered via three.js (WebGL) or p5.js, with mouse/touch-reactive effects.
+
+- **Use case:** Replacing a static hero background image/video with an interactive generative one in a few lines
+- **Stack:** JavaScript, three.js or p5.js, MIT, React/Vue/Angular examples
+- **Good to know:** ~120kb minified+gzipped since it pulls in a full 3D/canvas renderer — heavier than Lenis or GSAP alone
+
+[Full writeup →](/docs/webdev/vanta)
+
+---
+
 ## VUZA
 
 **[AliRash3ed/VUZA-Free-AI-Video-Creator-and-Pinterest-Video-Scraper](https://github.com/AliRash3ed/VUZA-Free-AI-Video-Creator-and-Pinterest-Video-Scraper)**
@@ -611,6 +881,22 @@ Local-first web search, fetch, crawl, extract, and research MCP server for AI co
 - **Good to know:** AGPL-3.0 licensed, public beta; complements browser-control tools like PinchTab
 
 [Full writeup →](/docs/ai/wigolo)
+
+---
+
+## witr
+
+**[pranshuparmar/witr](https://github.com/pranshuparmar/witr)**
+
+![Stars](https://img.shields.io/github/stars/pranshuparmar/witr?style=flat-square) ![License](https://img.shields.io/github/license/pranshuparmar/witr?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/pranshuparmar/witr?style=flat-square)
+
+CLI/TUI that traces any process, port, container, or file lock back to its origin — "why is this running?" as a tool.
+
+- **Use case:** Incident response and troubleshooting unexpected processes/ports/containers
+- **Stack:** Go, cross-platform (Linux/macOS/Windows/FreeBSD), Apache-2.0
+- **Good to know:** Detects Docker/Podman/Kubernetes runtimes; 21.2k+ stars
+
+[Full writeup →](/docs/tools/witr)
 
 ---
 
