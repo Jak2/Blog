@@ -280,6 +280,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/dify.md": {
+	id: "ai/dify.md";
+  slug: "ai/dify";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/google-opal.md": {
 	id: "ai/google-opal.md";
   slug: "ai/google-opal";
@@ -416,6 +423,13 @@ declare module 'astro:content' {
 "ai/surfsense.md": {
 	id: "ai/surfsense.md";
   slug: "ai/surfsense";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/turbo-fieldfare.md": {
+	id: "ai/turbo-fieldfare.md";
+  slug: "ai/turbo-fieldfare";
   body: string;
   collection: "docs";
   data: any

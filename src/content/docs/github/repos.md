@@ -265,6 +265,22 @@ Self-hosted database backup manager with a web UI covering MySQL, PostgreSQL, Mo
 
 ---
 
+## Dify
+
+**[langgenius/dify](https://github.com/langgenius/dify)**
+
+![Stars](https://img.shields.io/github/stars/langgenius/dify?style=flat-square) ![License](https://img.shields.io/github/license/langgenius/dify?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/langgenius/dify?style=flat-square)
+
+Open-source visual platform for building and shipping LLM applications — workflow builder, RAG pipelines, agent tooling, and LLMOps in one system.
+
+- **Use case:** Taking an LLM app from prototype to production without hand-wiring prompts, retrieval, and monitoring
+- **Stack:** Next.js frontend, Python backend, Docker/Kubernetes deployment, modified Apache 2.0 license
+- **Good to know:** Supports hundreds of LLMs including OpenAI-compatible endpoints; license has extra conditions beyond plain Apache 2.0
+
+[Full writeup →](/docs/ai/dify)
+
+---
+
 ## emilkowalski/skills
 
 **[emilkowalski/skills](https://github.com/emilkowalski/skills)**
@@ -788,6 +804,22 @@ Lightweight helper library over the native CSS View Transitions API for smooth p
 - **Good to know:** Complements [GSAP](#gsap) — much lighter, but far less capable for complex sequencing
 
 [Full writeup →](/docs/webdev/transitions-dev)
+
+---
+
+## TurboFieldfare
+
+**[drumih/turbo-fieldfare](https://github.com/drumih/turbo-fieldfare)**
+
+![Stars](https://img.shields.io/github/stars/drumih/turbo-fieldfare?style=flat-square) ![License](https://img.shields.io/github/license/drumih/turbo-fieldfare?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/drumih/turbo-fieldfare?style=flat-square)
+
+Custom Swift/Metal runtime that runs Gemma 4 26B-A4B on 8GB Apple Silicon Macs using ~2GB RAM via SSD-streamed experts.
+
+- **Use case:** Running a large local LLM on memory-constrained Apple Silicon hardware
+- **Stack:** Swift 6.2, Metal 4, macOS 26+, arm64, Apache 2.0
+- **Good to know:** OpenAI-compatible local server included; 5-6 tok/s on M2, 31-35 tok/s on M5
+
+[Full writeup →](/docs/ai/turbo-fieldfare)
 
 ---
 
