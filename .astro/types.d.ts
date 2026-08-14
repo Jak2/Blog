@@ -329,6 +329,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/ian-xiaohei-illustrations.md": {
+	id: "ai/ian-xiaohei-illustrations.md";
+  slug: "ai/ian-xiaohei-illustrations";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/ifixai.md": {
 	id: "ai/ifixai.md";
   slug: "ai/ifixai";

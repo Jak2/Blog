@@ -345,6 +345,22 @@ Open-source, Apache 2.0-licensed framework from HeyGen for turning plain HTML/CS
 
 ---
 
+## Ian Xiaohei Illustrations
+
+**[helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations)**
+
+![Stars](https://img.shields.io/github/stars/helloianneo/ian-xiaohei-illustrations?style=flat-square) ![License](https://img.shields.io/github/license/helloianneo/ian-xiaohei-illustrations?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/helloianneo/ian-xiaohei-illustrations?style=flat-square)
+
+Agent skill that generates hand-drawn, Chinese-annotated illustrations from article text, featuring a recurring character (Xiaohei).
+
+- **Use case:** Producing a consistent set of diagram-style illustrations for a knowledge/methodology article
+- **Stack:** Codex/Claude agent skill, image generation model, Markdown/YAML config, MIT
+- **Good to know:** Extracts a 4-8 concept shot list automatically; supports editing existing illustrations too
+
+[Full writeup →](/docs/ai/ian-xiaohei-illustrations)
+
+---
+
 ## iFixAi
 
 **[ifixai-ai/iFixAi](https://github.com/ifixai-ai/iFixAi)**
