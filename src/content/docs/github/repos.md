@@ -395,7 +395,7 @@ Lightweight, browser-based API testing platform that requires no local installat
 - **Stack:** Browser-based, open source, self-hostable
 - **Good to know:** Companion browser extension helps bypass CORS restrictions
 
-[Full writeup →](/docs/tools/hoppscotch)
+[Full writeup →](/docs/webdev/hoppscotch)
 
 ---
 
@@ -488,7 +488,7 @@ Turns raw JSON/YAML/XML into interactive, node-based visual graphs.
 - **Stack:** Browser-based; desktop/VS Code extension also available
 - **Good to know:** Very large payloads can get visually overwhelming; some features paid
 
-[Full writeup →](/docs/tools/json-crack)
+[Full writeup →](/docs/webdev/json-crack)
 
 ---
 
@@ -929,7 +929,7 @@ Instantly converts code between formats — JSON to TypeScript, HTML to JSX, and
 - **Stack:** Browser-based, free, dozens of focused converters
 - **Good to know:** Manual copy-paste workflow, not scriptable/automatable
 
-[Full writeup →](/docs/tools/transform-tools)
+[Full writeup →](/docs/webdev/transform-tools)
 
 ---
 

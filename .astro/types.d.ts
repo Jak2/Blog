@@ -651,23 +651,9 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
-"tools/hoppscotch.md": {
-	id: "tools/hoppscotch.md";
-  slug: "tools/hoppscotch";
-  body: string;
-  collection: "docs";
-  data: any
-} & { render(): Render[".md"] };
 "tools/infisical.md": {
 	id: "tools/infisical.md";
   slug: "tools/infisical";
-  body: string;
-  collection: "docs";
-  data: any
-} & { render(): Render[".md"] };
-"tools/json-crack.md": {
-	id: "tools/json-crack.md";
-  slug: "tools/json-crack";
   body: string;
   collection: "docs";
   data: any
@@ -749,13 +735,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
-"tools/transform-tools.md": {
-	id: "tools/transform-tools.md";
-  slug: "tools/transform-tools";
-  body: string;
-  collection: "docs";
-  data: any
-} & { render(): Render[".md"] };
 "tools/turbovec.md": {
 	id: "tools/turbovec.md";
   slug: "tools/turbovec";
@@ -798,9 +777,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"webdev/hoppscotch.md": {
+	id: "webdev/hoppscotch.md";
+  slug: "webdev/hoppscotch";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "webdev/impeccable.md": {
 	id: "webdev/impeccable.md";
   slug: "webdev/impeccable";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/json-crack.md": {
+	id: "webdev/json-crack.md";
+  slug: "webdev/json-crack";
   body: string;
   collection: "docs";
   data: any
@@ -843,6 +836,13 @@ declare module 'astro:content' {
 "webdev/taste-skill.md": {
 	id: "webdev/taste-skill.md";
   slug: "webdev/taste-skill";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/transform-tools.md": {
+	id: "webdev/transform-tools.md";
+  slug: "webdev/transform-tools";
   body: string;
   collection: "docs";
   data: any
