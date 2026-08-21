@@ -185,6 +185,20 @@ Converts technical books/docs (PDF, EPUB, DOCX, etc.) into a structured agent sk
 
 ---
 
+## Carbon
+
+**[https://carbon.now.sh](https://carbon.now.sh)**
+
+Generates high-resolution, syntax-highlighted graphics of code snippets for presentations and blog posts.
+
+- **Use case:** Producing polished code screenshots for slides, docs, or social posts
+- **Stack:** Browser-based, free
+- **Good to know:** Manual workflow only — no live code execution or batch export
+
+[Full writeup →](/docs/tools/carbon)
+
+---
+
 ## Chatwoot
 
 **[chatwoot/chatwoot](https://github.com/chatwoot/chatwoot)**
@@ -265,6 +279,20 @@ Self-hosted database backup manager with a web UI covering MySQL, PostgreSQL, Mo
 
 ---
 
+## DevDocs
+
+**[https://devdocs.io](https://devdocs.io)**
+
+Combined API documentation for hundreds of languages, libraries, and frameworks in one fast, offline-capable interface.
+
+- **Use case:** Looking up API references without juggling multiple docs tabs
+- **Stack:** Browser-based, open source, self-hostable
+- **Good to know:** Works offline via local caching once doc sets are enabled
+
+[Full writeup →](/docs/tools/devdocs)
+
+---
+
 ## Dify
 
 **[langgenius/dify](https://github.com/langgenius/dify)**
@@ -297,6 +325,34 @@ Nine AI agent skills for animation and design craft from the author of Sonner/Va
 
 ---
 
+## Excalidraw
+
+**[https://excalidraw.com](https://excalidraw.com)**
+
+Collaborative browser-based whiteboard for hand-drawn-style diagrams and architecture sketches.
+
+- **Use case:** Fast, collaborative sketching of system architecture and flowcharts
+- **Stack:** Browser-based, open source, self-hostable, local-first
+- **Good to know:** Real-time multiplayer via shareable room links; works offline
+
+[Full writeup →](/docs/tools/excalidraw)
+
+---
+
+## Explainshell
+
+**[https://explainshell.com](https://explainshell.com)**
+
+Breaks down shell commands into their parts with plain-English explanations pulled from man pages.
+
+- **Use case:** Understanding an unfamiliar or dense shell one-liner before running it
+- **Stack:** Browser-based, man-page-sourced
+- **Good to know:** Coverage limited to commands with available man pages
+
+[Full writeup →](/docs/tools/explainshell)
+
+---
+
 ## GSAP
 
 **[greensock/GSAP](https://github.com/greensock/GSAP)**
@@ -326,6 +382,20 @@ Converts your own handwriting samples into a real, installable TTF font, using P
 - **Good to know:** Direct alternative to Text-to-Handwriting, but produces a real font instead of images/PDFs
 
 [Full writeup →](/docs/tools/handwrite)
+
+---
+
+## Hoppscotch
+
+**[https://hoppscotch.io](https://hoppscotch.io)**
+
+Lightweight, browser-based API testing platform that requires no local installation.
+
+- **Use case:** Quick REST/GraphQL/WebSocket API testing without a desktop client
+- **Stack:** Browser-based, open source, self-hostable
+- **Good to know:** Companion browser extension helps bypass CORS restrictions
+
+[Full writeup →](/docs/tools/hoppscotch)
 
 ---
 
@@ -408,6 +478,20 @@ Open-source secrets management platform — think "self-hostable Vault/Doppler" 
 
 ---
 
+## JSON Crack
+
+**[https://jsoncrack.com](https://jsoncrack.com)**
+
+Turns raw JSON/YAML/XML into interactive, node-based visual graphs.
+
+- **Use case:** Navigating deeply nested or unfamiliar API responses and config files
+- **Stack:** Browser-based; desktop/VS Code extension also available
+- **Good to know:** Very large payloads can get visually overwhelming; some features paid
+
+[Full writeup →](/docs/tools/json-crack)
+
+---
+
 ## Kiro
 
 **[kirodotdev/Kiro](https://github.com/kirodotdev/Kiro)**
@@ -437,6 +521,20 @@ A persistent, self-learning agent workspace (Gateway) that runs `kiro-cli` unatt
 - **Good to know:** Complementary to Kiro (not a competitor) — every install path runs `kiro-cli` underneath
 
 [Full writeup →](/docs/ai/kirocrew)
+
+---
+
+## Learn Git Branching
+
+**[https://learngitbranching.js.org](https://learngitbranching.js.org)**
+
+Interactive sandbox that visualizes Git commands, branches, merges, and commit history.
+
+- **Use case:** Building intuition for Git's commit graph without risking a real repo
+- **Stack:** Browser-based, free, multi-language
+- **Good to know:** Simplified simulation — some edge-case behavior may differ from real Git
+
+[Full writeup →](/docs/tools/learn-git-branching)
 
 ---
 
@@ -679,6 +777,20 @@ Large library of 165+ copy-paste-ready animated React components (text, backgrou
 
 ---
 
+## RegExr
+
+**[https://regexr.com](https://regexr.com)**
+
+Real-time regex testing and visualization against sample text with a built-in cheat sheet.
+
+- **Use case:** Building and debugging a regex pattern with live visual feedback
+- **Stack:** Browser-based, supports JS/PCRE/Python flavors
+- **Good to know:** Free tier has ads; patterns shareable via URL
+
+[Full writeup →](/docs/tools/regexr)
+
+---
+
 ## shadcn/ui
 
 **[shadcn-ui/ui](https://github.com/shadcn-ui/ui)**
@@ -807,6 +919,20 @@ Renders typed text as handwriting-style images and exportable PDFs entirely clie
 
 ---
 
+## transform.tools
+
+**[https://transform.tools](https://transform.tools)**
+
+Instantly converts code between formats — JSON to TypeScript, HTML to JSX, and dozens more.
+
+- **Use case:** Mechanical format conversions (JSON→TS, HTML→JSX, CSS→JS) without hand-transcribing
+- **Stack:** Browser-based, free, dozens of focused converters
+- **Good to know:** Manual copy-paste workflow, not scriptable/automatable
+
+[Full writeup →](/docs/tools/transform-tools)
+
+---
+
 ## transitions.dev
 
 **[Jakubantalik/transitions.dev](https://github.com/Jakubantalik/transitions.dev)**
@@ -897,6 +1023,20 @@ Drop-in animated 3D/generative backgrounds for any webpage, rendered via three.j
 - **Good to know:** ~120kb minified+gzipped since it pulls in a full 3D/canvas renderer — heavier than Lenis or GSAP alone
 
 [Full writeup →](/docs/webdev/vanta)
+
+---
+
+## VisuAlgo
+
+**[https://visualgo.net](https://visualgo.net)**
+
+Step-by-step animated visualizations of data structures and algorithms.
+
+- **Use case:** Building intuition for algorithms before implementing or during interview prep
+- **Stack:** Browser-based, NUS-built, free
+- **Good to know:** Visualization-only — doesn't generate runnable code
+
+[Full writeup →](/docs/tools/visualgo)
 
 ---
 

@@ -595,6 +595,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/carbon.md": {
+	id: "tools/carbon.md";
+  slug: "tools/carbon";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/chatwoot.md": {
 	id: "tools/chatwoot.md";
   slug: "tools/chatwoot";
@@ -616,9 +623,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/devdocs.md": {
+	id: "tools/devdocs.md";
+  slug: "tools/devdocs";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/excalidraw.md": {
 	id: "tools/excalidraw.md";
   slug: "tools/excalidraw";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/explainshell.md": {
+	id: "tools/explainshell.md";
+  slug: "tools/explainshell";
   body: string;
   collection: "docs";
   data: any
@@ -630,9 +651,30 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/hoppscotch.md": {
+	id: "tools/hoppscotch.md";
+  slug: "tools/hoppscotch";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/infisical.md": {
 	id: "tools/infisical.md";
   slug: "tools/infisical";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/json-crack.md": {
+	id: "tools/json-crack.md";
+  slug: "tools/json-crack";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/learn-git-branching.md": {
+	id: "tools/learn-git-branching.md";
+  slug: "tools/learn-git-branching";
   body: string;
   collection: "docs";
   data: any
@@ -679,6 +721,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/regexr.md": {
+	id: "tools/regexr.md";
+  slug: "tools/regexr";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/sherlock.md": {
 	id: "tools/sherlock.md";
   slug: "tools/sherlock";
@@ -700,9 +749,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/transform-tools.md": {
+	id: "tools/transform-tools.md";
+  slug: "tools/transform-tools";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/turbovec.md": {
 	id: "tools/turbovec.md";
   slug: "tools/turbovec";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/visualgo.md": {
+	id: "tools/visualgo.md";
+  slug: "tools/visualgo";
   body: string;
   collection: "docs";
   data: any
