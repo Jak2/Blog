@@ -121,6 +121,22 @@ Lightweight JavaScript animation library for CSS, SVG, DOM attributes, and JS ob
 
 ---
 
+## Anthropic Skills
+
+**[anthropics/skills](https://github.com/anthropics/skills)**
+
+![Stars](https://img.shields.io/github/stars/anthropics/skills?style=flat-square) ![License](https://img.shields.io/github/license/anthropics/skills?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/anthropics/skills?style=flat-square)
+
+Official repository of Agent Skills — folders of instructions and resources Claude loads dynamically for specialized creative, technical, document, and enterprise tasks.
+
+- **Use case:** Adding document manipulation, testing, or domain-specific skills to a Claude agent without bloating the base system prompt
+- **Stack:** YAML frontmatter + Markdown, Python-based implementations, Apache 2.0 (document skills are source-available)
+- **Good to know:** Includes the official Agent Skills spec and a starter template for authoring your own
+
+[Full writeup →](/docs/ai/anthropic-skills)
+
+---
+
 ## AppFlowy
 
 **[AppFlowy-IO/AppFlowy](https://github.com/AppFlowy-IO/AppFlowy)**
@@ -1117,3 +1133,507 @@ A Claude Code/MCP plugin that lets an AI agent search, watch, summarize, transcr
 - **Good to know:** Built on an unofficial YouTube client, so it can break if YouTube changes its internal API
 
 [Full writeup →](/docs/ai/youtube-for-ai-agents)
+
+## DeerFlow
+
+**[bytedance/deer-flow](https://github.com/bytedance/deer-flow)**
+
+![Stars](https://img.shields.io/github/stars/bytedance/deer-flow?style=flat-square) ![License](https://img.shields.io/github/license/bytedance/deer-flow?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/bytedance/deer-flow?style=flat-square)
+
+ByteDance's open-source "super agent" harness for long-horizon AI tasks — sub-agents, long-term memory, sandboxed execution, and native IM integrations (Telegram, Slack, Discord, Feishu, and more), built on LangGraph.
+
+- **Use case:** Deep research, automated coding, and report/slide generation via chat platforms, run unattended for extended periods
+- **Stack:** Python/FastAPI, LangChain/LangGraph, Next.js, Docker/Kubernetes
+- **Good to know:** v2.0 is a ground-up rewrite sharing no code with v1
+
+[Full writeup →](/docs/ai/deer-flow)
+
+## Strix
+
+**[usestrix/strix](https://github.com/usestrix/strix)**
+
+![Stars](https://img.shields.io/github/stars/usestrix/strix?style=flat-square) ![License](https://img.shields.io/github/license/usestrix/strix?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/usestrix/strix?style=flat-square)
+
+Autonomous multi-agent AI pentesting platform — actively exploits code and hands back working proof-of-concepts for OWASP Top 10 findings, with CI-integrated auto-remediation PRs.
+
+- **Use case:** CI/CD security scanning, bug bounty automation, pre-deployment vulnerability validation
+- **Stack:** Python, Docker sandbox, Caido, Playwright, Nuclei, LLM providers (OpenAI/Anthropic/Google)
+- **Good to know:** Active exploitation requires authorization/scoping — not a passive scanner
+
+[Full writeup →](/docs/tools/strix)
+
+## Instatic
+
+**[corebunch/instatic](https://github.com/corebunch/instatic)**
+
+![Stars](https://img.shields.io/github/stars/corebunch/instatic?style=flat-square) ![License](https://img.shields.io/github/license/corebunch/instatic?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/corebunch/instatic?style=flat-square)
+
+Self-hosted CMS with a visual canvas editor, universal content model, and AI page-editing agent — bakes pages to static HTML instead of running a framework at request time.
+
+- **Use case:** Blogs, portfolios, small business sites, multi-author publications wanting a self-hosted, static-output alternative to SaaS page builders
+- **Stack:** Bun, TypeScript, React 19, Vite, SQLite/Postgres, QuickJS-WASM sandbox
+- **Good to know:** MIT licensed, no open-core tiers, 8.2k+ stars
+
+[Full writeup →](/docs/webdev/instatic)
+
+## Airship
+
+**[0xnyn/airship](https://github.com/0xnyn/airship)**
+
+![Stars](https://img.shields.io/github/stars/0xnyn/airship?style=flat-square) ![License](https://img.shields.io/github/license/0xnyn/airship?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/0xnyn/airship?style=flat-square)
+
+Zero-config visual editor proxying your dev server — click a UI element, describe the change, a connected AI agent (Claude Code, Codex, OpenCode) edits the real source file.
+
+- **Use case:** Point-and-describe UI iteration with an AI agent, staying in the browser
+- **Stack:** Node.js/TypeScript, pnpm monorepo, framework-agnostic proxy
+- **Good to know:** `--safe` flag confines edits to project directory, blocks dangerous commands
+
+[Full writeup →](/docs/webdev/airship)
+
+## Archify
+
+**[tt-a1i/archify](https://github.com/tt-a1i/archify)**
+
+![Stars](https://img.shields.io/github/stars/tt-a1i/archify?style=flat-square) ![License](https://img.shields.io/github/license/tt-a1i/archify?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/tt-a1i/archify?style=flat-square)
+
+Agent skill that compiles a codebase or system description into interactive HTML architecture diagrams — five diagram types, source-verified nodes, PNG/SVG/WebM export.
+
+- **Use case:** Auto-generating architecture/workflow/sequence/data-flow diagrams from real code, not hand-drawn guesses
+- **Stack:** Typed JSON IR, Node.js rendering, works with Cursor/Claude Code/Codex CLI/OpenCode/Raven
+- **Good to know:** Evidence-backed nodes link back to Git-verified source files
+
+[Full writeup →](/docs/ai/archify)
+
+## NautilusTrader
+
+**[nautechsystems/nautilus_trader](https://github.com/nautechsystems/nautilus_trader)**
+
+![Stars](https://img.shields.io/github/stars/nautechsystems/nautilus_trader?style=flat-square) ![License](https://img.shields.io/github/license/nautechsystems/nautilus_trader?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/nautechsystems/nautilus_trader?style=flat-square)
+
+Rust-native, Python-controlled algorithmic trading engine — identical event-driven core for backtesting and live deployment, 20+ exchange adapters including crypto DEXs.
+
+- **Use case:** Multi-asset, multi-venue algo trading with backtest/live parity and nanosecond-resolution simulation
+- **Stack:** Rust core, Python control plane, PyO3, tokio, mimalloc
+- **Good to know:** LGPL-3.0-only license — different terms than permissive MIT/Apache
+
+[Full writeup →](/docs/tools/nautilus-trader)
+
+## Maxun
+
+**[getmaxun/maxun](https://github.com/getmaxun/maxun)**
+
+![Stars](https://img.shields.io/github/stars/getmaxun/maxun?style=flat-square) ![License](https://img.shields.io/github/license/getmaxun/maxun?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/getmaxun/maxun?style=flat-square)
+
+No-code platform turning websites into structured APIs — point-and-click or AI-powered extraction robots, plus scrape/crawl/search modes and MCP support for agent-driven use.
+
+- **Use case:** Lead generation, market research, content aggregation, feeding AI workflows structured web data
+- **Stack:** TypeScript, Node.js, Playwright, Vite
+- **Good to know:** AGPLv3 licensed — copyleft obligations to check before commercial resale
+
+[Full writeup →](/docs/tools/maxun)
+
+## DSPy
+
+**[stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)**
+
+![Stars](https://img.shields.io/github/stars/stanfordnlp/dspy?style=flat-square) ![License](https://img.shields.io/github/license/stanfordnlp/dspy?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/stanfordnlp/dspy?style=flat-square)
+
+Stanford NLP framework for programming LMs instead of prompting them — modular Python pipelines with automatic prompt/weight optimization against a metric.
+
+- **Use case:** Classifiers, RAG pipelines, multi-stage LM programs needing systematic, metric-driven prompt improvement
+- **Stack:** Python
+- **Good to know:** Optimization runs need labeled examples + a defined metric upfront
+
+[Full writeup →](/docs/ai/dspy)
+
+## Auto-Editor
+
+**[WyattBlue/auto-editor](https://github.com/WyattBlue/auto-editor)**
+
+![Stars](https://img.shields.io/github/stars/WyattBlue/auto-editor?style=flat-square) ![License](https://img.shields.io/github/license/WyattBlue/auto-editor?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/WyattBlue/auto-editor?style=flat-square)
+
+CLI that auto-cuts silence/dead space from video and audio using loudness or motion detection, exporting directly into Premiere, DaVinci Resolve, Final Cut, Shotcut, or Kdenlive.
+
+- **Use case:** First-pass silence removal for podcasts, interviews, screen recordings before finishing in a full NLE
+- **Stack:** Nim
+- **Good to know:** Public Domain (Unlicense) — no licensing restrictions
+
+[Full writeup →](/docs/tools/auto-editor)
+
+## OpenPanel
+
+**[Openpanel-dev/openpanel](https://github.com/Openpanel-dev/openpanel)**
+
+![Stars](https://img.shields.io/github/stars/Openpanel-dev/openpanel?style=flat-square) ![License](https://img.shields.io/github/license/Openpanel-dev/openpanel?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/Openpanel-dev/openpanel?style=flat-square)
+
+Open-source, self-hostable web/product analytics platform — funnels, cohorts, session replay, A/B testing, cookieless GDPR-compliant tracking, plus an MCP server for AI-agent queries.
+
+- **Use case:** Self-hosted product analytics for teams wanting full data control and no usage-based pricing surprises
+- **Stack:** Next.js, Fastify, PostgreSQL, ClickHouse, Redis, BullMQ, tRPC
+- **Good to know:** AGPL-3.0 licensed — copyleft obligations to check before commercial resale
+
+[Full writeup →](/docs/tools/openpanel)
+
+## Markdoc
+
+**[markdoc/markdoc](https://github.com/markdoc/markdoc)**
+
+![Stars](https://img.shields.io/github/stars/markdoc/markdoc?style=flat-square) ![License](https://img.shields.io/github/license/markdoc/markdoc?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/markdoc/markdoc?style=flat-square)
+
+Stripe-built Markdown documentation framework — parses Markdown plus custom tags into an AST, transforms it, and renders through pluggable renderers (React included).
+
+- **Use case:** Building custom, component-rich documentation platforms at scale
+- **Stack:** TypeScript, React renderer
+- **Good to know:** Lower-level toolkit than a full docs-site generator — more setup than Docusaurus/Starlight
+
+[Full writeup →](/docs/webdev/markdoc)
+
+## Awesome Quant
+
+**[wilsonfreitas/awesome-quant](https://github.com/wilsonfreitas/awesome-quant)**
+
+![Stars](https://img.shields.io/github/stars/wilsonfreitas/awesome-quant?style=flat-square) ![License](https://img.shields.io/github/license/wilsonfreitas/awesome-quant?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/wilsonfreitas/awesome-quant?style=flat-square)
+
+Curated directory of quantitative finance libraries and resources across 18+ categories and a dozen languages — pricing, trading systems, portfolio optimization, market data.
+
+- **Use case:** Discovering backtesting frameworks, pricing libraries, and data sources across the quant-finance ecosystem
+- **Stack:** N/A (curated list, multi-language coverage)
+- **Good to know:** A list, not a tool — still requires vetting each linked project yourself
+
+[Full writeup →](/docs/tools/awesome-quant)
+
+## Apache Cloudberry
+
+**[apache/cloudberry](https://github.com/apache/cloudberry)**
+
+![Stars](https://img.shields.io/github/stars/apache/cloudberry?style=flat-square) ![License](https://img.shields.io/github/license/apache/cloudberry?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/apache/cloudberry?style=flat-square)
+
+Open-source MPP data warehouse evolved from Pivotal Greenplum, on a newer PostgreSQL kernel — distributed OLAP for large-scale analytics and AI/ML pipeline infrastructure.
+
+- **Use case:** Enterprise data warehousing and large-scale analytics without proprietary MPP licensing
+- **Stack:** C, PostgreSQL kernel, Python, Java (Maven)
+- **Good to know:** Apache Incubator project — not yet a fully endorsed top-level ASF project
+
+[Full writeup →](/docs/tools/cloudberry)
+
+## code-server
+
+**[coder/code-server](https://github.com/coder/code-server)**
+
+![Stars](https://img.shields.io/github/stars/coder/code-server?style=flat-square) ![License](https://img.shields.io/github/license/coder/code-server?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/coder/code-server?style=flat-square)
+
+Runs full VS Code on a remote server, streamed to any browser over WebSocket — same extensions, terminal, and debugging, with heavy compute offloaded to the server.
+
+- **Use case:** Remote/cross-device development without per-device toolchain setup
+- **Stack:** Node.js, TypeScript, WebSocket
+- **Good to know:** Self-hostable, MIT licensed — no vendor lock-in or per-seat pricing
+
+[Full writeup →](/docs/tools/code-server)
+
+## Open SaaS
+
+**[wasp-lang/open-saas](https://github.com/wasp-lang/open-saas)**
+
+![Stars](https://img.shields.io/github/stars/wasp-lang/open-saas?style=flat-square) ![License](https://img.shields.io/github/license/wasp-lang/open-saas?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/wasp-lang/open-saas?style=flat-square)
+
+Free, open-source, production-ready SaaS boilerplate on Wasp — auth, payments (Stripe/Polar.sh/Lemon Squeezy), email, S3 storage, admin dashboard, and AI-tool-ready config for Claude Code/Cursor.
+
+- **Use case:** Launching a SaaS MVP without rebuilding auth/billing/email plumbing from scratch
+- **Stack:** React, Node.js, Prisma, PostgreSQL, Wasp, ShadCN UI
+- **Good to know:** Tied to Wasp's framework conventions — less flexible than a hand-assembled stack
+
+[Full writeup →](/docs/webdev/open-saas)
+
+## Pic Smaller
+
+**[joye61/pic-smaller](https://github.com/joye61/pic-smaller)**
+
+![Stars](https://img.shields.io/github/stars/joye61/pic-smaller?style=flat-square) ![License](https://img.shields.io/github/license/joye61/pic-smaller?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/joye61/pic-smaller?style=flat-square)
+
+Free, browser-based batch image compressor — WASM-processed locally, no server upload. Handles JPEG/PNG/WebP/GIF/SVG/AVIF plus HEIC/HEIF conversion.
+
+- **Use case:** Optimizing/converting images for web deployment privately, in-browser
+- **Stack:** Next.js, WebAssembly, Web Workers, browser codecs
+- **Good to know:** Browser-only — no CLI/automation path; separate Desktop edition for pro workflows
+
+[Full writeup →](/docs/webdev/pic-smaller)
+
+## Plane
+
+**[makeplane/plane](https://github.com/makeplane/plane)**
+
+![Stars](https://img.shields.io/github/stars/makeplane/plane?style=flat-square) ![License](https://img.shields.io/github/license/makeplane/plane?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/makeplane/plane?style=flat-square)
+
+Open-source, self-hostable project management platform — Jira/Linear/ClickUp alternative with Cycles (sprints), Modules, custom Views, and AI-enhanced Pages.
+
+- **Use case:** Issue tracking, sprint planning, and roadmap management without per-seat SaaS lock-in
+- **Stack:** React, Vite, Django, PostgreSQL, Redis, Docker/Kubernetes
+- **Good to know:** AGPLv3 licensed — copyleft obligations to check before commercial resale
+
+[Full writeup →](/docs/tools/plane)
+
+## Public APIs
+
+**[public-apis/public-apis](https://github.com/public-apis/public-apis)**
+
+![Stars](https://img.shields.io/github/stars/public-apis/public-apis?style=flat-square) ![License](https://img.shields.io/github/license/public-apis/public-apis?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/public-apis/public-apis?style=flat-square)
+
+Massive community-curated list of free public APIs across every category — weather, finance, government data, ML, and more — with auth/HTTPS/CORS metadata per entry.
+
+- **Use case:** Finding a free data source for a prototype, hackathon, or demo app fast
+- **Stack:** N/A (curated reference list)
+- **Good to know:** A list, not a service — entries can go stale independently of the list itself
+
+[Full writeup →](/docs/tools/public-apis)
+
+## Awesome MCP Servers
+
+**[punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)**
+
+![Stars](https://img.shields.io/github/stars/punkpeye/awesome-mcp-servers?style=flat-square) ![License](https://img.shields.io/github/license/punkpeye/awesome-mcp-servers?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/punkpeye/awesome-mcp-servers?style=flat-square)
+
+Curated directory of Model Context Protocol servers — databases, browsers, file systems, SaaS integrations — mirrored as a searchable registry at glama.ai.
+
+- **Use case:** Finding an existing MCP server before writing a custom tool integration
+- **Stack:** N/A (curated list + glama.ai registry)
+- **Good to know:** No centralized security review of listed servers — vet before connecting to an agent
+
+[Full writeup →](/docs/ai/awesome-mcp-servers)
+
+## OpenDesign
+
+**[nexu-io/open-design](https://github.com/nexu-io/open-design)**
+
+![Stars](https://img.shields.io/github/stars/nexu-io/open-design?style=flat-square) ![License](https://img.shields.io/github/license/nexu-io/open-design?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/nexu-io/open-design?style=flat-square)
+
+Open-source, agent-native design engine — 25+ coding agents, 151 brand design systems, prototypes/decks/dashboards/video with HTML/PDF/PPTX/MP4 export.
+
+- **Use case:** Turning a coding agent into a design engine for landing pages, dashboards, decks, and motion graphics
+- **Stack:** Next.js, Electron, Node/Express, SQLite
+- **Good to know:** Bundled templates carry mixed licenses — check per-template before reuse
+
+[Full writeup →](/docs/ai/open-design)
+
+## Awesome LLM Apps
+
+**[Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)**
+
+![Stars](https://img.shields.io/github/stars/Shubhamsaboo/awesome-llm-apps?style=flat-square) ![License](https://img.shields.io/github/license/Shubhamsaboo/awesome-llm-apps?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/Shubhamsaboo/awesome-llm-apps?style=flat-square)
+
+100+ clonable, production-ready AI agents and RAG apps — starter to multi-agent teams, voice agents, browser automation, MCP agents, fine-tuning recipes.
+
+- **Use case:** Starting from a working agent implementation instead of a toy tutorial
+- **Stack:** Varies per app (mostly Python)
+- **Good to know:** Apache 2.0 — explicitly "clone it, ship it, sell it"
+
+[Full writeup →](/docs/ai/awesome-llm-apps)
+
+## Awesome
+
+**[sindresorhus/awesome](https://github.com/sindresorhus/awesome)**
+
+![Stars](https://img.shields.io/github/stars/sindresorhus/awesome?style=flat-square) ![License](https://img.shields.io/github/license/sindresorhus/awesome?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/sindresorhus/awesome?style=flat-square)
+
+The original meta-list — a curated index of hundreds of independently maintained "awesome" lists spanning nearly every technical and non-technical topic.
+
+- **Use case:** Finding the credible, maintained curated list for an unfamiliar domain
+- **Stack:** N/A (curated reference index)
+- **Good to know:** CC0-1.0 — effectively public domain, among GitHub's most-starred repos
+
+[Full writeup →](/docs/tools/awesome)
+
+## Scrapling
+
+**[D4Vinci/Scrapling](https://github.com/D4Vinci/Scrapling)**
+
+![Stars](https://img.shields.io/github/stars/D4Vinci/Scrapling?style=flat-square) ![License](https://img.shields.io/github/license/D4Vinci/Scrapling?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/D4Vinci/Scrapling?style=flat-square)
+
+Adaptive Python web scraping framework — auto-relocates elements after site redesigns, bypasses anti-bot protections like Cloudflare Turnstile, ships an MCP server for agents.
+
+- **Use case:** Scraping sites resilient to layout changes and anti-bot checks, or feeding an agent live web data
+- **Stack:** Python 3.10+, Playwright/Chromium, lxml, FastAPI
+- **Good to know:** Bypassing anti-bot protections can violate target sites' terms of service
+
+[Full writeup →](/docs/webdev/scrapling)
+
+## Free-for-Dev
+
+**[ripienaar/free-for-dev](https://github.com/ripienaar/free-for-dev)**
+
+![Stars](https://img.shields.io/github/stars/ripienaar/free-for-dev?style=flat-square) ![License](https://img.shields.io/github/license/ripienaar/free-for-dev?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/ripienaar/free-for-dev?style=flat-square)
+
+Curated list of SaaS/PaaS/IaaS services with genuine year-long free tiers, across 50+ categories — cloud, CI/CD, monitoring, databases, and more.
+
+- **Use case:** Finding free-tier infrastructure for a side project or MVP without researching pricing pages one by one
+- **Stack:** N/A (curated reference list)
+- **Good to know:** As-a-service only — excludes self-hosted free/open-source alternatives by design
+
+[Full writeup →](/docs/tools/free-for-dev)
+
+## Ollama
+
+**[ollama/ollama](https://github.com/ollama/ollama)**
+
+![Stars](https://img.shields.io/github/stars/ollama/ollama?style=flat-square) ![License](https://img.shields.io/github/license/ollama/ollama?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/ollama/ollama?style=flat-square)
+
+Open-source platform for running LLMs locally — one-command model pulls, full REST API, Python/JS SDKs, cross-platform (macOS/Windows/Linux/Docker).
+
+- **Use case:** Local, private LLM inference with a REST API that mirrors cloud providers
+- **Stack:** Go, llama.cpp backend, MLX compatibility
+- **Good to know:** Local model quality/speed capped by the hardware running it
+
+[Full writeup →](/docs/ai/ollama)
+
+## Langflow
+
+**[langflow-ai/langflow](https://github.com/langflow-ai/langflow)**
+
+![Stars](https://img.shields.io/github/stars/langflow-ai/langflow?style=flat-square) ![License](https://img.shields.io/github/license/langflow-ai/langflow?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/langflow-ai/langflow?style=flat-square)
+
+Visual builder for AI agents/workflows with editable Python behind every component, multi-agent orchestration, and MCP server deployment.
+
+- **Use case:** Prototyping conversational agents visually, then dropping into Python when the visual layer isn't enough
+- **Stack:** Python 3.10–3.14, Node.js/React frontend
+- **Good to know:** MIT licensed, 153.9k+ stars
+
+[Full writeup →](/docs/ai/langflow)
+
+## OpenHands
+
+**[OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)**
+
+![Stars](https://img.shields.io/github/stars/OpenHands/OpenHands?style=flat-square) ![License](https://img.shields.io/github/license/OpenHands/OpenHands?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/OpenHands/OpenHands?style=flat-square)
+
+Self-hosted developer control center for coding agents — multi-backend (local/remote/cloud), agent-agnostic via ACP, scheduled/event-triggered automations wired to Slack/GitHub.
+
+- **Use case:** Automating code review, issue decomposition, and scheduled agent runs across team infra
+- **Stack:** TypeScript/React frontend, Python Agent Server SDK, Docker
+- **Good to know:** Bring-your-own LLM and agent — not locked to one implementation
+
+[Full writeup →](/docs/ai/openhands)
+
+## Scientific Agent Skills
+
+**[K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)**
+
+![Stars](https://img.shields.io/github/stars/K-Dense-AI/scientific-agent-skills?style=flat-square) ![License](https://img.shields.io/github/license/K-Dense-AI/scientific-agent-skills?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/K-Dense-AI/scientific-agent-skills?style=flat-square)
+
+163 validated agent skills turning coding agents into research assistants — 100+ scientific databases and 70+ optimized library skills (RDKit, Scanpy, PyTorch Lightning) across genomics, drug discovery, clinical research.
+
+- **Use case:** Running real bioinformatics/cheminformatics workflows through an agent instead of hand-coding database access
+- **Stack:** Python 3.13+, uv, BioPython/RDKit/Scanpy/DeepChem and more
+- **Good to know:** Individual skills may carry different licenses — review per-skill metadata
+
+[Full writeup →](/docs/ai/scientific-agent-skills)
+
+## Claude Code Plugins
+
+**[anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)**
+
+![Stars](https://img.shields.io/github/stars/anthropics/claude-plugins-official?style=flat-square) ![License](https://img.shields.io/github/license/anthropics/claude-plugins-official?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/anthropics/claude-plugins-official?style=flat-square)
+
+Anthropic's official, curated plugin marketplace for Claude Code — internal plugins plus vetted third-party ones meeting a security/quality bar before listing.
+
+- **Use case:** Extending Claude Code with vetted commands, agents, skills, and MCP integrations
+- **Stack:** N/A (plugin manifest system: plugin.json, .mcp.json, commands/, agents/, skills/)
+- **Good to know:** Anthropic disclaims control over external plugin code — verify trust before installing third-party plugins
+
+[Full writeup →](/docs/ai/claude-plugins-official)
+
+## God's Eye View
+
+**[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)**
+
+![Stars](https://img.shields.io/github/stars/bilawalsidhu/gods-eye-view?style=flat-square) ![License](https://img.shields.io/github/license/bilawalsidhu/gods-eye-view?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/bilawalsidhu/gods-eye-view?style=flat-square)
+
+Interactive 3D globe visualizing 13 live data layers — flights, ships, satellites, fires, CCTV — with voice control via OpenAI's Realtime API and cockpit/sensor view modes.
+
+- **Use case:** Real-time geospatial intelligence exploration and OSINT-style research in one unified 3D view
+- **Stack:** CesiumJS, Google Maps 3D Tiles, Vite, WebGL
+- **Good to know:** Requires several third-party API keys (Google Maps, OpenSky, AISStream, NASA FIRMS, TomTom, OpenAI)
+
+[Full writeup →](/docs/webdev/gods-eye-view)
+
+## GitNexus
+
+**[abhigyanpatwari/GitNexus](https://github.com/abhigyanpatwari/GitNexus)**
+
+![Stars](https://img.shields.io/github/stars/abhigyanpatwari/GitNexus?style=flat-square) ![License](https://img.shields.io/github/license/abhigyanpatwari/GitNexus?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/abhigyanpatwari/GitNexus?style=flat-square)
+
+Zero-server code intelligence engine — builds a queryable knowledge graph of a codebase entirely client-side, with 17 MCP tools for impact analysis, tracing, and coordinated renames.
+
+- **Use case:** Pre-commit impact analysis, refactoring planning, and blast-radius estimation for an AI agent
+- **Stack:** Tree-sitter, LadybugDB, React 18, Sigma.js, transformers.js
+- **Good to know:** PolyForm Noncommercial 1.0.0 — commercial/SaaS use needs a separate license
+
+[Full writeup →](/docs/ai/gitnexus)
+
+## OpenMontage
+
+**[calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)**
+
+![Stars](https://img.shields.io/github/stars/calesthio/OpenMontage?style=flat-square) ![License](https://img.shields.io/github/license/calesthio/OpenMontage?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/calesthio/OpenMontage?style=flat-square)
+
+Agentic video production system — an AI coding assistant researches, scripts, generates assets, edits, and composes finished videos across 12 production pipelines and 60+ provider integrations.
+
+- **Use case:** Turning a plain-language brief into a finished explainer, documentary, or marketing video end-to-end
+- **Stack:** Python 3.10+, Remotion, HyperFrames, FFmpeg, WhisperX, Piper
+- **Good to know:** AGPLv3 licensed — copyleft with commercial-use restrictions to review
+
+[Full writeup →](/docs/ai/openmontage)
+
+## Cursor Plugins
+
+**[cursor/plugins](https://github.com/cursor/plugins)**
+
+![Stars](https://img.shields.io/github/stars/cursor/plugins?style=flat-square) ![License](https://img.shields.io/github/license/cursor/plugins?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/cursor/plugins?style=flat-square)
+
+Official plugin marketplace for Cursor — 50+ plugins spanning developer utilities (code audits, parallel task distribution) and third-party SaaS integrations (Gmail, GitHub, Playwright, Salesforce).
+
+- **Use case:** Giving the Cursor agent real tool access (email, CRM, browser automation) through standardized manifests
+- **Stack:** TypeScript, JavaScript
+- **Good to know:** Tied specifically to Cursor — not portable to other agent hosts
+
+[Full writeup →](/docs/ai/cursor-plugins)
+
+## Foqos
+
+**[awaseem/foqos](https://github.com/awaseem/foqos)**
+
+![Stars](https://img.shields.io/github/stars/awaseem/foqos?style=flat-square) ![License](https://img.shields.io/github/license/awaseem/foqos?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/awaseem/foqos?style=flat-square)
+
+Free, open-source iOS app blocker on Apple's Screen Time API — NFC/QR/timer-triggered focus sessions, local-first with no cloud sync or account.
+
+- **Use case:** Blocking distracting apps for work/study/bedtime with a physical-trigger habit-breaking mechanic
+- **Stack:** SwiftUI, SwiftData, Family Controls, Core NFC, ActivityKit
+- **Good to know:** iOS-only, free alternative to paid apps like Brick/Opal/Unpluq/Blok
+
+[Full writeup →](/docs/tools/foqos)
+
+## BitChat
+
+**[permissionlesstech/bitchat](https://github.com/permissionlesstech/bitchat)**
+
+![Stars](https://img.shields.io/github/stars/permissionlesstech/bitchat?style=flat-square) ![License](https://img.shields.io/github/license/permissionlesstech/bitchat?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/permissionlesstech/bitchat?style=flat-square)
+
+Decentralized peer-to-peer messenger over Bluetooth mesh and Nostr — no accounts, phone numbers, or servers, with geohash location channels and an emergency wipe.
+
+- **Use case:** Offline disaster/protest communication and privacy-preserving messaging with zero infrastructure
+- **Stack:** Swift, Bluetooth LE, Nostr, XChaCha20-Poly1305
+- **Good to know:** iOS/macOS only, public domain (Unlicense)
+
+[Full writeup →](/docs/tools/bitchat)
+
+## Project AIRI
+
+**[moeru-ai/airi](https://github.com/moeru-ai/airi)**
+
+![Stars](https://img.shields.io/github/stars/moeru-ai/airi?style=flat-square) ![License](https://img.shields.io/github/license/moeru-ai/airi?style=flat-square) ![Last commit](https://img.shields.io/github/last-commit/moeru-ai/airi?style=flat-square)
+
+Open-source framework for self-hosted AI virtual companions — voice chat, VRM/Live2D avatars, game-playing (Minecraft/Factorio/KSP), 20+ LLM providers, Discord/Telegram integrations.
+
+- **Use case:** Personal AI companion, streaming assistant, or self-hosted VTuber platform
+- **Stack:** Vue.js, TypeScript, WebGPU, Electron, Candle, Transformers.js
+- **Good to know:** iOS/Android support is experimental
+
+[Full writeup →](/docs/ai/airi)

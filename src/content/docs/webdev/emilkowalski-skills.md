@@ -50,6 +50,7 @@ Install the skills, then let Claude Code (or another supported agent) invoke the
 
 - **[taste-skill](/docs/webdev/taste-skill)** — broader scope (layout, typography, spacing, motion) with tunable dials, vs. this project's narrower, deeper focus on animation specifically.
 - **[impeccable](/docs/webdev/impeccable)** — command-driven full design-review system with deterministic anti-pattern detectors, covering more than animation alone.
+- **[Anthropic Skills](/docs/ai/anthropic-skills)** — Anthropic's own official, broader skill catalog across creative/technical/document domains, vs. this independent author's narrow animation focus.
 
 ## Pros
 

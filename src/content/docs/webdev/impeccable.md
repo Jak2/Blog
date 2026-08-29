@@ -58,7 +58,8 @@ Also available as a git submodule (team vendoring), via the Claude Code / Grok B
 ## Competitors
 
 - **[taste-skill](/docs/webdev/taste-skill)** — lighter, dial-based (`DESIGN_VARIANCE`/`MOTION_INTENSITY`/`VISUAL_DENSITY`) approach vs. Impeccable's deeper command system and deterministic detectors.
-- **emilkowalski/skills** — narrower animation-only focus vs. Impeccable's full design-review scope (accessibility, performance, visual critique).
+- **[emilkowalski/skills](/docs/webdev/emilkowalski-skills)** — narrower animation-only focus vs. Impeccable's full design-review scope (accessibility, performance, visual critique).
+- **[Anthropic Skills](/docs/ai/anthropic-skills)** — Anthropic's official, broad multi-category catalog, vs. Impeccable's single deep design-review skill.
 
 ## Pros
 

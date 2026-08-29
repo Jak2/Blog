@@ -51,7 +51,8 @@ Install the relevant skill variant, then invoke it during UI generation or redes
 ## Competitors
 
 - **[impeccable](/docs/webdev/impeccable)** — deeper, command-driven system (23 commands, deterministic anti-pattern detectors, per-project `PRODUCT.md`/`DESIGN.md` context) vs. taste-skill's lighter, dial-based variant approach.
-- **emilkowalski/skills** — narrower focus on animation/motion craft specifically, rather than general layout/typography/visual taste.
+- **[emilkowalski/skills](/docs/webdev/emilkowalski-skills)** — narrower focus on animation/motion craft specifically, rather than general layout/typography/visual taste.
+- **[Anthropic Skills](/docs/ai/anthropic-skills)** — Anthropic's official, broad multi-category catalog, vs. taste-skill's single focused design-taste skill.
 
 ## Pros
 

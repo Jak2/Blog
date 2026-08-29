@@ -231,9 +231,30 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/airi.md": {
+	id: "ai/airi.md";
+  slug: "ai/airi";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/andrej-karpathy-skills.md": {
 	id: "ai/andrej-karpathy-skills.md";
   slug: "ai/andrej-karpathy-skills";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/anthropic-skills.md": {
+	id: "ai/anthropic-skills.md";
+  slug: "ai/anthropic-skills";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/archify.md": {
+	id: "ai/archify.md";
+  slug: "ai/archify";
   body: string;
   collection: "docs";
   data: any
@@ -252,9 +273,30 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/awesome-llm-apps.md": {
+	id: "ai/awesome-llm-apps.md";
+  slug: "ai/awesome-llm-apps";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/awesome-mcp-servers.md": {
+	id: "ai/awesome-mcp-servers.md";
+  slug: "ai/awesome-mcp-servers";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/book-to-skill.md": {
 	id: "ai/book-to-skill.md";
   slug: "ai/book-to-skill";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/claude-plugins-official.md": {
+	id: "ai/claude-plugins-official.md";
+  slug: "ai/claude-plugins-official";
   body: string;
   collection: "docs";
   data: any
@@ -280,9 +322,37 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/cursor-plugins.md": {
+	id: "ai/cursor-plugins.md";
+  slug: "ai/cursor-plugins";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/deer-flow.md": {
+	id: "ai/deer-flow.md";
+  slug: "ai/deer-flow";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/dify.md": {
 	id: "ai/dify.md";
   slug: "ai/dify";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/dspy.md": {
+	id: "ai/dspy.md";
+  slug: "ai/dspy";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/gitnexus.md": {
+	id: "ai/gitnexus.md";
+  slug: "ai/gitnexus";
   body: string;
   collection: "docs";
   data: any
@@ -364,6 +434,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/langflow.md": {
+	id: "ai/langflow.md";
+  slug: "ai/langflow";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/lobehub.md": {
 	id: "ai/lobehub.md";
   slug: "ai/lobehub";
@@ -381,6 +458,13 @@ declare module 'astro:content' {
 "ai/moonshine.md": {
 	id: "ai/moonshine.md";
   slug: "ai/moonshine";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/ollama.md": {
+	id: "ai/ollama.md";
+  slug: "ai/ollama";
   body: string;
   collection: "docs";
   data: any
@@ -406,9 +490,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/open-design.md": {
+	id: "ai/open-design.md";
+  slug: "ai/open-design";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/openalice.md": {
 	id: "ai/openalice.md";
   slug: "ai/openalice";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/openhands.md": {
+	id: "ai/openhands.md";
+  slug: "ai/openhands";
   body: string;
   collection: "docs";
   data: any
@@ -420,9 +518,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"ai/openmontage.md": {
+	id: "ai/openmontage.md";
+  slug: "ai/openmontage";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "ai/rag-vs-cag-vs-kag-vs-mag.md": {
 	id: "ai/rag-vs-cag-vs-kag-vs-mag.md";
   slug: "ai/rag-vs-cag-vs-kag-vs-mag";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"ai/scientific-agent-skills.md": {
+	id: "ai/scientific-agent-skills.md";
+  slug: "ai/scientific-agent-skills";
   body: string;
   collection: "docs";
   data: any
@@ -595,6 +707,34 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/auto-editor.md": {
+	id: "tools/auto-editor.md";
+  slug: "tools/auto-editor";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/awesome-quant.md": {
+	id: "tools/awesome-quant.md";
+  slug: "tools/awesome-quant";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/awesome.md": {
+	id: "tools/awesome.md";
+  slug: "tools/awesome";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/bitchat.md": {
+	id: "tools/bitchat.md";
+  slug: "tools/bitchat";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/carbon.md": {
 	id: "tools/carbon.md";
   slug: "tools/carbon";
@@ -612,6 +752,20 @@ declare module 'astro:content' {
 "tools/clay.md": {
 	id: "tools/clay.md";
   slug: "tools/clay";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/cloudberry.md": {
+	id: "tools/cloudberry.md";
+  slug: "tools/cloudberry";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/code-server.md": {
+	id: "tools/code-server.md";
+  slug: "tools/code-server";
   body: string;
   collection: "docs";
   data: any
@@ -644,6 +798,20 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/foqos.md": {
+	id: "tools/foqos.md";
+  slug: "tools/foqos";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/free-for-dev.md": {
+	id: "tools/free-for-dev.md";
+  slug: "tools/free-for-dev";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/handwrite.md": {
 	id: "tools/handwrite.md";
   slug: "tools/handwrite";
@@ -665,9 +833,23 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/maxun.md": {
+	id: "tools/maxun.md";
+  slug: "tools/maxun";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/mysigmail.md": {
 	id: "tools/mysigmail.md";
   slug: "tools/mysigmail";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/nautilus-trader.md": {
+	id: "tools/nautilus-trader.md";
+  slug: "tools/nautilus-trader";
   body: string;
   collection: "docs";
   data: any
@@ -682,6 +864,13 @@ declare module 'astro:content' {
 "tools/ntfy.md": {
 	id: "tools/ntfy.md";
   slug: "tools/ntfy";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/openpanel.md": {
+	id: "tools/openpanel.md";
+  slug: "tools/openpanel";
   body: string;
   collection: "docs";
   data: any
@@ -707,6 +896,20 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"tools/plane.md": {
+	id: "tools/plane.md";
+  slug: "tools/plane";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/public-apis.md": {
+	id: "tools/public-apis.md";
+  slug: "tools/public-apis";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "tools/regexr.md": {
 	id: "tools/regexr.md";
   slug: "tools/regexr";
@@ -724,6 +927,13 @@ declare module 'astro:content' {
 "tools/sidescreen.md": {
 	id: "tools/sidescreen.md";
   slug: "tools/sidescreen";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"tools/strix.md": {
+	id: "tools/strix.md";
+  slug: "tools/strix";
   body: string;
   collection: "docs";
   data: any
@@ -756,6 +966,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"webdev/airship.md": {
+	id: "webdev/airship.md";
+  slug: "webdev/airship";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "webdev/anime-js.md": {
 	id: "webdev/anime-js.md";
   slug: "webdev/anime-js";
@@ -766,6 +983,13 @@ declare module 'astro:content' {
 "webdev/emilkowalski-skills.md": {
 	id: "webdev/emilkowalski-skills.md";
   slug: "webdev/emilkowalski-skills";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/gods-eye-view.md": {
+	id: "webdev/gods-eye-view.md";
+  slug: "webdev/gods-eye-view";
   body: string;
   collection: "docs";
   data: any
@@ -791,6 +1015,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"webdev/instatic.md": {
+	id: "webdev/instatic.md";
+  slug: "webdev/instatic";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "webdev/json-crack.md": {
 	id: "webdev/json-crack.md";
   slug: "webdev/json-crack";
@@ -812,9 +1043,37 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"webdev/markdoc.md": {
+	id: "webdev/markdoc.md";
+  slug: "webdev/markdoc";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/open-saas.md": {
+	id: "webdev/open-saas.md";
+  slug: "webdev/open-saas";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/pic-smaller.md": {
+	id: "webdev/pic-smaller.md";
+  slug: "webdev/pic-smaller";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "webdev/react-bits.md": {
 	id: "webdev/react-bits.md";
   slug: "webdev/react-bits";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"webdev/scrapling.md": {
+	id: "webdev/scrapling.md";
+  slug: "webdev/scrapling";
   body: string;
   collection: "docs";
   data: any

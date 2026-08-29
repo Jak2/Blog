@@ -54,7 +54,7 @@ Launch the macOS app for a SwiftUI chat interface, or run the CLI/server binary 
 ## Competitors
 
 - **llama.cpp** — broader model/hardware support, but doesn't do the same on-demand SSD expert streaming; needs more RAM for comparably sized MoE models.
-- **Ollama** — easier general-purpose local model management, not optimized for running MoE models this large on memory-constrained Macs specifically.
+- **[Ollama](/docs/ai/ollama)** — easier general-purpose local model management, not optimized for running MoE models this large on memory-constrained Macs specifically.
 - **MLX (Apple)** — Apple's own ML framework, faster on Apple Silicon when the model fits in RAM, but lacks TurboFieldfare's low-memory streaming trick for oversized MoE models.
 
 ## Pros

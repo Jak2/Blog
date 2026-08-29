@@ -58,6 +58,8 @@ After setup, build an app via the visual workflow canvas — chain prompts, RAG 
 - **LangChain/LangGraph** — code-first framework, more flexible but no visual builder or hosted ops layer out of the box.
 - **Flowise** — similar visual-workflow approach, smaller ecosystem and community than Dify.
 - **n8n** — general-purpose automation/workflow tool with AI nodes, vs. Dify's LLM-app-specific focus (RAG, prompt IDE, agent tooling).
+- **[DeerFlow](/docs/ai/deer-flow)** — code-first long-horizon agent harness with sub-agents and sandboxing, vs. Dify's visual workflow/RAG builder.
+- **[DSPy](/docs/ai/dspy)** — code-first, optimization-driven LM programming framework for developers, vs. Dify's visual no-code app builder.
 
 ## Pros
 
