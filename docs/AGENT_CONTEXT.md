@@ -17,6 +17,10 @@ verify the build. One URL in, a verified build out. Repeat per URL.
   - `webdev/` — web-development-specific tools/libraries
   - `tools/` — general-purpose developer tools, not web-specific
   - (other categories exist for non-dev topics; don't invent new ones without cause)
+- Folders nest to any depth (e.g. `software-engineer/02-solid/<concept>.md`), and
+  every folder in the path is a browsable URL. An `index.md` is optional — a
+  folder without one gets an auto-generated index page listing its children. So
+  a new category folder needs no scaffolding; just add the `.md` files.
 - `src/content/docs/github/repos.md` — single master index file. Every cataloged
   item gets one short entry here, in addition to its full page.
 - `scripts/autosort.js` (run via `npm run sort`) — alphabetically sorts sections

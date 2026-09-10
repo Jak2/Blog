@@ -9,8 +9,9 @@ A modern, filesystem-driven documentation site built with **Astro** and **Tailwi
 ## Features
 
 - **Filesystem-based routing** — Your folder structure = your sidebar navigation
+- **Unlimited nesting** — Subfolders work at any depth; folders without an `index.md` get an auto-generated index page listing their contents
 - **Markdown first** — Write content in `.md` files, no code required
-- **Client-side search** — Instant search across all docs from the navbar (`Ctrl+K`)
+- **Client-side search** — Instant search across all docs from the navbar (`Ctrl+K`), index fetched on demand from `/search-index.json`
 - **Table of Contents** — Right sidebar with scroll spy highlighting for h1-h3 headings
 - **Dark mode** — Toggle with system preference detection
 - **Responsive design** — Mobile-friendly with collapsible sidebar
@@ -57,7 +58,8 @@ blog/
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.astro          # Header with search & dark mode toggle
-│   │   ├── Sidebar.astro         # Auto-generated navigation
+│   │   ├── Sidebar.astro         # Auto-generated navigation (top level)
+│   │   ├── SidebarTree.astro     # Recursive nav branch (nesting at any depth)
 │   │   └── TableOfContents.astro # Right sidebar TOC with scroll spy
 │   ├── content/
 │   │   └── docs/                # YOUR MARKDOWN FILES GO HERE
@@ -72,8 +74,9 @@ blog/
 │   │   └── BaseLayout.astro     # Main page wrapper
 │   ├── pages/
 │   │   ├── index.astro          # Home page (/)
+│   │   ├── search-index.json.ts # Search index endpoint (fetched by navbar)
 │   │   └── docs/
-│   │       └── [...slug].astro  # Dynamic docs routes
+│   │       └── [...slug].astro  # Dynamic docs routes + folder index pages
 │   └── styles/
 │       └── global.css           # Global styles & Tailwind
 ├── astro.config.mjs             # Astro configuration
@@ -91,15 +94,28 @@ blog/
    src/content/docs/my-page.md  →  /docs/my-page
    ```
 
-2. **Create a new section**: Add a folder with an `index.md`
+2. **Create a new section**: Add a folder. An `index.md` is optional — folders
+   without one get an auto-generated index page listing their children.
    ```
    src/content/docs/tutorials/
-   ├── index.md      →  /docs/tutorials
+   ├── index.md      →  /docs/tutorials   (or auto-generated if omitted)
    ├── basics.md     →  /docs/tutorials/basics
    └── advanced.md   →  /docs/tutorials/advanced
    ```
 
-3. **Control page order**: Use `order` in frontmatter
+3. **Nest as deep as you like**: Subfolders work at any depth and appear in the
+   sidebar. Every intermediate folder gets its own browsable URL.
+   ```
+   src/content/docs/software-engineer/02-solid/dependency-inversion-principle.md
+   →  /docs/software-engineer                                (index page)
+   →  /docs/software-engineer/02-solid                       (index page)
+   →  /docs/software-engineer/02-solid/dependency-inversion-principle
+   ```
+
+   Numeric prefixes (`01-`, `02-`, … `115-`) sort naturally, so `86-` comes
+   before `115-` rather than being sorted as plain text.
+
+4. **Control page order**: Use `order` in frontmatter
    ```markdown
    ---
    title: Getting Started
@@ -115,6 +131,21 @@ blog/
 | `title`       | string | Page title (required)          |
 | `description` | string | SEO meta description           |
 | `order`       | number | Sort order in sidebar (lower = first) |
+
+## Scaling to Large Content Sets
+
+This site currently builds ~2,000 pages. Two things keep per-page weight down as
+content grows — worth knowing before changing either:
+
+- **The search index is a separate file.** `src/pages/search-index.json.ts`
+  serves the whole index at `/search-index.json`, and the navbar fetches it the
+  first time you focus the search box. Inlining it into every page instead (the
+  previous approach) cost ~590 KB per page — about 1.2 GB across the site.
+- **The sidebar renders lazily by depth.** Top-level sections always list their
+  immediate children; deeper branches are only expanded when they're on the
+  current page's path. Every other folder is a link to its own index page, so
+  the tree stays fully navigable without shipping all ~2,000 links on every
+  request.
 
 ## Customization
 

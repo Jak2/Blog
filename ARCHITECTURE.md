@@ -99,8 +99,9 @@ This document explains how the documentation engine works internally — the req
 ```
 pages/
 ├── index.astro              # Home page (/)
+├── search-index.json.ts     # Search index endpoint (/search-index.json)
 └── docs/
-    └── [...slug].astro      # Catch-all for /docs/* routes
+    └── [...slug].astro      # Catch-all for /docs/* routes + folder indexes
 ```
 
 **`index.astro`** — Landing Page
@@ -112,26 +113,58 @@ pages/
 - Catches ALL routes under `/docs/*`
 - The `[...slug]` syntax means "any path segments"
 - **Requires `getStaticPaths()`** for static site generation
+- Renders two kinds of page: a **markdown page** when the route matches a `.md`
+  file, or a **folder index** when the route is a directory without one
 - Examples:
-  - `/docs` → slug = undefined
+  - `/docs` → slug = undefined (folder index of all top-level sections)
   - `/docs/guides` → slug = "guides"
   - `/docs/getting-started/install` → slug = "getting-started/install"
 
 ```javascript
-// getStaticPaths generates all valid routes at build time
+// getStaticPaths generates all valid routes at build time:
+// one per markdown file, PLUS every ancestor folder of every file.
 export function getStaticPaths() {
   const modules = import.meta.glob('/src/content/docs/**/*.md', { eager: true });
-  return Object.keys(modules).map((filePath) => {
-    // Convert file path to slug
-    const slugPath = route.replace(/^\/docs\/?/, '');
-    return { params: { slug: slugPath || undefined } };
+  const routes = new Set();
+
+  Object.keys(modules).forEach((filePath) => {
+    const route = fileToRoute(filePath);   // "/docs/a/b/c"
+    routes.add(route);
+
+    // ancestors: "/docs/a", "/docs/a/b" — otherwise these URLs 404
+    const parts = route.replace(/^\/docs\/?/, '').split('/').filter(Boolean);
+    for (let i = 1; i < parts.length; i++) {
+      routes.add('/docs/' + parts.slice(0, i).join('/'));
+    }
   });
+
+  routes.add('/docs');
+  return [...routes].map((r) => ({
+    params: { slug: r.replace(/^\/docs\/?/, '') || undefined },
+  }));
 }
 
 // How it resolves markdown files:
 const { slug } = Astro.params;  // "getting-started/install"
 const route = '/docs/' + slug;  // "/docs/getting-started/install"
 // Finds: content/docs/getting-started/install.md
+```
+
+**Folder index pages**
+
+When no `.md` file matches the route, the router collects the direct children of
+that path and renders them as a card grid. Subfolders show a page count; pages
+show their frontmatter description. This means an `index.md` is optional for
+every folder — a directory of markdown files is browsable as-is.
+
+```
+/docs/software-engineer/02-solid   (no 02-solid/index.md exists)
+        ↓
+  scan pageList for routes starting with "/docs/software-engineer/02-solid/"
+        ↓
+  group by next path segment, dedupe, sort naturally
+        ↓
+  render card grid: 5 pages (SRP, OCP, LSP, ISP, DIP)
 ```
 
 ---
@@ -191,13 +224,13 @@ const route = '/docs/' + slug;  // "/docs/getting-started/install"
 Responsibilities:
 ├── Logo/Site title (links to /)
 ├── Client-side search bar (center of navbar)
-│   ├── Builds search index at build time via import.meta.glob()
+│   ├── Index built at /search-index.json (src/pages/search-index.json.ts)
+│   ├── Fetched once, lazily, on first focus/keystroke — then cached in memory
 │   ├── Indexes: page titles, headings, content excerpts (200 chars)
 │   ├── Weighted scoring: title (10), headings (5), content (2)
 │   ├── Debounced input (150ms) with max 8 results
 │   ├── Match highlighting (yellow) in dropdown results
-│   ├── Keyboard shortcut: Ctrl+K / Cmd+K to focus, Escape to close
-│   └── Search data embedded as <script type="application/json">
+│   └── Keyboard shortcut: Ctrl+K / Cmd+K to focus, Escape to close
 ├── GitHub link (external, hidden on small screens)
 ├── Dark mode toggle
 │   ├── Sun icon (visible in dark mode)
@@ -219,7 +252,7 @@ Responsibilities:
 - Persists choice to localStorage
 
 // Client-Side Search
-- Parses build-time JSON search index from embedded <script> tag
+- Fetches /search-index.json on first search interaction (once per page load)
 - Splits query into terms, scores each page by title/heading/content matches
 - Renders dropdown with highlighted matches, matched headings, and excerpts
 - Ctrl+K / Cmd+K keyboard shortcut to focus search input
@@ -269,7 +302,8 @@ This component dynamically generates navigation from your markdown files.
 │     }                                                        │
 │                                                              │
 │  4. RENDER HTML                                              │
-│     Tree → <details> with <summary> and <ul>                 │
+│     Sidebar.astro renders top-level sections, then hands     │
+│     each subtree to SidebarTree.astro (recursive)            │
 │     ├── Collapsible sections for folders                     │
 │     ├── Links for pages                                      │
 │     ├── Active state highlighting (indigo accent)            │
@@ -305,6 +339,40 @@ hasActiveChild(node)
 
 **Header Link:**
 - "Blog" link at top points to home page (`/`)
+
+---
+
+**`SidebarTree.astro`** — Recursive Navigation Branch
+
+Renders one level of the tree and calls itself for each child branch, so nesting
+depth is unbounded. Sidebar.astro handles the top-level sections and delegates
+everything below to this component.
+
+```
+For each child in a node:
+
+  has children AND on the active path?
+      → <details open> + recurse (renders an "Overview" link to the
+        folder's own index page, then the branch's children)
+
+  has children but NOT on the active path?
+      → plain <a> to the folder's index page
+
+  leaf page?
+      → plain <a> to the page
+```
+
+**Why branches collapse instead of always rendering:**
+`<details>` still ships its contents in the HTML when closed, so rendering every
+branch would inline the entire tree into every page. At ~2,000 pages that
+measured ~1.4 MB of HTML per page. Rendering only the active path — and linking
+to folder index pages otherwise — keeps navigation complete while bounding page
+weight.
+
+**Sort order:**
+Children sort by frontmatter `order` first, then by key using
+`localeCompare(…, { numeric: true })`. Numeric-aware comparison matters for
+numbered folders: plain string sorting puts `115-` before `86-`.
 
 ---
 
@@ -602,9 +670,13 @@ const headings = page.module.getHeadings?.() || [];
 ### Add a New Section
 
 1. Create folder: `src/content/docs/my-section/`
-2. Add `index.md` with section overview
+2. Optionally add `index.md` with a section overview — without one, the folder
+   gets an auto-generated index page listing its children
 3. Add additional `.md` files
 4. Section appears as collapsible group
+
+Subfolders may nest to any depth, and every folder in the path is browsable:
+`/docs/my-section`, `/docs/my-section/sub`, `/docs/my-section/sub/page`.
 
 ### Customize Sidebar Order
 
@@ -628,11 +700,12 @@ order: 1
 
 | Concern | File(s) |
 |---------|---------|
-| Routing | `pages/docs/[...slug].astro` |
+| Routing + folder index pages | `pages/docs/[...slug].astro` |
 | Layout | `layouts/BaseLayout.astro` |
-| Left Navigation | `components/Sidebar.astro` |
+| Left Navigation | `components/Sidebar.astro` + `components/SidebarTree.astro` |
 | Right TOC | `components/TableOfContents.astro` |
-| Header/Theme/Search | `components/Navbar.astro` |
+| Header/Theme/Search UI | `components/Navbar.astro` |
+| Search index data | `pages/search-index.json.ts` |
 | Styling | `styles/global.css` + `tailwind.config.cjs` |
 | Content | `content/docs/**/*.md` |
 | Config | `astro.config.mjs` |

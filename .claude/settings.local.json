@@ -31,7 +31,8 @@
       "Bash(curl -s http://localhost:4321/docs/software-engineer/01-fundamental-engineering-principles)",
       "Bash(curl -s http://localhost:4321/docs/software-engineer/01-fundamental-engineering-principles/kiss-keep-it-simple-stupid)",
       "Bash(pkill -f \"astro dev\")",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "Bash(grep -n \"Add \\\\`index.md\\\\` with section overview\" ARCHITECTURE.md)"
     ],
     "additionalDirectories": [
       "/media/asterisk/windows_drive/project/learn/my_learning_projects/Blog"
