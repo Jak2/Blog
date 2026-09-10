@@ -1,0 +1,11 @@
+---
+title: "Event-Sourced Architecture"
+description: "Event-Sourced Architecture — part of ARCHITECTURAL STYLES in the Software Engineering Knowledge Map."
+order: 13
+---
+
+# Event-Sourced Architecture
+
+Event-Sourced Architecture is one of the concepts under **ARCHITECTURAL STYLES** in the Software Engineering Knowledge Map.
+
+Category: ARCHITECTURAL STYLES

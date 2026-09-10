@@ -13,7 +13,20 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:uiverse.io)",
       "Bash(gh api *)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(mkdir -p \"/media/asterisk/windows_drive/project/learn/my_learning_projects/Blog/books\" && ls \"/media/asterisk/windows_drive/project/learn/my_learning_projects/Blog/books\")",
+      "Bash(mkdir -p /tmp/claude-1000/-media-asterisk-windows-drive-project-learn-my-learning-projects-Blog/c7a28a31-e762-4ca0-8e2d-bff39a3604e8/scratchpad)",
+      "Bash(python3 /tmp/claude-1000/-media-asterisk-windows-drive-project-learn-my-learning-projects-Blog/c7a28a31-e762-4ca0-8e2d-bff39a3604e8/scratchpad/split.py)",
+      "Bash(python3 -)",
+      "Bash(pip show *)",
+      "Bash(pip install *)",
+      "Bash(sort -t- -k1 -n)",
+      "Bash(cd /media/asterisk/windows_drive/project/learn/my_learning_projects/Blog/src/content/docs/software-engineer *)",
+      "Read(//tmp/**)",
+      "Bash(python3 /tmp/claude-1000/-media-asterisk-windows-drive-project-learn-my-learning-projects-Blog/c7a28a31-e762-4ca0-8e2d-bff39a3604e8/scratchpad/split2.py)"
+    ],
+    "additionalDirectories": [
+      "/media/asterisk/windows_drive/project/learn/my_learning_projects/Blog"
     ]
   }
 }
