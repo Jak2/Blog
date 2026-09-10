@@ -1,0 +1,106 @@
+---
+// Recursive sidebar branch. Renders a node's children as a nested list.
+import Self from './SidebarTree.astro';
+
+interface Page {
+  file: string;
+  route: string;
+  title: string;
+  order?: number;
+}
+
+interface TreeNode {
+  __meta?: Page;
+  children?: Record<string, TreeNode>;
+}
+
+interface Props {
+  node: TreeNode;
+  basePath: string;
+  depth: number;
+  currentPath: string;
+}
+
+const { node, basePath, depth, currentPath } = Astro.props;
+
+function isActive(route: string): boolean {
+  return currentPath === route || currentPath === route + '/';
+}
+
+function onActivePath(route: string): boolean {
+  return currentPath === route || currentPath.startsWith(route + '/');
+}
+
+function titleFromKey(key: string): string {
+  return key.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+const entries = Object.entries(node.children || {}).sort((a, b) => {
+  const oa = a[1].__meta?.order ?? 999;
+  const ob = b[1].__meta?.order ?? 999;
+  if (oa !== ob) return oa - ob;
+  return a[0].localeCompare(b[0], undefined, { numeric: true });
+});
+
+const linkBase = 'block py-1.5 px-2 rounded text-sm transition-colors';
+const linkActive = 'text-docs-accent dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 font-medium';
+const linkIdle =
+  'text-docs-text-muted dark:text-docs-text-muted-dark hover:text-docs-text dark:hover:text-docs-text-dark hover:bg-slate-50 dark:hover:bg-slate-800/30';
+---
+
+<ul class="mt-1 ml-3 space-y-0.5 border-l border-docs-border dark:border-docs-border-dark pl-3">
+  {
+    entries.map(([key, child]) => {
+      const route = (basePath + '/' + key).replace(/\/+/g, '/');
+      const linkRoute = child.__meta?.route || route;
+      const title = child.__meta?.title || titleFromKey(key);
+      const hasChildren = !!child.children && Object.keys(child.children).length > 0;
+      // Sub-branches expand only along the active path; everything else links to
+      // its folder page. Rendering every branch inlines the whole tree into every
+      // page (~1.4MB each at this repo's size).
+      const expand = hasChildren && onActivePath(route);
+
+      return (
+        <li>
+          {expand ? (
+            <details open={onActivePath(route)} class="group/branch">
+              <summary class="flex items-center justify-between cursor-pointer list-none py-1.5 px-2 rounded text-sm text-docs-text dark:text-docs-text-dark hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                <span>{title}</span>
+                <svg
+                  class="w-3.5 h-3.5 shrink-0 text-docs-text-muted dark:text-docs-text-muted-dark transition-transform group-open/branch:rotate-90"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </summary>
+              <ul class="mt-1 ml-3 space-y-0.5 border-l border-docs-border dark:border-docs-border-dark pl-3">
+                <li>
+                  <a href={linkRoute} class:list={[linkBase, isActive(linkRoute) ? linkActive : linkIdle]}>
+                    Overview
+                  </a>
+                </li>
+              </ul>
+              <Self node={child} basePath={route} depth={depth + 1} currentPath={currentPath} />
+            </details>
+          ) : (
+            <a href={linkRoute} class:list={[linkBase, isActive(linkRoute) ? linkActive : linkIdle]}>
+              {title}
+            </a>
+          )}
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary::marker {
+    display: none;
+  }
+</style>

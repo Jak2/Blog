@@ -13,6 +13,7 @@ interface PageModule {
   frontmatter?: {
     title?: string;
     description?: string;
+    order?: number;
   };
   getHeadings?: () => Heading[];
 }
@@ -32,33 +33,101 @@ const pageList = Object.entries(mods).map(([path, mod]) => ({
   module: mod,
 }));
 
-// Generate static paths for all markdown files
+// Generate static paths for every markdown file plus every folder that contains one,
+// so directory URLs resolve to an index listing instead of 404ing.
 export function getStaticPaths() {
   const modules = import.meta.glob('/src/content/docs/**/*.md', { eager: true }) as Record<string, PageModule>;
 
-  const paths = Object.keys(modules).map((filePath) => {
+  const routes = new Set<string>();
+
+  Object.keys(modules).forEach((filePath) => {
     const rel = filePath.replace(/^\/src\/content\/docs/, '');
     let route = '/docs' + rel.replace(/\.md$/, '');
     route = route.replace(/\/index$/, '') || '/docs';
     route = route.replace(/\/+/g, '/');
+    routes.add(route);
 
-    // For rest params [...slug], the slug should be a string path or undefined
-    const slugPath = route.replace(/^\/docs\/?/, '');
-
-    return {
-      params: { slug: slugPath || undefined },
-    };
+    // every ancestor folder of this page
+    const parts = route.replace(/^\/docs\/?/, '').split('/').filter(Boolean);
+    for (let i = 1; i < parts.length; i++) {
+      routes.add('/docs/' + parts.slice(0, i).join('/'));
+    }
   });
 
-  return paths;
+  routes.add('/docs');
+
+  return Array.from(routes).map((route) => ({
+    params: { slug: route.replace(/^\/docs\/?/, '') || undefined },
+  }));
 }
 
 const { slug } = Astro.params;
 const route = '/docs' + (slug ? '/' + slug : '');
-const page = pageList.find((p) => p.route === route) || pageList.find((p) => p.route === '/docs');
+const page = pageList.find((p) => p.route === route);
 
-const title = page?.module.frontmatter?.title || 'Documentation';
-const description = page?.module.frontmatter?.description || 'Markdown-driven documentation';
+function titleFromKey(key: string): string {
+  return key.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function getTitleFromPath(filePath: string): string {
+  const name = filePath.split('/').pop()?.replace('.md', '') || '';
+  if (name.toLowerCase() === 'index') {
+    const parts = filePath.split('/');
+    return parts[parts.length - 2] || 'Home';
+  }
+  return name.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Direct children of this route, used when the route is a folder rather than a page.
+interface FolderEntry {
+  route: string;
+  title: string;
+  description?: string;
+  isFolder: boolean;
+  count: number;
+  order: number;
+}
+
+const prefix = route === '/docs' ? '/docs/' : route + '/';
+const childMap = new Map<string, FolderEntry>();
+
+for (const p of pageList) {
+  if (!p.route.startsWith(prefix)) continue;
+  const rest = p.route.slice(prefix.length);
+  if (!rest) continue;
+  const segment = rest.split('/')[0];
+  const childRoute = prefix + segment;
+  const isFolder = rest.includes('/');
+
+  const existing = childMap.get(childRoute);
+  if (existing) {
+    existing.count += 1;
+    continue;
+  }
+
+  childMap.set(childRoute, {
+    route: childRoute,
+    title: isFolder ? titleFromKey(segment) : p.module.frontmatter?.title || getTitleFromPath(p.file),
+    description: isFolder ? undefined : p.module.frontmatter?.description,
+    isFolder,
+    count: 1,
+    order: isFolder ? 999 : p.module.frontmatter?.order ?? 999,
+  });
+}
+
+const folderEntries = Array.from(childMap.values()).sort((a, b) => {
+  if (a.order !== b.order) return a.order - b.order;
+  return a.route.localeCompare(b.route, undefined, { numeric: true });
+});
+
+const isFolderPage = !page && folderEntries.length > 0;
+const folderTitle = slug ? titleFromKey(slug.split('/').pop() || 'Docs') : 'Documentation';
+const folderPageCount = pageList.filter((p) => p.route.startsWith(prefix)).length;
+
+const title = page?.module.frontmatter?.title || (isFolderPage ? folderTitle : 'Documentation');
+const description =
+  page?.module.frontmatter?.description ||
+  (isFolderPage ? `${folderPageCount} page${folderPageCount === 1 ? '' : 's'} in this section` : 'Markdown-driven documentation');
 
 // Create slug from title for the main heading
 function slugify(text: string): string {
@@ -77,22 +146,12 @@ const titleHeading: Heading = {
   slug: slugify(title),
   text: title,
 };
-// Prepend title to headings array
 const headings: Heading[] = [titleHeading, ...contentHeadings];
 
-// Find prev/next pages for navigation
-const currentIndex = pageList.findIndex((p) => p.route === route);
+// Find prev/next pages for navigation (only meaningful on real pages)
+const currentIndex = page ? pageList.findIndex((p) => p.route === route) : -1;
 const prevPage = currentIndex > 0 ? pageList[currentIndex - 1] : null;
-const nextPage = currentIndex < pageList.length - 1 ? pageList[currentIndex + 1] : null;
-
-function getTitleFromPath(filePath: string): string {
-  const name = filePath.split('/').pop()?.replace('.md', '') || '';
-  if (name.toLowerCase() === 'index') {
-    const parts = filePath.split('/');
-    return parts[parts.length - 2] || 'Home';
-  }
-  return name.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-}
+const nextPage = currentIndex >= 0 && currentIndex < pageList.length - 1 ? pageList[currentIndex + 1] : null;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -141,6 +200,46 @@ function getTitleFromPath(filePath: string): string {
           ) : null}
         </div>
       </nav>
+    </article>
+  ) : isFolderPage ? (
+    <article class="prose max-w-none">
+      <header class="mb-8 pb-8 border-b border-docs-border dark:border-docs-border-dark">
+        <h1 id={slugify(title)} class="!mt-0 !mb-3">{title}</h1>
+        <p class="text-lg text-docs-text-muted dark:text-docs-text-muted-dark !mt-0">{description}</p>
+      </header>
+
+      <div class="not-prose grid gap-3 sm:grid-cols-2">
+        {folderEntries.map((entry) => (
+          <a
+            href={entry.route}
+            class="group flex flex-col p-4 rounded-lg border border-docs-border dark:border-docs-border-dark hover:border-docs-accent dark:hover:border-indigo-400 transition-colors no-underline"
+          >
+            <span class="flex items-center gap-2 font-medium text-docs-text dark:text-docs-text-dark group-hover:text-docs-accent dark:group-hover:text-indigo-400 transition-colors">
+              {entry.isFolder && (
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+                  />
+                </svg>
+              )}
+              {entry.title}
+            </span>
+            {entry.description && (
+              <span class="mt-1 text-sm text-docs-text-muted dark:text-docs-text-muted-dark line-clamp-2">
+                {entry.description}
+              </span>
+            )}
+            {entry.isFolder && (
+              <span class="mt-1 text-sm text-docs-text-muted dark:text-docs-text-muted-dark">
+                {entry.count} page{entry.count === 1 ? '' : 's'}
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
     </article>
   ) : (
     <div class="text-center py-16">

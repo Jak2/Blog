@@ -1,39 +1,5 @@
 ---
-// Build search index from all markdown files at build time
-interface SearchEntry {
-  title: string;
-  route: string;
-  headings: string[];
-  excerpt: string;
-}
-
-const mods = import.meta.glob('/src/content/docs/**/*.md', { eager: true }) as Record<string, any>;
-
-function fileToRoute(filePath: string): string {
-  const rel = filePath.replace(/^\/src\/content\/docs/, '');
-  let route = '/docs' + rel.replace(/\.md$/, '');
-  route = route.replace(/\/index$/, '') || '/docs';
-  return route.replace(/\/+/g, '/');
-}
-
-const searchIndex: SearchEntry[] = Object.entries(mods).map(([path, mod]) => {
-  const title = mod.frontmatter?.title || path.split('/').pop()?.replace('.md', '') || '';
-  const headings = (mod.getHeadings?.() || []).map((h: any) => h.text);
-  // Extract raw body text for excerpt (strip markdown syntax)
-  const rawContent = mod.rawContent?.() || mod.compiledContent?.() || '';
-  const plainText = rawContent
-    .replace(/<[^>]+>/g, '')
-    .replace(/[#*_~`>\[\]()!|]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  const excerpt = plainText.slice(0, 200);
-  return {
-    title,
-    route: fileToRoute(path),
-    headings,
-    excerpt,
-  };
-});
+// Search index lives at /search-index.json and is fetched on first use.
 ---
 <header class="sticky top-0 z-50 w-full border-b border-docs-border dark:border-docs-border-dark bg-white/80 dark:bg-docs-bg-dark/80 backdrop-blur-sm">
   <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
@@ -194,7 +160,23 @@ const searchIndex: SearchEntry[] = Object.entries(mods).map(([path, mod]) => {
   });
 
   // ──── Client-side search ────
-  const searchIndex = JSON.parse(document.getElementById('search-data')?.textContent || '[]');
+  let searchIndex: any[] = [];
+  let indexPromise: Promise<void> | null = null;
+
+  function loadSearchIndex(): Promise<void> {
+    if (!indexPromise) {
+      indexPromise = fetch('/search-index.json')
+        .then((r) => r.json())
+        .then((data) => {
+          searchIndex = data;
+        })
+        .catch(() => {
+          indexPromise = null;
+        });
+    }
+    return indexPromise;
+  }
+
   const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
   const searchResults = document.getElementById('search-results');
 
@@ -293,14 +275,17 @@ const searchIndex: SearchEntry[] = Object.entries(mods).map(([path, mod]) => {
   searchInput?.addEventListener('input', () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
-      performSearch(searchInput.value);
+      const value = searchInput.value;
+      loadSearchIndex().then(() => performSearch(value));
     }, 150);
   });
 
   searchInput?.addEventListener('focus', () => {
-    if (searchInput.value.trim()) {
-      performSearch(searchInput.value);
-    }
+    loadSearchIndex().then(() => {
+      if (searchInput.value.trim()) {
+        performSearch(searchInput.value);
+      }
+    });
   });
 
   // Close results when clicking outside
@@ -311,6 +296,3 @@ const searchIndex: SearchEntry[] = Object.entries(mods).map(([path, mod]) => {
     }
   });
 </script>
-
-<!-- Search index data (hidden, consumed by JS) -->
-<script type="application/json" id="search-data" set:html={JSON.stringify(searchIndex)}></script>

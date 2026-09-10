@@ -23,7 +23,15 @@
       "Bash(sort -t- -k1 -n)",
       "Bash(cd /media/asterisk/windows_drive/project/learn/my_learning_projects/Blog/src/content/docs/software-engineer *)",
       "Read(//tmp/**)",
-      "Bash(python3 /tmp/claude-1000/-media-asterisk-windows-drive-project-learn-my-learning-projects-Blog/c7a28a31-e762-4ca0-8e2d-bff39a3604e8/scratchpad/split2.py)"
+      "Bash(python3 /tmp/claude-1000/-media-asterisk-windows-drive-project-learn-my-learning-projects-Blog/c7a28a31-e762-4ca0-8e2d-bff39a3604e8/scratchpad/split2.py)",
+      "Bash(git stash *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s http://localhost:4321/docs/software-engineer/01-fundamental-engineering-principles)",
+      "Bash(curl -s http://localhost:4321/docs/software-engineer/01-fundamental-engineering-principles/kiss-keep-it-simple-stupid)",
+      "Bash(pkill -f \"astro dev\")",
+      "Bash(git check-ignore *)"
     ],
     "additionalDirectories": [
       "/media/asterisk/windows_drive/project/learn/my_learning_projects/Blog"

@@ -1,5 +1,6 @@
 ---
 // Server-side component: build a nested tree from markdown files in src/content/docs
+import SidebarTree from './SidebarTree.astro';
 
 interface Page {
   file: string;
@@ -44,9 +45,6 @@ const pages: Page[] = Object.entries(mods).map(([path, mod]) => ({
   order: getOrder(mod),
 }));
 
-// Sort pages by order
-pages.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
-
 // Build nested tree
 function buildTree(pages: Page[]): TreeNode {
   const root: TreeNode = {};
@@ -69,17 +67,20 @@ const tree = buildTree(pages);
 // Get current path for active state
 const currentPath = Astro.url.pathname;
 
-function isActive(route: string): boolean {
-  return currentPath === route || currentPath === route + '/';
+function onActivePath(route: string): boolean {
+  return currentPath === route || currentPath.startsWith(route + '/');
 }
 
-function hasActiveChild(node: TreeNode, basePath: string): boolean {
-  if (node.__meta && isActive(node.__meta.route)) return true;
-  if (node.children) {
-    return Object.values(node.children).some((child) => hasActiveChild(child, basePath));
-  }
-  return false;
+function titleFromKey(key: string): string {
+  return key.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+const topLevel = Object.entries(tree.children || {}).sort((a, b) => {
+  const oa = a[1].__meta?.order ?? 999;
+  const ob = b[1].__meta?.order ?? 999;
+  if (oa !== ob) return oa - ob;
+  return a[0].localeCompare(b[0], undefined, { numeric: true });
+});
 ---
 
 <nav class="space-y-6">
@@ -95,82 +96,47 @@ function hasActiveChild(node: TreeNode, basePath: string): boolean {
 
   <!-- Navigation Tree -->
   <div class="space-y-1">
-    {Object.keys(tree.children || {}).map((key) => {
-      const child = tree.children![key];
-      const route = ('/docs/' + key).replace(/\/+/g, '/');
-      const title = child.__meta?.title || key.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-      const hasChildren = child.children && Object.keys(child.children).length > 0;
-      const isOpen = hasActiveChild(child, route);
+    {
+      topLevel.map(([key, child]) => {
+        const route = ('/docs/' + key).replace(/\/+/g, '/');
+        const linkRoute = child.__meta?.route || route;
+        const title = child.__meta?.title || titleFromKey(key);
+        const hasChildren = !!child.children && Object.keys(child.children).length > 0;
 
-      return (
-        <div class="sidebar-section">
-          {hasChildren ? (
-            <details open={isOpen} class="group">
-              <summary class="flex items-center justify-between cursor-pointer list-none py-2 px-3 rounded-lg text-sm font-medium text-docs-text dark:text-docs-text-dark hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
-                <span>{title}</span>
-                <svg
-                  class="w-4 h-4 text-docs-text-muted dark:text-docs-text-muted-dark transition-transform group-open:rotate-90"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </summary>
-              <ul class="mt-1 ml-3 space-y-0.5 border-l border-docs-border dark:border-docs-border-dark pl-3">
-                {child.__meta && (
-                  <li>
-                    <a
-                      href={child.__meta.route}
-                      class:list={[
-                        "block py-1.5 px-2 rounded text-sm transition-colors",
-                        isActive(child.__meta.route)
-                          ? "text-docs-accent dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 font-medium"
-                          : "text-docs-text-muted dark:text-docs-text-muted-dark hover:text-docs-text dark:hover:text-docs-text-dark hover:bg-slate-50 dark:hover:bg-slate-800/30"
-                      ]}
-                    >
-                      Overview
-                    </a>
-                  </li>
-                )}
-                {Object.keys(child.children || {}).map((k) => {
-                  const grandchild = child.children![k];
-                  const grandRoute = (route + '/' + k).replace(/\/+/g, '/');
-                  const grandTitle = grandchild.__meta?.title || k.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-                  return (
-                    <li>
-                      <a
-                        href={grandchild.__meta?.route || grandRoute}
-                        class:list={[
-                          "block py-1.5 px-2 rounded text-sm transition-colors",
-                          isActive(grandchild.__meta?.route || grandRoute)
-                            ? "text-docs-accent dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 font-medium"
-                            : "text-docs-text-muted dark:text-docs-text-muted-dark hover:text-docs-text dark:hover:text-docs-text-dark hover:bg-slate-50 dark:hover:bg-slate-800/30"
-                        ]}
-                      >
-                        {grandTitle}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </details>
-          ) : (
-            <a
-              href={child.__meta?.route || route}
-              class:list={[
-                "block py-2 px-3 rounded-lg text-sm font-medium transition-colors",
-                isActive(child.__meta?.route || route)
-                  ? "text-docs-accent dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20"
-                  : "text-docs-text dark:text-docs-text-dark hover:bg-slate-100 dark:hover:bg-slate-800/50"
-              ]}
-            >
-              {title}
-            </a>
-          )}
-        </div>
-      );
-    })}
+        return (
+          <div class="sidebar-section">
+            {hasChildren ? (
+              <details open={onActivePath(route)} class="group">
+                <summary class="flex items-center justify-between cursor-pointer list-none py-2 px-3 rounded-lg text-sm font-medium text-docs-text dark:text-docs-text-dark hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
+                  <span>{title}</span>
+                  <svg
+                    class="w-4 h-4 shrink-0 text-docs-text-muted dark:text-docs-text-muted-dark transition-transform group-open:rotate-90"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </summary>
+                <SidebarTree node={child} basePath={route} depth={0} currentPath={currentPath} />
+              </details>
+            ) : (
+              <a
+                href={linkRoute}
+                class:list={[
+                  'block py-2 px-3 rounded-lg text-sm font-medium transition-colors',
+                  currentPath === linkRoute
+                    ? 'text-docs-accent dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20'
+                    : 'text-docs-text dark:text-docs-text-dark hover:bg-slate-100 dark:hover:bg-slate-800/50',
+                ]}
+              >
+                {title}
+              </a>
+            )}
+          </div>
+        );
+      })
+    }
   </div>
 </nav>
 

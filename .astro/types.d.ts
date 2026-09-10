@@ -602,6 +602,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
+"cat/dodd.md": {
+	id: "cat/dodd.md";
+  slug: "cat/dodd";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
 "cat/food.md": {
 	id: "cat/food.md";
   slug: "cat/food";
